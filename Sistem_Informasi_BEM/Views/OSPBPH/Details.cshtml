@@ -1,0 +1,98 @@
+﻿@model Sistem_Informasi_BEM.Models.trlaporanksk
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>trlaporanksk</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.namaberkas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.namaberkas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.keterangan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.keterangan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.komentar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.komentar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tglpresent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tglpresent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.creaby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.creaby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.creadate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.creadate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modiby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modiby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modidate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modidate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msukm_hima.nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msukm_hima.nama)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idlpksk }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Sistem_Informasi_BEM.Models.trpengajuandana>
+
+@{
+    ViewBag.Title = "Pengajuan Dana";
+    var status = "";
+}
+
+<div class="polman-nav-static-top">
+    <div id="iconmenu" class="fa fa-bars fa-2x polman-adjust2" style="margin-right: 15px; cursor: pointer;" aria-hidden="true" onclick="hidemenu();"></div>
+    <div class="float-left polman-adjust2">
+        <img src="~/Picture/SIBEM.png" style="height: 50px;" />
+    </div>
+    <div class="polman-menu">
+        <nav class="nav justify-content-end" style="padding-top: 0px;">
+            <div class="fa fa-user-circle-o fa-10x" style="margin-top: 8px; margin-right: 15px; cursor: pointer;" aria-hidden="true"></div>
+            <b style="font-size: 18px; float: right">@(Request.IsAuthenticated? HttpContext.Current.User.Identity.Name : "") (@ViewBag.Jabatan) <br />@ViewBag.Departemen </b>
+        </nav>
+    </div>
+</div>
+
+<div class="polman-nav-static-right collapse scrollstyle" id="menu">
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="list-group">
+            <a onclick="location.href='@Url.Action("Index", "Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-sign-out fa-lg fa-pull-left"></i>Logout</a>
+            <a onclick="location.href='@Url.Action("MenuBPHUmum","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-home fa-lg fa-pull-left"></i>Dashboard</a>
+            <a href='#menu7' role='tab' class='list-group-item list-group-item-action polman-menu-active' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
+            <div id='menu7' class='collapse in' role='tabpanel'>
+                <a onclick="location.href='@Url.Action("Index","OSPBPH")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan OSP
+                </a>
+                <a onclick="location.href='@Url.Action("IndexBPH","PengajuanDana")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-text-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan Dana
+                </a>
+                <a onclick="location.href='@Url.Action("IndexBPH", "KasBPH")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;</b>Kas
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<H3>Pengajuan Dana</H3>
+<ol class="breadcrumb polman-breadcrumb">
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuBPHUmum","Login")'">Sistem Informasi BEM</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("IndexBPH","PengajuanDana")'">Pengajuan Dana</a></li>
+</ol>
+<hr />
+
+<table class="table table-striped table-bordered" style="width:100%" id="tbldana">
+    <thead>
+        <tr>
+            <th>
+                Nama
+            </th>
+            <th>
+                Event
+            </th>
+            <th>
+                Tujuan
+            </th>
+            <th>
+                Jumlah
+            </th>
+            <th>
+                Status
+            </th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        if (item.status == 0)
+        {
+            status = "Dibatalkan";
+        }
+        else if (item.status == 1)
+        {
+            status = "Diproses Departemen";
+        }
+        else if (item.status == 2)
+        {
+            status = "Diproses BPH UMUM";
+        }
+        else if (item.status == 3)
+        {
+            status = "Ditolak";
+        }
+        else if (item.status == 4)
+        {
+            status = "Diterima";
+        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.msanggotabem.nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.@event)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tujuan)
+            </td>
+            <td>
+                Rp. @Html.DisplayFor(modelItem => item.jumlah),00
+            </td>
+            <td>
+                @status
+            </td>
+            <td>
+                @if (item.status == 3 || item.status == 4 || item.status == 0)
+                {
+                    <a onclick="return confirm('Konfirmasi Persetujuan Pengajuan Dana');" href="@Url.Action("EditTerima", "PengajuanDana", new { id = item.id })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none; padding: 8px 10px;"><i class='fa fa-check-circle'></i>&nbsp;Terima</a>
+                    <a onclick="return confirm('Konfirmasi Penolakan Pengajuan Dana');" href="@Url.Action("EditTolak", "PengajuanDana", new { id = item.id })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none; padding: 8px 15px;"><i class='fa fa-remove'></i>&nbsp;Tolak</a>
+                }
+                else
+                {
+                    <a onclick="return confirm('Konfirmasi Persetujuan Pengajuan Dana');" href="@Url.Action("EditTerima", "PengajuanDana", new { id = item.id })" class="btn btn-success" style="padding: 8px 10px;"><i class='fa fa-check-circle'></i>&nbsp;Terima</a>
+                    <a onclick="return confirm('Konfirmasi Penolakan Pengajuan Dana');" href="@Url.Action("EditTolak", "PengajuanDana", new { id = item.id })" class="btn btn-danger" style="padding: 8px 15px;"><i class='fa fa-remove'></i>&nbsp;Tolak</a>
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+<link href="~/Content/designtable.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="~/Content/theme/designtablejava.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        var Popup, dataTable;
+        var no;
+        $(document).ready(function () {
+            $(document).ready(function () {
+                dataTable = $("#tbldana").DataTable();
+            });
+        });
+    </script>
+}

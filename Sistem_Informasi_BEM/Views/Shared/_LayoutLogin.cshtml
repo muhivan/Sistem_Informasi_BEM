@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/polman/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="~/Content/polman/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/polman/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/polman/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/polman/Style.css" rel="stylesheet" />
+</head>
+<body style="background-image: url('../../Picture/IMG_Background.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <div>
+        @RenderBody();
+    </div>
+    <div class="polman-nav-static-bottom">
+        <center>
+            Copyright &copy; 2021 - Projek Pemrograman 4 (ivan & Puji)
+        </center>
+    </div>
+    <script src="~/Content/polman/bootstrap-select.min.js"></script>
+    <script src="~/Content/polman/bootstrap.min.js"></script>
+    <script src="~/Content/polman/exporting.js"></script>
+    <script src="~/Content/polman/highcharts-more.js"></script>
+    <script src="~/Content/polman/highcharts.js"></script>
+    <script src="~/Content/polman/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Content/polman/jquery.3.2.1.min.js"></script>
+    <script src="~/Content/polman/jquery.fancybox.pack.js"></script>
+    <script src="~/Content/polman/jquery.floatThead.js"></script>
+    <script src="~/Content/polman/LetterAvatar.js"></script>
+    <script src="~/Content/polman/solid-gauge.js"></script>
+    <script src="~/Content/polman/tether.min.js"></script>
+    <script src="~/Content/polman/tinymce.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

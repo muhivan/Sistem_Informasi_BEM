@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "Profil Anggota";
+}
+
+<div class="polman-nav-static-top">
+    <div id="iconmenu" class="fa fa-bars fa-2x polman-adjust2" style="margin-right: 15px; cursor: pointer;" aria-hidden="true" onclick="hidemenu();"></div>
+    <div class="float-left polman-adjust2">
+        <img src="~/Picture/SIBEM.png" style="height: 50px;" />
+    </div>
+    <div class="polman-menu">
+        <nav class="nav justify-content-end" style="padding-top: 0px;">
+            <div class="fa fa-user-circle-o fa-10x" style="margin-top: 8px; margin-right: 15px; cursor: pointer;" aria-hidden="true"></div>
+            <b style="font-size: 18px; float: right">@(Request.IsAuthenticated? HttpContext.Current.User.Identity.Name : "") (@ViewBag.Jabatan) <br />@ViewBag.Departemen </b>
+        </nav>
+    </div>
+</div>
+
+<div class="polman-nav-static-right collapse scrollstyle" id="menu">
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="list-group">
+            <a onclick="location.href='@Url.Action("Index", "Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-sign-out fa-lg fa-pull-left"></i>Logout</a>
+            <a onclick="location.href='@Url.Action("MenuBPH","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px;border: none;padding-left: 23px;"><i class="fa fa-home fa-lg fa-pull-left"></i>Dashboard</a>
+            <a onclick="location.href='@Url.Action("ProfilAnggotaDept","Login")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 23px;">Profil Anggota</a>
+            <a href='#menu7' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
+            <div id='menu7' class='collapse in' role='tabpanel'>
+                <a onclick="location.href='@Url.Action("Index","OSP")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan OSP
+                </a>
+                <a onclick="location.href='@Url.Action("IndexDept","PengajuanDana")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-text-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan Dana
+                </a>
+                <a onclick="location.href='@Url.Action("Index", "KasBPH")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Kas
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ol class="breadcrumb polman-breadcrumb">
+    <li class="breadcrumb-item"><a href="" data-toggle="tooltip" data-placement="bottom">Sistem Informasi BEM</a></li>
+    <li class="breadcrumb-item">Profil Anggota</li>
+</ol>
+<hr />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+@foreach (var item in Model)
+{
+<div class="card">
+    <div class="card-header">
+        <b>Profil Mahasiswa</b>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-lg-3">
+                @if (item.foto != "")
+                {
+                    <img src="@Url.Content(item.foto)" height="250" width="220" />
+                }
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label style="font-weight: bold;" for="detailNama">Nama</label><br>
+                            <span>@item.nama</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Nomor Induk Mahasiswa (NIM)</label><br>
+                            <span>@item.nim</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label style="font-weight: bold;" for="detailProdi">Email</label><br>
+                            <span>@item.email</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label style="font-weight: bold;">No Telepon</label><br>
+                            <span>@item.no_telp</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Jabatan</label><br>
+                            <span>@item.msjabatan.namajabatan</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Departemen</label><br>
+                            <span>@item.msdeparteman.namadepartemen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Periode</label><br>
+                            <span>@item.msperiode.tahunperiode</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Anggota</label><br>
+                            <span>Aktif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+    <a href="@Url.Action("EditBPH", "Login", new { id = item.idanggota })" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;"><i class='fa fa-pencil'></i>&nbsp;Ubah</a>
+}
+

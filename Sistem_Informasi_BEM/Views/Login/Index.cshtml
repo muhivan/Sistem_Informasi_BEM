@@ -1,0 +1,72 @@
+﻿@model Sistem_Informasi_BEM.Models.msanggotabem
+
+@{
+    ViewBag.Title = "Halaman Login";
+    Layout = "~/Views/Shared/_polman.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Login", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div>
+        @*Tampilan Footer*@
+        <div class="polman-nav-static-top" style="opacity: 0.9;">
+            <div class="float-left">
+                <img src="~/Picture/SIBEM.png" style="height: 50px;" />
+            </div>
+            <div class="float-right">
+                <a href="@Url.Action("Index", "Login")" class="btn btn-primary btn-user btn-block">Login</a>
+            </div>
+            <div class="float-right">
+                &nbsp;&nbsp;
+            </div>
+            <div class="float-right">
+                <a href="@Url.Action("Home", "Login")" class="btn btn-danger btn-user btn-block">Home</a>
+            </div>
+        </div>
+
+        @*Tampilan Form Login*@
+        <div class="polman-form-login">
+            <center>
+                <h4>Welcome Back</h4>
+            </center>
+            <hr />
+            <div class="form-group">
+                <label>Username <span style="color: red;">*</span></label>
+                @Html.EditorFor(model => model.nim, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username", @type = "text" } })
+                @Html.ValidationMessageFor(model => model.nim, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Password <span style="color: red;">*</span></label>
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+            <input type="submit" name="submit" value="Login" class="btn btn-primary" style="width: 100%; margin-top: 10px; margin-bottom: 10px;" />
+            <p>Ingin Ubah Kata Sandi? <a onclick="location.href='@Url.Action("EditPass","Login")'" style="color:blue">Klik disini</a></p>
+        </div>
+
+        @*Tampilan Footer*@
+        <div class="polman-nav-static-bottom">
+            <center>
+                Copyright &copy; 2020 - Projek Pemograman 4 (ivan & Puji)
+            </center>
+        </div>
+    </div>
+}
+
+@*Validasi Alert*@
+@if (ViewBag.Login != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Login");
+        }
+    </script>
+}
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<script src="~/Content/theme/designtablejava.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+

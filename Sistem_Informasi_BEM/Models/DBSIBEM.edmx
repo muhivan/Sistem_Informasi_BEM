@@ -1,0 +1,1000 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBSIBEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dtlnotulensi">
+          <Key>
+            <PropertyRef Name="idnotulensi" />
+            <PropertyRef Name="idanggota" />
+          </Key>
+          <Property Name="idnotulensi" Type="int" Nullable="false" />
+          <Property Name="idanggota" Type="int" Nullable="false" />
+          <Property Name="keterangan" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="msanggotabem">
+          <Key>
+            <PropertyRef Name="idanggota" />
+          </Key>
+          <Property Name="idanggota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iddepartemen" Type="int" />
+          <Property Name="idjabatan" Type="int" />
+          <Property Name="idperiode" Type="int" />
+          <Property Name="nama" Type="varchar" MaxLength="50" />
+          <Property Name="nim" Type="varchar" MaxLength="10" />
+          <Property Name="alamat" Type="varchar" MaxLength="100" />
+          <Property Name="no_telp" Type="varchar" MaxLength="15" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+          <Property Name="foto" Type="text" />
+        </EntityType>
+        <EntityType Name="msdepartemen">
+          <Key>
+            <PropertyRef Name="iddepartemen" />
+          </Key>
+          <Property Name="iddepartemen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namadepartemen" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="msformatksk">
+          <Key>
+            <PropertyRef Name="idftksk" />
+          </Key>
+          <Property Name="idftksk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nama" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+          <Property Name="dataBerkas" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="msjabatan">
+          <Key>
+            <PropertyRef Name="idjabatan" />
+          </Key>
+          <Property Name="idjabatan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idukm_hima" Type="int" />
+          <Property Name="namajabatan" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="msnews">
+          <Key>
+            <PropertyRef Name="idnews" />
+          </Key>
+          <Property Name="idnews" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="judul" Type="varchar" MaxLength="100" />
+          <Property Name="preview" Type="varchar(max)" />
+          <Property Name="deskripsi" Type="varchar(max)" />
+          <Property Name="gambar" Type="varchar(max)" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="msperiode">
+          <Key>
+            <PropertyRef Name="idperiode" />
+          </Key>
+          <Property Name="idperiode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tahunperiode" Type="varchar" MaxLength="10" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="msukm_hima">
+          <Key>
+            <PropertyRef Name="idukm_hima" />
+          </Key>
+          <Property Name="idukm_hima" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nama" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="trkas">
+          <Key>
+            <PropertyRef Name="idkas" />
+          </Key>
+          <Property Name="idkas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idanggota" Type="int" />
+          <Property Name="nominal" Type="int" />
+          <Property Name="jeniskas" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="trlaporanksk">
+          <Key>
+            <PropertyRef Name="idlpksk" />
+          </Key>
+          <Property Name="idlpksk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idukm_hima" Type="int" />
+          <Property Name="namaberkas" Type="varchar" MaxLength="50" />
+          <Property Name="keterangan" Type="varchar(max)" />
+          <Property Name="status" Type="int" />
+          <Property Name="komentar" Type="varchar(max)" />
+          <Property Name="tglpresent" Type="datetime" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="trnotulensi">
+          <Key>
+            <PropertyRef Name="idnotulensi" />
+          </Key>
+          <Property Name="idnotulensi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idrapat" Type="int" />
+          <Property Name="jmlhadir" Type="int" />
+          <Property Name="notulensi" Type="varchar(max)" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="trpengajuandana">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idanggota" Type="int" />
+          <Property Name="event" Type="varchar(max)" />
+          <Property Name="tujuan" Type="varchar(max)" />
+          <Property Name="jumlah" Type="int" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="date" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="date" />
+          <Property Name="kepada" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="trrapat">
+          <Key>
+            <PropertyRef Name="idrapat" />
+          </Key>
+          <Property Name="idrapat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="iddepartemen" Type="int" />
+          <Property Name="judulrapat" Type="varchar" MaxLength="50" />
+          <Property Name="tglrapat" Type="datetime" />
+          <Property Name="status" Type="int" />
+          <Property Name="creaby" Type="varchar" MaxLength="50" />
+          <Property Name="creadate" Type="datetime" />
+          <Property Name="modiby" Type="varchar" MaxLength="50" />
+          <Property Name="modidate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_dtlnotulensi_msanggotabem">
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="1" />
+          <End Role="dtlnotulensi" Type="Self.dtlnotulensi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msanggotabem">
+              <PropertyRef Name="idanggota" />
+            </Principal>
+            <Dependent Role="dtlnotulensi">
+              <PropertyRef Name="idanggota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dtlnotulensi_trnotulensi">
+          <End Role="trnotulensi" Type="Self.trnotulensi" Multiplicity="1" />
+          <End Role="dtlnotulensi" Type="Self.dtlnotulensi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trnotulensi">
+              <PropertyRef Name="idnotulensi" />
+            </Principal>
+            <Dependent Role="dtlnotulensi">
+              <PropertyRef Name="idnotulensi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msanggotabem_msdepartemen">
+          <End Role="msdepartemen" Type="Self.msdepartemen" Multiplicity="0..1" />
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msdepartemen">
+              <PropertyRef Name="iddepartemen" />
+            </Principal>
+            <Dependent Role="msanggotabem">
+              <PropertyRef Name="iddepartemen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msanggotabem_msjabatan">
+          <End Role="msjabatan" Type="Self.msjabatan" Multiplicity="0..1" />
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msjabatan">
+              <PropertyRef Name="idjabatan" />
+            </Principal>
+            <Dependent Role="msanggotabem">
+              <PropertyRef Name="idjabatan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msanggotabem_msperiode">
+          <End Role="msperiode" Type="Self.msperiode" Multiplicity="0..1" />
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msperiode">
+              <PropertyRef Name="idperiode" />
+            </Principal>
+            <Dependent Role="msanggotabem">
+              <PropertyRef Name="idperiode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msjabatan_msukm_hima">
+          <End Role="msukm_hima" Type="Self.msukm_hima" Multiplicity="0..1" />
+          <End Role="msjabatan" Type="Self.msjabatan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msukm_hima">
+              <PropertyRef Name="idukm_hima" />
+            </Principal>
+            <Dependent Role="msjabatan">
+              <PropertyRef Name="idukm_hima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trkas_msanggotabem">
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="0..1" />
+          <End Role="trkas" Type="Self.trkas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msanggotabem">
+              <PropertyRef Name="idanggota" />
+            </Principal>
+            <Dependent Role="trkas">
+              <PropertyRef Name="idanggota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trlaporanksk_msukm_hima">
+          <End Role="msukm_hima" Type="Self.msukm_hima" Multiplicity="0..1" />
+          <End Role="trlaporanksk" Type="Self.trlaporanksk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msukm_hima">
+              <PropertyRef Name="idukm_hima" />
+            </Principal>
+            <Dependent Role="trlaporanksk">
+              <PropertyRef Name="idukm_hima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trnotulensi_trrapat">
+          <End Role="trrapat" Type="Self.trrapat" Multiplicity="0..1" />
+          <End Role="trnotulensi" Type="Self.trnotulensi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trrapat">
+              <PropertyRef Name="idrapat" />
+            </Principal>
+            <Dependent Role="trnotulensi">
+              <PropertyRef Name="idrapat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trpengajuandana_msanggotabem">
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="0..1" />
+          <End Role="trpengajuandana" Type="Self.trpengajuandana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msanggotabem">
+              <PropertyRef Name="idanggota" />
+            </Principal>
+            <Dependent Role="trpengajuandana">
+              <PropertyRef Name="idanggota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trrapat_msdepartemen">
+          <End Role="msdepartemen" Type="Self.msdepartemen" Multiplicity="0..1" />
+          <End Role="trrapat" Type="Self.trrapat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msdepartemen">
+              <PropertyRef Name="iddepartemen" />
+            </Principal>
+            <Dependent Role="trrapat">
+              <PropertyRef Name="iddepartemen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSIBEMModelStoreContainer">
+          <EntitySet Name="dtlnotulensi" EntityType="Self.dtlnotulensi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="msanggotabem" EntityType="Self.msanggotabem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="msdepartemen" EntityType="Self.msdepartemen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="msformatksk" EntityType="Self.msformatksk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="msjabatan" EntityType="Self.msjabatan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="msnews" EntityType="Self.msnews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="msperiode" EntityType="Self.msperiode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="msukm_hima" EntityType="Self.msukm_hima" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trkas" EntityType="Self.trkas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trlaporanksk" EntityType="Self.trlaporanksk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trnotulensi" EntityType="Self.trnotulensi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trpengajuandana" EntityType="Self.trpengajuandana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trrapat" EntityType="Self.trrapat" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dtlnotulensi_msanggotabem" Association="Self.FK_dtlnotulensi_msanggotabem">
+            <End Role="msanggotabem" EntitySet="msanggotabem" />
+            <End Role="dtlnotulensi" EntitySet="dtlnotulensi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dtlnotulensi_trnotulensi" Association="Self.FK_dtlnotulensi_trnotulensi">
+            <End Role="trnotulensi" EntitySet="trnotulensi" />
+            <End Role="dtlnotulensi" EntitySet="dtlnotulensi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msanggotabem_msdepartemen" Association="Self.FK_msanggotabem_msdepartemen">
+            <End Role="msdepartemen" EntitySet="msdepartemen" />
+            <End Role="msanggotabem" EntitySet="msanggotabem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msanggotabem_msjabatan" Association="Self.FK_msanggotabem_msjabatan">
+            <End Role="msjabatan" EntitySet="msjabatan" />
+            <End Role="msanggotabem" EntitySet="msanggotabem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msanggotabem_msperiode" Association="Self.FK_msanggotabem_msperiode">
+            <End Role="msperiode" EntitySet="msperiode" />
+            <End Role="msanggotabem" EntitySet="msanggotabem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msjabatan_msukm_hima" Association="Self.FK_msjabatan_msukm_hima">
+            <End Role="msukm_hima" EntitySet="msukm_hima" />
+            <End Role="msjabatan" EntitySet="msjabatan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trkas_msanggotabem" Association="Self.FK_trkas_msanggotabem">
+            <End Role="msanggotabem" EntitySet="msanggotabem" />
+            <End Role="trkas" EntitySet="trkas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trlaporanksk_msukm_hima" Association="Self.FK_trlaporanksk_msukm_hima">
+            <End Role="msukm_hima" EntitySet="msukm_hima" />
+            <End Role="trlaporanksk" EntitySet="trlaporanksk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trnotulensi_trrapat" Association="Self.FK_trnotulensi_trrapat">
+            <End Role="trrapat" EntitySet="trrapat" />
+            <End Role="trnotulensi" EntitySet="trnotulensi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trpengajuandana_msanggotabem" Association="Self.FK_trpengajuandana_msanggotabem">
+            <End Role="msanggotabem" EntitySet="msanggotabem" />
+            <End Role="trpengajuandana" EntitySet="trpengajuandana" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trrapat_msdepartemen" Association="Self.FK_trrapat_msdepartemen">
+            <End Role="msdepartemen" EntitySet="msdepartemen" />
+            <End Role="trrapat" EntitySet="trrapat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBSIBEMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dtlnotulensi">
+          <Key>
+            <PropertyRef Name="idnotulensi" />
+            <PropertyRef Name="idanggota" />
+          </Key>
+          <Property Name="idnotulensi" Type="Int32" Nullable="false" />
+          <Property Name="idanggota" Type="Int32" Nullable="false" />
+          <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="msanggotabem" Relationship="Self.FK_dtlnotulensi_msanggotabem" FromRole="dtlnotulensi" ToRole="msanggotabem" />
+          <NavigationProperty Name="trnotulensi" Relationship="Self.FK_dtlnotulensi_trnotulensi" FromRole="dtlnotulensi" ToRole="trnotulensi" />
+        </EntityType>
+        <EntityType Name="msanggotabem">
+          <Key>
+            <PropertyRef Name="idanggota" />
+          </Key>
+          <Property Name="idanggota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iddepartemen" Type="Int32" />
+          <Property Name="idjabatan" Type="Int32" />
+          <Property Name="idperiode" Type="Int32" />
+          <Property Name="nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nim" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="alamat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="no_telp" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="dtlnotulensis" Relationship="Self.FK_dtlnotulensi_msanggotabem" FromRole="msanggotabem" ToRole="dtlnotulensi" />
+          <NavigationProperty Name="msdeparteman" Relationship="Self.FK_msanggotabem_msdepartemen" FromRole="msanggotabem" ToRole="msdepartemen" />
+          <NavigationProperty Name="msjabatan" Relationship="Self.FK_msanggotabem_msjabatan" FromRole="msanggotabem" ToRole="msjabatan" />
+          <NavigationProperty Name="msperiode" Relationship="Self.FK_msanggotabem_msperiode" FromRole="msanggotabem" ToRole="msperiode" />
+          <NavigationProperty Name="trkas" Relationship="Self.FK_trkas_msanggotabem" FromRole="msanggotabem" ToRole="trkas" />
+          <NavigationProperty Name="trpengajuandanas" Relationship="DBSIBEMModel.FK_trpengajuandana_msanggotabem" FromRole="msanggotabem" ToRole="trpengajuandana" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="msdeparteman">
+          <Key>
+            <PropertyRef Name="iddepartemen" />
+          </Key>
+          <Property Name="iddepartemen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namadepartemen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="msanggotabems" Relationship="Self.FK_msanggotabem_msdepartemen" FromRole="msdepartemen" ToRole="msanggotabem" />
+          <NavigationProperty Name="trrapats" Relationship="Self.FK_trrapat_msdepartemen" FromRole="msdepartemen" ToRole="trrapat" />
+        </EntityType>
+        <EntityType Name="msformatksk">
+          <Key>
+            <PropertyRef Name="idftksk" />
+          </Key>
+          <Property Name="idftksk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nama" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <Property Name="dataBerkas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="msjabatan">
+          <Key>
+            <PropertyRef Name="idjabatan" />
+          </Key>
+          <Property Name="idjabatan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idukm_hima" Type="Int32" />
+          <Property Name="namajabatan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="msanggotabems" Relationship="Self.FK_msanggotabem_msjabatan" FromRole="msjabatan" ToRole="msanggotabem" />
+          <NavigationProperty Name="msukm_hima" Relationship="Self.FK_msjabatan_msukm_hima" FromRole="msjabatan" ToRole="msukm_hima" />
+        </EntityType>
+        <EntityType Name="msnew">
+          <Key>
+            <PropertyRef Name="idnews" />
+          </Key>
+          <Property Name="idnews" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="judul" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="preview" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gambar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="msperiode">
+          <Key>
+            <PropertyRef Name="idperiode" />
+          </Key>
+          <Property Name="idperiode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tahunperiode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="msanggotabems" Relationship="Self.FK_msanggotabem_msperiode" FromRole="msperiode" ToRole="msanggotabem" />
+        </EntityType>
+        <EntityType Name="msukm_hima">
+          <Key>
+            <PropertyRef Name="idukm_hima" />
+          </Key>
+          <Property Name="idukm_hima" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="msjabatans" Relationship="Self.FK_msjabatan_msukm_hima" FromRole="msukm_hima" ToRole="msjabatan" />
+          <NavigationProperty Name="trlaporanksks" Relationship="Self.FK_trlaporanksk_msukm_hima" FromRole="msukm_hima" ToRole="trlaporanksk" />
+        </EntityType>
+        <EntityType Name="trka">
+          <Key>
+            <PropertyRef Name="idkas" />
+          </Key>
+          <Property Name="idkas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idanggota" Type="Int32" />
+          <Property Name="nominal" Type="Int32" />
+          <Property Name="jeniskas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="msanggotabem" Relationship="Self.FK_trkas_msanggotabem" FromRole="trkas" ToRole="msanggotabem" />
+        </EntityType>
+        <EntityType Name="trlaporanksk">
+          <Key>
+            <PropertyRef Name="idlpksk" />
+          </Key>
+          <Property Name="idlpksk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idukm_hima" Type="Int32" />
+          <Property Name="namaberkas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="komentar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tglpresent" Type="DateTime" Precision="3" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="msukm_hima" Relationship="Self.FK_trlaporanksk_msukm_hima" FromRole="trlaporanksk" ToRole="msukm_hima" />
+        </EntityType>
+        <EntityType Name="trnotulensi">
+          <Key>
+            <PropertyRef Name="idnotulensi" />
+          </Key>
+          <Property Name="idnotulensi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idrapat" Type="Int32" />
+          <Property Name="jmlhadir" Type="Int32" />
+          <Property Name="notulensi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <NavigationProperty Name="dtlnotulensis" Relationship="Self.FK_dtlnotulensi_trnotulensi" FromRole="trnotulensi" ToRole="dtlnotulensi" />
+          <NavigationProperty Name="trrapat" Relationship="Self.FK_trnotulensi_trrapat" FromRole="trnotulensi" ToRole="trrapat" />
+        </EntityType>
+        <EntityType Name="trrapat">
+          <Key>
+            <PropertyRef Name="idrapat" />
+          </Key>
+          <Property Name="idrapat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="iddepartemen" Type="Int32" />
+          <Property Name="judulrapat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tglrapat" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="3" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="msdeparteman" Relationship="Self.FK_trrapat_msdepartemen" FromRole="trrapat" ToRole="msdepartemen" />
+          <NavigationProperty Name="trnotulensis" Relationship="Self.FK_trnotulensi_trrapat" FromRole="trrapat" ToRole="trnotulensi" />
+        </EntityType>
+        <Association Name="FK_dtlnotulensi_msanggotabem">
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="1" />
+          <End Role="dtlnotulensi" Type="Self.dtlnotulensi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msanggotabem">
+              <PropertyRef Name="idanggota" />
+            </Principal>
+            <Dependent Role="dtlnotulensi">
+              <PropertyRef Name="idanggota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dtlnotulensi_trnotulensi">
+          <End Role="trnotulensi" Type="Self.trnotulensi" Multiplicity="1" />
+          <End Role="dtlnotulensi" Type="Self.dtlnotulensi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trnotulensi">
+              <PropertyRef Name="idnotulensi" />
+            </Principal>
+            <Dependent Role="dtlnotulensi">
+              <PropertyRef Name="idnotulensi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msanggotabem_msdepartemen">
+          <End Role="msdepartemen" Type="Self.msdeparteman" Multiplicity="0..1" />
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msdepartemen">
+              <PropertyRef Name="iddepartemen" />
+            </Principal>
+            <Dependent Role="msanggotabem">
+              <PropertyRef Name="iddepartemen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msanggotabem_msjabatan">
+          <End Role="msjabatan" Type="Self.msjabatan" Multiplicity="0..1" />
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msjabatan">
+              <PropertyRef Name="idjabatan" />
+            </Principal>
+            <Dependent Role="msanggotabem">
+              <PropertyRef Name="idjabatan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msanggotabem_msperiode">
+          <End Role="msperiode" Type="Self.msperiode" Multiplicity="0..1" />
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msperiode">
+              <PropertyRef Name="idperiode" />
+            </Principal>
+            <Dependent Role="msanggotabem">
+              <PropertyRef Name="idperiode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trkas_msanggotabem">
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="0..1" />
+          <End Role="trkas" Type="Self.trka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msanggotabem">
+              <PropertyRef Name="idanggota" />
+            </Principal>
+            <Dependent Role="trkas">
+              <PropertyRef Name="idanggota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trrapat_msdepartemen">
+          <End Role="msdepartemen" Type="Self.msdeparteman" Multiplicity="0..1" />
+          <End Role="trrapat" Type="Self.trrapat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msdepartemen">
+              <PropertyRef Name="iddepartemen" />
+            </Principal>
+            <Dependent Role="trrapat">
+              <PropertyRef Name="iddepartemen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msjabatan_msukm_hima">
+          <End Role="msukm_hima" Type="Self.msukm_hima" Multiplicity="0..1" />
+          <End Role="msjabatan" Type="Self.msjabatan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msukm_hima">
+              <PropertyRef Name="idukm_hima" />
+            </Principal>
+            <Dependent Role="msjabatan">
+              <PropertyRef Name="idukm_hima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trlaporanksk_msukm_hima">
+          <End Role="msukm_hima" Type="Self.msukm_hima" Multiplicity="0..1" />
+          <End Role="trlaporanksk" Type="Self.trlaporanksk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msukm_hima">
+              <PropertyRef Name="idukm_hima" />
+            </Principal>
+            <Dependent Role="trlaporanksk">
+              <PropertyRef Name="idukm_hima" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trnotulensi_trrapat">
+          <End Role="trrapat" Type="Self.trrapat" Multiplicity="0..1" />
+          <End Role="trnotulensi" Type="Self.trnotulensi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trrapat">
+              <PropertyRef Name="idrapat" />
+            </Principal>
+            <Dependent Role="trnotulensi">
+              <PropertyRef Name="idrapat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBSIBEMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dtlnotulensis" EntityType="Self.dtlnotulensi" />
+          <EntitySet Name="msanggotabems" EntityType="Self.msanggotabem" />
+          <EntitySet Name="msdepartemen" EntityType="Self.msdeparteman" />
+          <EntitySet Name="msformatksks" EntityType="Self.msformatksk" />
+          <EntitySet Name="msjabatans" EntityType="Self.msjabatan" />
+          <EntitySet Name="msnews" EntityType="Self.msnew" />
+          <EntitySet Name="msperiodes" EntityType="Self.msperiode" />
+          <EntitySet Name="msukm_hima" EntityType="Self.msukm_hima" />
+          <EntitySet Name="trkas" EntityType="Self.trka" />
+          <EntitySet Name="trlaporanksks" EntityType="Self.trlaporanksk" />
+          <EntitySet Name="trnotulensis" EntityType="Self.trnotulensi" />
+          <EntitySet Name="trrapats" EntityType="Self.trrapat" />
+          <AssociationSet Name="FK_dtlnotulensi_msanggotabem" Association="Self.FK_dtlnotulensi_msanggotabem">
+            <End Role="msanggotabem" EntitySet="msanggotabems" />
+            <End Role="dtlnotulensi" EntitySet="dtlnotulensis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dtlnotulensi_trnotulensi" Association="Self.FK_dtlnotulensi_trnotulensi">
+            <End Role="trnotulensi" EntitySet="trnotulensis" />
+            <End Role="dtlnotulensi" EntitySet="dtlnotulensis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msanggotabem_msdepartemen" Association="Self.FK_msanggotabem_msdepartemen">
+            <End Role="msdepartemen" EntitySet="msdepartemen" />
+            <End Role="msanggotabem" EntitySet="msanggotabems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msanggotabem_msjabatan" Association="Self.FK_msanggotabem_msjabatan">
+            <End Role="msjabatan" EntitySet="msjabatans" />
+            <End Role="msanggotabem" EntitySet="msanggotabems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msanggotabem_msperiode" Association="Self.FK_msanggotabem_msperiode">
+            <End Role="msperiode" EntitySet="msperiodes" />
+            <End Role="msanggotabem" EntitySet="msanggotabems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trkas_msanggotabem" Association="Self.FK_trkas_msanggotabem">
+            <End Role="msanggotabem" EntitySet="msanggotabems" />
+            <End Role="trkas" EntitySet="trkas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trrapat_msdepartemen" Association="Self.FK_trrapat_msdepartemen">
+            <End Role="msdepartemen" EntitySet="msdepartemen" />
+            <End Role="trrapat" EntitySet="trrapats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msjabatan_msukm_hima" Association="Self.FK_msjabatan_msukm_hima">
+            <End Role="msukm_hima" EntitySet="msukm_hima" />
+            <End Role="msjabatan" EntitySet="msjabatans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trlaporanksk_msukm_hima" Association="Self.FK_trlaporanksk_msukm_hima">
+            <End Role="msukm_hima" EntitySet="msukm_hima" />
+            <End Role="trlaporanksk" EntitySet="trlaporanksks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trnotulensi_trrapat" Association="Self.FK_trnotulensi_trrapat">
+            <End Role="trrapat" EntitySet="trrapats" />
+            <End Role="trnotulensi" EntitySet="trnotulensis" />
+          </AssociationSet>
+          <EntitySet Name="trpengajuandanas" EntityType="DBSIBEMModel.trpengajuandana" />
+          <AssociationSet Name="FK_trpengajuandana_msanggotabem" Association="DBSIBEMModel.FK_trpengajuandana_msanggotabem">
+            <End Role="msanggotabem" EntitySet="msanggotabems" />
+            <End Role="trpengajuandana" EntitySet="trpengajuandanas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="trpengajuandana">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idanggota" Type="Int32" />
+          <Property Name="event" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tujuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="jumlah" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="0" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="msanggotabem" Relationship="DBSIBEMModel.FK_trpengajuandana_msanggotabem" FromRole="trpengajuandana" ToRole="msanggotabem" />
+          <Property Name="kepada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_trpengajuandana_msanggotabem">
+          <End Type="DBSIBEMModel.msanggotabem" Role="msanggotabem" Multiplicity="0..1" />
+          <End Type="DBSIBEMModel.trpengajuandana" Role="trpengajuandana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msanggotabem">
+              <PropertyRef Name="idanggota" />
+            </Principal>
+            <Dependent Role="trpengajuandana">
+              <PropertyRef Name="idanggota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBSIBEMModelStoreContainer" CdmEntityContainer="DBSIBEMEntities">
+          <EntitySetMapping Name="dtlnotulensis">
+            <EntityTypeMapping TypeName="DBSIBEMModel.dtlnotulensi">
+              <MappingFragment StoreEntitySet="dtlnotulensi">
+                <ScalarProperty Name="idnotulensi" ColumnName="idnotulensi" />
+                <ScalarProperty Name="idanggota" ColumnName="idanggota" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="msanggotabems">
+            <EntityTypeMapping TypeName="DBSIBEMModel.msanggotabem">
+              <MappingFragment StoreEntitySet="msanggotabem">
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="idanggota" ColumnName="idanggota" />
+                <ScalarProperty Name="iddepartemen" ColumnName="iddepartemen" />
+                <ScalarProperty Name="idjabatan" ColumnName="idjabatan" />
+                <ScalarProperty Name="idperiode" ColumnName="idperiode" />
+                <ScalarProperty Name="nama" ColumnName="nama" />
+                <ScalarProperty Name="nim" ColumnName="nim" />
+                <ScalarProperty Name="alamat" ColumnName="alamat" />
+                <ScalarProperty Name="no_telp" ColumnName="no_telp" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="msdepartemen">
+            <EntityTypeMapping TypeName="DBSIBEMModel.msdeparteman">
+              <MappingFragment StoreEntitySet="msdepartemen">
+                <ScalarProperty Name="iddepartemen" ColumnName="iddepartemen" />
+                <ScalarProperty Name="namadepartemen" ColumnName="namadepartemen" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="msformatksks">
+            <EntityTypeMapping TypeName="DBSIBEMModel.msformatksk">
+              <MappingFragment StoreEntitySet="msformatksk">
+                <ScalarProperty Name="dataBerkas" ColumnName="dataBerkas" />
+                <ScalarProperty Name="idftksk" ColumnName="idftksk" />
+                <ScalarProperty Name="nama" ColumnName="nama" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="msjabatans">
+            <EntityTypeMapping TypeName="DBSIBEMModel.msjabatan">
+              <MappingFragment StoreEntitySet="msjabatan">
+                <ScalarProperty Name="idjabatan" ColumnName="idjabatan" />
+                <ScalarProperty Name="idukm_hima" ColumnName="idukm_hima" />
+                <ScalarProperty Name="namajabatan" ColumnName="namajabatan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="msnews">
+            <EntityTypeMapping TypeName="DBSIBEMModel.msnew">
+              <MappingFragment StoreEntitySet="msnews">
+                <ScalarProperty Name="idnews" ColumnName="idnews" />
+                <ScalarProperty Name="judul" ColumnName="judul" />
+                <ScalarProperty Name="preview" ColumnName="preview" />
+                <ScalarProperty Name="deskripsi" ColumnName="deskripsi" />
+                <ScalarProperty Name="gambar" ColumnName="gambar" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="msperiodes">
+            <EntityTypeMapping TypeName="DBSIBEMModel.msperiode">
+              <MappingFragment StoreEntitySet="msperiode">
+                <ScalarProperty Name="idperiode" ColumnName="idperiode" />
+                <ScalarProperty Name="tahunperiode" ColumnName="tahunperiode" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="msukm_hima">
+            <EntityTypeMapping TypeName="DBSIBEMModel.msukm_hima">
+              <MappingFragment StoreEntitySet="msukm_hima">
+                <ScalarProperty Name="idukm_hima" ColumnName="idukm_hima" />
+                <ScalarProperty Name="nama" ColumnName="nama" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trkas">
+            <EntityTypeMapping TypeName="DBSIBEMModel.trka">
+              <MappingFragment StoreEntitySet="trkas">
+                <ScalarProperty Name="idkas" ColumnName="idkas" />
+                <ScalarProperty Name="idanggota" ColumnName="idanggota" />
+                <ScalarProperty Name="nominal" ColumnName="nominal" />
+                <ScalarProperty Name="jeniskas" ColumnName="jeniskas" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trlaporanksks">
+            <EntityTypeMapping TypeName="DBSIBEMModel.trlaporanksk">
+              <MappingFragment StoreEntitySet="trlaporanksk">
+                <ScalarProperty Name="idlpksk" ColumnName="idlpksk" />
+                <ScalarProperty Name="idukm_hima" ColumnName="idukm_hima" />
+                <ScalarProperty Name="namaberkas" ColumnName="namaberkas" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="komentar" ColumnName="komentar" />
+                <ScalarProperty Name="tglpresent" ColumnName="tglpresent" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trnotulensis">
+            <EntityTypeMapping TypeName="DBSIBEMModel.trnotulensi">
+              <MappingFragment StoreEntitySet="trnotulensi">
+                <ScalarProperty Name="idnotulensi" ColumnName="idnotulensi" />
+                <ScalarProperty Name="idrapat" ColumnName="idrapat" />
+                <ScalarProperty Name="jmlhadir" ColumnName="jmlhadir" />
+                <ScalarProperty Name="notulensi" ColumnName="notulensi" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trrapats">
+            <EntityTypeMapping TypeName="DBSIBEMModel.trrapat">
+              <MappingFragment StoreEntitySet="trrapat">
+                <ScalarProperty Name="idrapat" ColumnName="idrapat" />
+                <ScalarProperty Name="iddepartemen" ColumnName="iddepartemen" />
+                <ScalarProperty Name="judulrapat" ColumnName="judulrapat" />
+                <ScalarProperty Name="tglrapat" ColumnName="tglrapat" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trpengajuandanas">
+            <EntityTypeMapping TypeName="DBSIBEMModel.trpengajuandana">
+              <MappingFragment StoreEntitySet="trpengajuandana">
+                <ScalarProperty Name="kepada" ColumnName="kepada" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="jumlah" ColumnName="jumlah" />
+                <ScalarProperty Name="tujuan" ColumnName="tujuan" />
+                <ScalarProperty Name="event" ColumnName="event" />
+                <ScalarProperty Name="idanggota" ColumnName="idanggota" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
