@@ -205,6 +205,10 @@
   <ItemGroup>
     <Content Include="Content\all.min.css" />
     <Content Include="Content\bootstrap-select.min.css" />
+    <Content Include="Content\chart-area-demo.js" />
+    <Content Include="Content\chart-bar-demo.js" />
+    <Content Include="Content\chart-pie-demo.js" />
+    <Content Include="Content\Chart.min.js" />
     <Content Include="Content\designtable.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.min.css" />
@@ -234,11 +238,13 @@
     <Content Include="Content\polman\tether.min.js" />
     <Content Include="Content\polman\tinymce.min.js" />
     <Content Include="Content\sb-admin-2.css" />
+    <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\theme\bootstrap-select.min.css" />
     <Content Include="Content\theme\bootstrap.js" />
     <Content Include="Content\theme\bootstrap.min.css" />
     <Content Include="Content\theme\bootstrap.min.js" />
+    <Content Include="Content\theme\Chart.min.js" />
     <Content Include="Content\theme\designtablejava.js" />
     <None Include="Content\theme\jquery-1.12.4.intellisense.js" />
     <Content Include="Content\theme\jquery-1.12.4.js" />
@@ -253,6 +259,7 @@
     <Content Include="Content\theme\jquery.validate.unobtrusive.js" />
     <Content Include="Content\theme\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\theme\notify.min.js" />
+    <Content Include="Content\theme\sb-admin-2.min.css" />
     <Content Include="Content\theme\Site.css" />
     <Content Include="Content\theme\word.js" />
     <Content Include="favicon.ico" />

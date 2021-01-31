@@ -20,11 +20,13 @@ namespace Sistem_Informasi_BEM.Controllers
             ViewBag.Departemen = this.Session["Departemen"];
             if (id == 0)
             {
+                ViewBag.status = 0;
                 var jabatan = db.msjabatans.Where(m => m.status == 0);
                 return View(jabatan.ToList());
             }
             else
             {
+                ViewBag.status = 1;
                 var jabatan = db.msjabatans.Where(m => m.status == 1);
                 return View(jabatan.ToList());
             }
@@ -50,7 +52,8 @@ namespace Sistem_Informasi_BEM.Controllers
         {
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
-            ViewBag.idukm_hima = new SelectList(db.msukm_hima, "idukm_hima", "nama");
+            var ddlukmhima = db.msukm_hima.Where(m => m.status == 1);
+            ViewBag.idukm_hima = new SelectList(ddlukmhima, "idukm_hima", "nama");
             return View();
         }
 

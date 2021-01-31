@@ -32,39 +32,48 @@ namespace Sistem_Informasi_BEM.Controllers
                 var objUser = objContext.msanggotabems.FirstOrDefault(x => x.nim == model.nim && x.password == model.password);
                 if (objUser == null)
                 {
-                    ViewBag.Login = "Username dan Password Salah";
+                    ViewBag.Login = "Username dan Password yang anda masukan salah";
                     ModelState.Clear();
                     return View("Index");
                 }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(objUser.nama, true);
-                    string role = objContext.msanggotabems.Where(m => m.nim == model.nim).FirstOrDefault().msjabatan.namajabatan;
-                    string idukmhima = objContext.msanggotabems.Where(m => m.nim == model.nim).FirstOrDefault().msjabatan.idukm_hima.ToString();
-                    string idDept = objContext.msanggotabems.Where(m => m.nim == model.nim).FirstOrDefault().msdeparteman.iddepartemen.ToString();
-                    string departemen = objContext.msanggotabems.Where(m => m.nim == model.nim).FirstOrDefault().msdeparteman.namadepartemen.ToString();
-                    Session["idUKM_Hima"] = idukmhima;
-                    Session["idDept"] = idDept;
-                    Session["Departemen"] = departemen;
-                    Session["Jabatan"] = role;
-                    Session["modiby"] = objUser.nama;
-                    ViewBag.role = role;
-                    this.Session["idanggota"] = objUser.idanggota;
-                    if (role.Equals("Admin"))
+                    if (objUser.status == 0)
                     {
-                        return RedirectToAction("MenuAdmin");
-                    }
-                    else if (role.Contains("PIC"))
-                    {
-                        return RedirectToAction("MenuPIC");
-                    }
-                    else if (role.Contains("Departemen"))
-                    {
-                        return RedirectToAction("MenuBPH");
+                        ViewBag.Login = "Anda sudah tidak aktif dan tidak mempunyai hak akses lagi";
+                        ModelState.Clear();
+                        return View("Index");
                     }
                     else
                     {
-                        return RedirectToAction("MenuBPHUmum");
+                        FormsAuthentication.SetAuthCookie(objUser.nama, true);
+                        string role = objContext.msanggotabems.Where(m => m.nim == model.nim).FirstOrDefault().msjabatan.namajabatan;
+                        string idukmhima = objContext.msanggotabems.Where(m => m.nim == model.nim).FirstOrDefault().msjabatan.idukm_hima.ToString();
+                        string idDept = objContext.msanggotabems.Where(m => m.nim == model.nim).FirstOrDefault().msdeparteman.iddepartemen.ToString();
+                        string departemen = objContext.msanggotabems.Where(m => m.nim == model.nim).FirstOrDefault().msdeparteman.namadepartemen.ToString();
+                        Session["idUKM_Hima"] = idukmhima;
+                        Session["idDept"] = idDept;
+                        Session["Departemen"] = departemen;
+                        Session["Jabatan"] = role;
+                        Session["modiby"] = objUser.nama;
+                        ViewBag.role = role;
+                        this.Session["idanggota"] = objUser.idanggota;
+                        if (role.Equals("Admin"))
+                        {
+                            return RedirectToAction("MenuAdmin");
+                        }
+                        else if (role.Contains("PIC"))
+                        {
+                            return RedirectToAction("MenuPIC");
+                        }
+                        else if (role.Contains("Departemen"))
+                        {
+                            return RedirectToAction("MenuBPH");
+                        }
+                        else
+                        {
+                            return RedirectToAction("MenuBPHUmum");
+                        }
                     }
                 }
             }
@@ -189,7 +198,7 @@ namespace Sistem_Informasi_BEM.Controllers
                 var objUser = objContext.msanggotabems.FirstOrDefault(x => x.email == msanggota.email || x.password == msanggota.password);
                 if (objUser != null)
                 {
-                    if (msanggota.creaby.Equals(msanggota.alamat))
+                    if (msanggota.creaby.Equals(msanggota.modiby))
                     {
                         msanggotabem anggota = objContext.msanggotabems.Find(objUser.idanggota);
                         anggota.password = msanggota.creaby;

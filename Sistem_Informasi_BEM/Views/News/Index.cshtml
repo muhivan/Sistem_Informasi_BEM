@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Sistem_Informasi_BEM.Models.msnew>
 
 @{
-    ViewBag.Title = "Data News";
+    ViewBag.Title = "Berita BEM";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -65,8 +65,16 @@
 <p>
     <a href="@Url.Action("Create", "News", "")" class="btn btn-success" style="padding: 10px 25px;"><i class='fa fa-plus'>&nbsp;&nbsp;</i>Tambah Baru</a>
     <span style="float: right">
-        <a href="@Url.Action("Index", "News", new { id = 1 })" class="btn btn-primary" style="padding: 8px 30px;">Aktif</a>
-        <a href="@Url.Action("Index", "News", new { id = 0 })" class="btn btn-danger" style="padding: 8px 12px;">Tidak aktif</a>
+        @if (ViewBag.status == 1)
+        {
+            <a href="@Url.Action("Index", "News", new { id = 1 })" class="btn btn-info" style="padding: 8px 30px;">Aktif</a>
+            <a href="@Url.Action("Index", "News", new { id = 0 })" class="btn btn-default" style="padding: 8px 12px;">Tidak aktif</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Index", "News", new { id = 1 })" class="btn btn-default" style="padding: 8px 30px;">Aktif</a>
+            <a href="@Url.Action("Index", "News", new { id = 0 })" class="btn btn-info" style="padding: 8px 12px;">Tidak aktif</a>
+        }
     </span>
 </p>
 
@@ -108,8 +116,8 @@
                 }
             </td>
             <td style="height: 50px; width: 50px;">
-                <a href="@Url.Action("Edit", "News", new { id = item.idnews })" class="btn btn-default" style="padding: 8px 28px;"><i class='fa fa-pencil'></i>&nbsp;Ubah</a><br />
-                <a href="@Url.Action("Details", "News", new { id = item.idnews })" class="btn btn-primary" style="padding: 8px 30px;"><i class='fa fa-book'></i>&nbsp;Detil</a><br />
+                <a href="@Url.Action("Edit", "News", new { id = item.idnews })" class="btn btn-primary" style="padding: 8px 27px;"><i class='fa fa-edit'></i>&nbsp;Ubah</a><br /><br />
+                <a href="@Url.Action("Details", "News", new { id = item.idnews })" class="btn btn-warning" style="padding: 8px 30px;"><i class='fa fa-book'></i>&nbsp;Detil</a><br /><br />
                 <a onclick="return confirm('Yakin ingin Menghapus Data');" href="@Url.Action("Delete", "News", new { id = item.idnews })" class="btn btn-danger" style="padding: 8px 25px;"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
             </td>
         </tr>

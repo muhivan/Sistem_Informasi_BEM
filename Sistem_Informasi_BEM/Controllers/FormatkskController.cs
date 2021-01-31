@@ -22,11 +22,13 @@ namespace Sistem_Informasi_BEM.Controllers
             ViewBag.Departemen = this.Session["Departemen"];
             if (id == 0)
             {
+                ViewBag.status = 0;
                 var format = db.msformatksks.Where(m => m.status == 0);
                 return View(format.ToList());
             }
             else
             {
+                ViewBag.status = 1;
                 var format = db.msformatksks.Where(m => m.status == 1);
                 return View(format.ToList());
             }

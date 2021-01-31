@@ -29,20 +29,20 @@
         @*Tampilan Form Login*@
         <div class="polman-form-login">
             <center>
-                <h4>Welcome Back</h4>
+                <h3>Welcome Back</h3>
             </center>
             <hr />
             <div class="form-group">
-                <label>Username <span style="color: red;">*</span></label>
-                @Html.EditorFor(model => model.nim, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username", @type = "text" } })
+                <label style="font-size:20px;" >Username <span style="color: red;">*</span></label>
+                @Html.EditorFor(model => model.nim, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username", @type = "text", @style = "font-size:20px;" } })
                 @Html.ValidationMessageFor(model => model.nim, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                <label>Password <span style="color: red;">*</span></label>
-                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
+                <label style="font-size:20px;">Password <span style="color: red;">*</span></label>
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password", @style = "font-size:20px;" } })
                 @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
             </div>
-            <input type="submit" name="submit" value="Login" class="btn btn-primary" style="width: 100%; margin-top: 10px; margin-bottom: 10px;" />
+            <input type="submit" name="submit" value="Login" class="btn btn-primary" style="width: 100%; height:50px; font-size:24px; margin-top: 10px; margin-bottom: 10px;" />
             <p>Ingin Ubah Kata Sandi? <a onclick="location.href='@Url.Action("EditPass","Login")'" style="color:blue">Klik disini</a></p>
         </div>
 
