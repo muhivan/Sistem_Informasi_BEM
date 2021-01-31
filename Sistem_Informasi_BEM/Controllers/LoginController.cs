@@ -79,6 +79,32 @@ namespace Sistem_Informasi_BEM.Controllers
             }
         }
 
+        public ActionResult GetData()
+        {
+            int bph = db.msanggotabems.Where(x => x.iddepartemen == 1).Count();
+            int spm = db.msanggotabems.Where(x => x.iddepartemen == 2).Count();
+            int tik = db.msanggotabems.Where(x => x.iddepartemen == 3).Count();
+            int orkes = db.msanggotabems.Where(x => x.iddepartemen == 4).Count();
+            int hia = db.msanggotabems.Where(x => x.iddepartemen == 5).Count();
+            Ratio obj = new Ratio();
+            obj.BPH_UMUM = bph;
+            obj.SPM = spm;
+            obj.TIK = tik;
+            obj.ORKES = orkes;
+            obj.HIA = hia;
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public class Ratio
+        {
+            public int BPH_UMUM { get; set; }
+            public int SPM { get; set; }
+            public int TIK { get; set; }
+            public int ORKES { get; set; }
+            public int HIA { get; set; }
+        }
+
         public ActionResult ProfilAnggota()
         {
             ViewBag.Jabatan = this.Session["Jabatan"];

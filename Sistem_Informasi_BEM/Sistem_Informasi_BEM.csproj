@@ -210,7 +210,9 @@
     <Content Include="Content\chart-pie-demo.js" />
     <Content Include="Content\Chart.min.js" />
     <Content Include="Content\designtable.css" />
+    <Content Include="Content\exporting.js" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\highcharts.js" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\password\all.min.css" />

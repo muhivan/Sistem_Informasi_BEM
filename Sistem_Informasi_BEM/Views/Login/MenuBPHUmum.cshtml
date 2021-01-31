@@ -61,14 +61,100 @@
             <li class="breadcrumb-item">Dashboard</li>
         </ol>
         <hr />
+        <div id="allcontent" class="polman-adjust5" style="margin-left: 0px;">
+            <div id="MainContent_panelAdd">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-block">
+                        <div class="row">
+                            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+                            <div class="mt-5 text-center">
+                                <span class="mr-2">
+                                    <i class="fa fa-user" style="color:cornflowerblue"></i> Badan Pengurus Harian
+                                </span>
+                                <span class="mr-3">
+                                    <i class="fa fa-user" style="color:black"></i> Sosial dan Pengabdian Masyarakat
+                                </span>
+                                <span class="mr-1">
+                                    <i class="fa fa-user" style="color:lightgreen"></i> HIMA dan Ikatan Alumni
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-user" style="color:lightsalmon"></i> Olahraga dan Kesenian
+                                </span>
+                                <span class="mr-2">
+                                    <i class="fa fa-user" style="color:royalblue"></i> Teknologi Informasi dan Komunikasi
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Content/exporting.js"></script>
+    <script src="~/Content/highcharts.js"></script>
     <script src="~/Content/theme/jquery-1.12.4.min.js"></script>
     <script src="~/Content/theme/bootstrap.min.js"></script>
     <script src="~/Content/theme/jquery.validate.min.js"></script>
     <script src="~/Content/theme/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Content/theme/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Content/theme/notify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/Login/GetData", function (data) {
+                Highcharts.chart('container', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Ratio Anggota BEM Berdasarkan Departemen'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Brands',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Badan Pengurus Harian',
+                            y: data.BPH_UMUM
+                        }, {
+                            name: 'Sosial dan Pengabdian Masyarakat',
+                            y: data.SPM
+                        }, {
+                            name: 'HIMA dan Ikatan Alumni',
+                            y: data.HIA
+                        }, {
+                            name: 'Olahraga dan Kesenian',
+                            y: data.ORKES
+                        }, {
+                            name: 'Teknologi Informasi dan Komunikasi',
+                            y: data.TIK
+                        }]
+                    }]
+                });
+            });
+        });
+    </script>
 </body>
 </html>
