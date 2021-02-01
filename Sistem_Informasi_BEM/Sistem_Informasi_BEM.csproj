@@ -397,6 +397,7 @@
     <Content Include="Views\Login\EditBPHUmum.cshtml" />
     <Content Include="Views\Login\EditBPH.cshtml" />
     <Content Include="Views\Login\EditPIC.cshtml" />
+    <Content Include="Views\Login\Lupapass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

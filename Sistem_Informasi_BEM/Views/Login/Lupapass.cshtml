@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Ganti Password</title>
+    <title>Lupa Password</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/Content/password/all.min.css" rel="stylesheet" type="text/css">
@@ -41,31 +41,21 @@
                     <!-- Nested Row within Card Body -->
                     <div class="row">
                         <div class="col-lg-5 d-none d-lg-block">
-                            <img src="~/Picture/Logo_BEM.png" style="height: 350px;" />
+                            <img src="~/Picture/Logo_BEM.png" style="height: 300px;" />
                         </div>
                         <div class="col-lg-7">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Ubah Kata Sandi</h1>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control form-control-user", placeholder = "Kata Sandi Lama", @type = "password" } })
+                                    <h1 class="h4 text-gray-900 mb-4">Pemulihan akun</h1>
                                 </div>
                                 <div class="form-group">
+                                    <label style="font-weight: bold;" for="addNamaKegiatanENG">Email <b style="color: red">*</b></label>
                                     @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", @type = "email" } })
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        @Html.EditorFor(model => model.creaby, new { htmlAttributes = new { @class = "form-control", placeholder = "Kata Sandi Baru", @type = "password" } })
-                                    </div>
-                                    <div class="col-sm-6">
-                                        @Html.EditorFor(model => model.modiby, new { htmlAttributes = new { @class = "form-control", placeholder = "Ulangi Kata Sandi Baru", @type = "password" } })
-                                    </div>
                                 </div>
                                 <input type="submit" value="Simpan" class="btn btn-primary btn-user btn-block" />
                                 <hr>
                                 <div class="text-center">
+                                    <a onclick="location.href='@Url.Action("Index", "Login")'" style="color:blue">kembali</a>
                                 </div>
                             </div>
                         </div>

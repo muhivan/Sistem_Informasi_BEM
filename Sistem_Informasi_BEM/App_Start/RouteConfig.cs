@@ -16,7 +16,7 @@ namespace Sistem_Informasi_BEM
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "Home", id = UrlParameter.Optional }
             );
         }
     }

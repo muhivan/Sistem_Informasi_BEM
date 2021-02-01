@@ -212,6 +212,62 @@ namespace Sistem_Informasi_BEM.Controllers
             return path;
         }
 
+        public ActionResult Lupapass()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Lupapass(msanggotabem msanggota)
+        {
+            using (DBSIBEMEntities objContext = new DBSIBEMEntities())
+            {
+                var objUser = objContext.msanggotabems.FirstOrDefault(x => x.email == msanggota.email);
+                if (objUser != null)
+                {
+                    if (objUser.status == 0)
+                    {
+                        ViewBag.Login = "Akun anda tidak aktif dan tidak punya hak akses";
+                        ModelState.Clear();
+                        return View("Lupapass");
+                    }
+                    else
+                    {
+                        msanggotabem anggota = objContext.msanggotabems.Find(objUser.idanggota);
+                        objContext.SaveChanges();
+                        using (MailMessage mail = new MailMessage())
+                        {
+                            mail.From = new MailAddress("bempolmanasta@gmail.com");
+                            mail.To.Add(msanggota.email);
+                            mail.Subject = "Bem Polman Astra";
+                            mail.Body = "<h2>Hello, " + objUser.nama +
+                                "</h2>Berkaitan dengan website Sistem Informasi Bem, Berikut Terlampir detail informasi akun anda<br>"
+                                + "Username : <b>" + objUser.nim + "</b><br>Password   : <b>" + objUser.password +
+                                "</b><br>Sekian info yang dapat kami sampaikan atas perhatiannya kami ucapkan terimakasih." +
+                                "<br><br>Admin";
+                            mail.IsBodyHtml = true;
+
+                            using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                            {
+                                smtp.Credentials = new NetworkCredential("bempolmanasta@gmail.com", "bempolman");
+                                smtp.EnableSsl = true;
+                                smtp.Send(mail);
+                            }
+                        }
+                    }
+                    ViewBag.Login = "Kode sudah terkirim";
+                    ModelState.Clear();
+                    return View("Lupapass");
+                }
+                else
+                {
+                    ViewBag.Login = "Email Tidak sesuai";
+                    ModelState.Clear();
+                    return View("Lupapass");
+                }
+            }
+        }
+
+
         public ActionResult EditPass()
         {
             return View();
@@ -248,9 +304,26 @@ namespace Sistem_Informasi_BEM.Controllers
                                 smtp.Send(mail);
                             }
                         }
-                        ViewBag.Login = "Kata Sandi Berhasil diubah";
-                        ModelState.Clear();
-                        return View("EditPass");
+                        //
+                        string role = objContext.msanggotabems.Where(m => m.email == anggota.email).FirstOrDefault().msjabatan.namajabatan;
+                        ViewBag.role = role;
+                        this.Session["idanggota"] = objUser.idanggota;
+                        if (role.Equals("Admin"))
+                        {
+                            return RedirectToAction("MenuAdmin");
+                        }
+                        else if (role.Contains("PIC"))
+                        {
+                            return RedirectToAction("MenuPIC");
+                        }
+                        else if (role.Contains("Departemen"))
+                        {
+                            return RedirectToAction("MenuBPH");
+                        }
+                        else
+                        {
+                            return RedirectToAction("MenuBPHUmum");
+                        }
                     }
                     else
                     {
