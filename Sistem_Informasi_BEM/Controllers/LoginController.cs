@@ -81,11 +81,11 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult GetData()
         {
-            int bph = db.msanggotabems.Where(x => x.iddepartemen == 1).Count();
-            int spm = db.msanggotabems.Where(x => x.iddepartemen == 2).Count();
-            int tik = db.msanggotabems.Where(x => x.iddepartemen == 3).Count();
-            int orkes = db.msanggotabems.Where(x => x.iddepartemen == 4).Count();
-            int hia = db.msanggotabems.Where(x => x.iddepartemen == 5).Count();
+            int bph = db.msanggotabems.Where(x => x.iddepartemen == 1 && x.status == 1).Count();
+            int spm = db.msanggotabems.Where(x => x.iddepartemen == 2 && x.status == 1).Count();
+            int tik = db.msanggotabems.Where(x => x.iddepartemen == 3 && x.status == 1).Count();
+            int orkes = db.msanggotabems.Where(x => x.iddepartemen == 4 && x.status == 1).Count();
+            int hia = db.msanggotabems.Where(x => x.iddepartemen == 5 && x.status == 1).Count();
             Ratio obj = new Ratio();
             obj.BPH_UMUM = bph;
             obj.SPM = spm;
@@ -153,12 +153,14 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult MenuAdmin()
         {
+            ViewBag.jumlah = db.msanggotabems.Where(x => x.status == 1).Count();
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             return View();
         }
         public ActionResult MenuPIC()
         {
+            ViewBag.jumlah = db.msanggotabems.Where(x => x.status == 1).Count();
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             ViewBag.idanggota = this.Session["idanggota"];
@@ -167,6 +169,7 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult MenuBPH()
         {
+            ViewBag.jumlah = db.msanggotabems.Where(x => x.status == 1).Count();
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             return View();
@@ -174,6 +177,7 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult MenuBPHUmum()
         {
+            ViewBag.jumlah = db.msanggotabems.Where(x => x.status == 1).Count();
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             return View();
@@ -254,13 +258,13 @@ namespace Sistem_Informasi_BEM.Controllers
                             }
                         }
                     }
-                    ViewBag.Login = "Kode sudah terkirim";
+                    ViewBag.Login = "Username dan Password sudah terkirim, Cek Email anda";
                     ModelState.Clear();
                     return View("Lupapass");
                 }
                 else
                 {
-                    ViewBag.Login = "Email Tidak sesuai";
+                    ViewBag.Login = "Email yang anda masukan Tidak sesuai";
                     ModelState.Clear();
                     return View("Lupapass");
                 }
