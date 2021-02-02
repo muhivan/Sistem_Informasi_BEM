@@ -211,6 +211,11 @@
     <Content Include="Content\exporting.js" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\highcharts.js" />
+    <Content Include="Content\home\contact_me.js" />
+    <Content Include="Content\home\contact_me.php" />
+    <Content Include="Content\home\jqBootstrapValidation.js" />
+    <Content Include="Content\home\scripts.js" />
+    <Content Include="Content\home\styles.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\password\all.min.css" />
@@ -276,6 +281,7 @@
       <LastGenOutput>DBSIBEM.cs</LastGenOutput>
     </Content>
     <Content Include="Picture\IMG_Background.jpg" />
+    <Content Include="Picture\login_bem.png" />
     <Content Include="Picture\Logo_BEM.png" />
     <Content Include="Picture\Logo_Polman_baru.png" />
     <Content Include="Picture\SIBEM.png" />
