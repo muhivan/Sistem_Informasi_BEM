@@ -11,8 +11,7 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class trlaporanksk : uploadFile
     {
         public int idlpksk { get; set; }
@@ -21,9 +20,6 @@ namespace Sistem_Informasi_BEM.Models
         public string keterangan { get; set; }
         public Nullable<int> status { get; set; }
         public string komentar { get; set; }
-        [Required(ErrorMessage = "Tanggal Present tidak boleh kosong")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> tglpresent { get; set; }
         public string creaby { get; set; }
         public Nullable<System.DateTime> creadate { get; set; }

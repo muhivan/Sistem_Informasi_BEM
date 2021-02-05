@@ -11,14 +11,11 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class dtlnotulensi
     {
         public int idnotulensi { get; set; }
         public int idanggota { get; set; }
-        [Required(ErrorMessage = "Keterangan tidak boleh kosong")]
-        [StringLength(50)]
         public string keterangan { get; set; }
     
         public virtual msanggotabem msanggotabem { get; set; }

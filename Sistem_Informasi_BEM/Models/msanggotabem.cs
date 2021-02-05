@@ -11,9 +11,7 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class msanggotabem
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,36 +23,13 @@ namespace Sistem_Informasi_BEM.Models
         }
     
         public int idanggota { get; set; }
-        [Required(ErrorMessage = "{0} is required.")]
         public Nullable<int> iddepartemen { get; set; }
-        [Required(ErrorMessage = "Error: Must Choose a Country")]
         public Nullable<int> idjabatan { get; set; }
-        [Required(ErrorMessage = "Error: Must Choose a Country")]
         public Nullable<int> idperiode { get; set; }
-
-        [Required(ErrorMessage = "Nama tidak boleh kosong")]
-        [StringLength(50)]
-        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Format Nama Salah")]
         public string nama { get; set; }
-
-        [Required(ErrorMessage = "NIM tidak boleh kosong")]
-        [StringLength(10)]
-        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Format NIM Salah")]
         public string nim { get; set; }
-
-        [Required(ErrorMessage = "Alamat tidak boleh kosong")]
-        [StringLength(255)]
-        [DataType(DataType.MultilineText)]
         public string alamat { get; set; }
-
-        [Required(ErrorMessage = "No Telp tidak boleh kosong")]
-        [StringLength(15)]
-        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Format No Telp Salah")]
         public string no_telp { get; set; }
-
-        [Required(ErrorMessage = "Email tidak boleh kosong")]
-        [StringLength(50)]
-        [RegularExpression(@"^[a-zA-z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Format email tidak valid")]
         public string email { get; set; }
         public string password { get; set; }
         public Nullable<int> status { get; set; }
