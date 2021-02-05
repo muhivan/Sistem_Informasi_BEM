@@ -76,15 +76,9 @@ namespace Sistem_Informasi_BEM.Controllers
             if (ModelState.IsValid)
             {
                 db.trpengajuandanas.Add(trpengajuandana);
-                if (trpengajuandana.kepada == "BEM")
-                {
-                    trpengajuandana.status = 2;
-                }
-                else
-                {
-                    trpengajuandana.status = 1;
-                }
+                trpengajuandana.status = 1;
                 trpengajuandana.creadate = DateTime.Now;
+                trpengajuandana.Bukti_kirim = "";
                 db.SaveChanges();
                 ViewBag.Jabatan = this.Session["Jabatan"];
                 ViewBag.Departemen = this.Session["Departemen"];
@@ -124,14 +118,6 @@ namespace Sistem_Informasi_BEM.Controllers
                 dana.tujuan = trpengajuandana.tujuan;
                 dana.jumlah = trpengajuandana.jumlah;
                 dana.kepada = trpengajuandana.kepada;
-                if (trpengajuandana.kepada == "BEM")
-                {
-                    dana.status = 2;
-                }
-                else
-                {
-                    dana.status = 1;
-                }
                 dana.modidate = DateTime.Now;
                 dana.modiby = trpengajuandana.modiby;
                 db.SaveChanges();
@@ -148,7 +134,23 @@ namespace Sistem_Informasi_BEM.Controllers
         public ActionResult EditBatal(int id)
         {
             trpengajuandana dana = db.trpengajuandanas.Find(id);
-            dana.status = 0;
+            dana.status = 6;
+            dana.modiby = (string)Session["modiby"];
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Kirim(int id)
+        {
+            trpengajuandana dana = db.trpengajuandanas.Find(id);
+            if(dana.kepada == "BEM")
+            {
+                dana.status = 3;
+            }
+            else
+            {
+                dana.status = 2;
+            } 
             dana.modiby = (string)Session["modiby"];
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -157,7 +159,7 @@ namespace Sistem_Informasi_BEM.Controllers
         public ActionResult EditTerima(int id)
         {
             trpengajuandana dana = db.trpengajuandanas.Find(id);
-            dana.status = 4;
+            dana.status = 5;
             dana.modiby = (string)Session["modiby"];
             db.SaveChanges();
             if (dana.kepada == "BEM")
@@ -173,7 +175,7 @@ namespace Sistem_Informasi_BEM.Controllers
         public ActionResult EditTolak(int id)
         {
             trpengajuandana dana = db.trpengajuandanas.Find(id);
-            dana.status = 3;
+            dana.status = 4;
             dana.modiby = (string)Session["modiby"];
             db.SaveChanges();
             if (dana.kepada == "BEM")

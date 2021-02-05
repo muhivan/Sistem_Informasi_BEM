@@ -23,6 +23,7 @@ namespace Sistem_Informasi_BEM.Models
         public Nullable<System.DateTime> creadate { get; set; }
         public string modiby { get; set; }
         public Nullable<System.DateTime> modidate { get; set; }
+        public string uplod_bukti { get; set; }
     
         public virtual msanggotabem msanggotabem { get; set; }
     }

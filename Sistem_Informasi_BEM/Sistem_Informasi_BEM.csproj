@@ -405,6 +405,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Bukti_khas\" />
     <Folder Include="Files\" />
     <Folder Include="SaveImage\" />
   </ItemGroup>

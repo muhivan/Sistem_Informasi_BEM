@@ -77,7 +77,6 @@ namespace Sistem_Informasi_BEM.Controllers
             }
             else
             {
-                Response.Write("<script>alert('Tidak Bisa');</script");
                 path = "";
             }
             return path;

@@ -26,7 +26,7 @@
 </head>
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:white">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger"><img src="~/Picture/SIBEM.png" style="height: 70px;" /></a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,8 +35,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Home</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Index", "Login")">Login</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background-color:red">Home</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background-color:blue" href="@Url.Action("Index", "Login")">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -55,25 +55,25 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                @foreach (var item in Model)
-                {
-                    no++;
-                    if (item.gambar != "")
+                <div class="row justify-content-center">
+                    @foreach (var item in Model)
                     {
-                        <div class="row justify-content-center">
-                            <!-- Portfolio Item 1-->
-                            <div class="col-md-6 col-lg-4 mb-5">
-                                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#a_@no">
-                                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img src="@Url.Content(item.gambar)" height="250" width="340" />
-                                    <lable style="color:black">@item.preview</lable>
+                        no++;
+                        <!-- Portfolio Item 1-->
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#a_@no">
+                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
+                                @if (item.gambar != "")
+                                {
+                                <img src="@Url.Content(item.gambar)" height="250" width="340" />
+                                }
+                                <lable style="color:black">@item.preview</lable>
                             </div>
                         </div>
                     }
-                }
+                </div>
             </div>
         </section>
     </header>
@@ -120,7 +120,7 @@
     }
 
     <!-- Footer-->
-    <footer class="footer text-center">
+    <footer class="footer text-center" style="background-color:#AF2336">
         <div class="container">
             <div class="row">
                 <!-- Footer Location-->
@@ -152,8 +152,8 @@
         </div>
     </footer>
     <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright © 2020 - Projek Pemograman 4 (ivan & Puji)</small></div>
+    <div class="copyright py-4 text-center" style="background-color:white; font-size:30px;">
+        <div class="container"><small>Copyright © 2021 - Projek Pemrograman 4 (ivan & Puji)</small></div>
     </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
     <div class="scroll-to-top d-lg-none position-fixed">

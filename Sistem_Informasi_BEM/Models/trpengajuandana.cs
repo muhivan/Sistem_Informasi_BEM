@@ -25,6 +25,7 @@ namespace Sistem_Informasi_BEM.Models
         public string modiby { get; set; }
         public Nullable<System.DateTime> modidate { get; set; }
         public string kepada { get; set; }
+        public string Bukti_kirim { get; set; }
     
         public virtual msanggotabem msanggotabem { get; set; }
     }

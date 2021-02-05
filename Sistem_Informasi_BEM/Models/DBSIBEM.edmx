@@ -125,6 +125,7 @@
           <Property Name="creadate" Type="datetime" />
           <Property Name="modiby" Type="varchar" MaxLength="50" />
           <Property Name="modidate" Type="datetime" />
+          <Property Name="uplod_bukti" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="trlaporanksk">
           <Key>
@@ -171,6 +172,7 @@
           <Property Name="modiby" Type="varchar" MaxLength="50" />
           <Property Name="modidate" Type="date" />
           <Property Name="kepada" Type="varchar" MaxLength="50" />
+          <Property Name="Bukti_kirim" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="trrapat">
           <Key>
@@ -517,6 +519,7 @@
           <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="modidate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="msanggotabem" Relationship="Self.FK_trkas_msanggotabem" FromRole="trkas" ToRole="msanggotabem" />
+          <Property Name="uplod_bukti" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="trlaporanksk">
           <Key>
@@ -762,6 +765,7 @@
           <Property Name="modidate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="msanggotabem" Relationship="DBSIBEMModel.FK_trpengajuandana_msanggotabem" FromRole="trpengajuandana" ToRole="msanggotabem" />
           <Property Name="kepada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bukti_kirim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_trpengajuandana_msanggotabem">
           <End Type="DBSIBEMModel.msanggotabem" Role="msanggotabem" Multiplicity="0..1" />
@@ -898,6 +902,7 @@
           <EntitySetMapping Name="trkas">
             <EntityTypeMapping TypeName="DBSIBEMModel.trka">
               <MappingFragment StoreEntitySet="trkas">
+                <ScalarProperty Name="uplod_bukti" ColumnName="uplod_bukti" />
                 <ScalarProperty Name="idkas" ColumnName="idkas" />
                 <ScalarProperty Name="idanggota" ColumnName="idanggota" />
                 <ScalarProperty Name="nominal" ColumnName="nominal" />
@@ -960,6 +965,7 @@
           <EntitySetMapping Name="trpengajuandanas">
             <EntityTypeMapping TypeName="DBSIBEMModel.trpengajuandana">
               <MappingFragment StoreEntitySet="trpengajuandana">
+                <ScalarProperty Name="Bukti_kirim" ColumnName="Bukti_kirim" />
                 <ScalarProperty Name="kepada" ColumnName="kepada" />
                 <ScalarProperty Name="modidate" ColumnName="modidate" />
                 <ScalarProperty Name="modiby" ColumnName="modiby" />
