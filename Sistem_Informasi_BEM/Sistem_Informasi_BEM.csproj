@@ -402,6 +402,7 @@
     <Content Include="Views\Login\EditBPH.cshtml" />
     <Content Include="Views\Login\EditPIC.cshtml" />
     <Content Include="Views\Login\Lupapass.cshtml" />
+    <Content Include="Views\Formatksk\Berkas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
