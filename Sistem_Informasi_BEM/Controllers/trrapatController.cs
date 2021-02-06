@@ -291,6 +291,77 @@ namespace Sistem_Informasi_BEM.Controllers
                 return RedirectToAction("Index");
             }
         }
+        public ActionResult rapatTerlaksana(int id)
+        {
+            var namaDept = (string)Session["Departemen"];
+            var namaDept1 = namaDept.ToString();
+            trrapat trrapat = db.trrapats.Find(id);
+            
+                trrapat.status = 2;
+                trrapat.modiby = (string)Session["modiby"];
+                trrapat.modidate = DateTime.Now;
+                db.SaveChanges();
+            getEmailTerlaksana(namaDept1, trrapat.judulrapat, trrapat.tglrapat.ToString());
+                return RedirectToAction("Index");
+            
+        }
+
+        public void getEmailTerlaksana(string namaDept, string judul, string tgl)
+        {
+            string ConnectionString = "Integrated Security = true; " +
+            "Initial Catalog= DBSIBEM; " + " Data source =.; ";
+            string SQL = "SELECT * FROM dtlrapat d INNER JOIN msanggotabem a ON d.idanggota=a.idanggota WHERE d.keterangan='HADIR'";
+
+            // create a connection object  
+            SqlConnection conn = new SqlConnection(ConnectionString);
+
+            // Create a command object  
+            SqlCommand cmd = new SqlCommand(SQL, conn);
+            conn.Open();
+
+            string e;
+            string nama;
+            // Call ExecuteReader to return a DataReader  
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader.HasRows)
+                {
+                    e = reader["email"].ToString();
+                    nama = reader["nama"].ToString();
+                    sendEmailTerlaksana(e, namaDept, judul, nama, tgl);
+                }
+            }
+
+            //Release resources  
+            reader.Close();
+            conn.Close();
+        }
+
+        public void sendEmailTerlaksana(string e, string namaDept, string judul, string nama, string tgl)
+        {
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress("bempolmanasta@gmail.com");
+                {
+                    mail.To.Add(e);
+                    mail.Subject = "Rapat Bem Polman Astra";
+                    mail.Body = "<h2>Hello, " + nama +
+                        "</h2>Terimakasih telah mengikuti rapat BEM Polman Astra yang diselenggarakan oleh " + namaDept + ", Berikut Terlampir detail rapat.<br>"
+                        + "Penyelenggara : <b>" + namaDept + "</b><br>Agenda Rapat   : <b>" + judul + "</b><br>Waktu Rapat   : <b>" + tgl +
+                        "</b><br>Sekian info yang dapat kami sampaikan atas perhatiannya kami ucapkan terimakasih." +
+                        "<br><br>" + namaDept;
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        smtp.Credentials = new NetworkCredential("bempolmanasta@gmail.com", "bempolman");
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
+                }
+            }
+        }
 
 
 

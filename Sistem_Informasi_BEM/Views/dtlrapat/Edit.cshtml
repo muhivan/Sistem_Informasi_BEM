@@ -1,0 +1,102 @@
+﻿@model Sistem_Informasi_BEM.Models.dtlrapat
+
+@{
+    ViewBag.Title = "Ubah Data";
+}
+<div class="polman-nav-static-top">
+    <div id="iconmenu" class="fa fa-bars fa-2x polman-adjust2" style="margin-right: 15px; cursor: pointer;" aria-hidden="true" onclick="hidemenu();"></div>
+    <div class="float-left polman-adjust2">
+        <img src="~/Picture/SIBEM.png" style="height: 50px;" />
+    </div>
+    <div class="polman-menu">
+        <nav class="nav justify-content-end" style="padding-top: 0px;">
+            <div class="fa fa-user-circle-o fa-10x" style="margin-top: 8px; margin-right: 15px; cursor: pointer;" aria-hidden="true"></div>
+            <b style="font-size: 18px; float: right">@(Request.IsAuthenticated? HttpContext.Current.User.Identity.Name : "") (@ViewBag.Jabatan) <br />@ViewBag.Departemen </b>
+        </nav>
+    </div>
+</div>
+
+<div class="polman-nav-static-right collapse scrollstyle" id="menu">
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="list-group">
+            <a onclick="location.href='@Url.Action("Index", "Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-sign-out fa-lg fa-pull-left"></i>Logout</a>
+            <a onclick="location.href='@Url.Action("MenuPIC","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-home fa-lg fa-pull-left"></i>Dashboard</a>
+            <a onclick="location.href='@Url.Action("ProfilAnggotaPIC","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px;">Profil Anggota</a>
+            <a href='#menu7' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
+            <div id='menu7' class='collapse in' role='tabpanel'>
+                <a onclick="location.href='@Url.Action("Index","PengajuanOSP")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan OSP
+                </a>
+                <a onclick="location.href='@Url.Action("Index","PengajuanDana")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class="fa fa-file-text-o fa-lg fa-pull-left">&nbsp;&nbsp;</b>Pengajuan Dana
+                </a>
+                <a onclick="location.href='@Url.Action("Index", "Kas")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;</b>Kas
+                </a>
+                <a onclick="location.href='@Url.Action("Index", "dtlrapat")'" class="list-group-item list-group-item-action active " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-calendar fa-lg fa-pull-left'>&nbsp;</b>Perizinan Rapat
+                </a>
+            </div>
+            <a href='#menu6' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Kesekretariatan</a>
+            <div id='menu6' class='collapse in' role='tabpanel'>
+                <a onclick="location.href='@Url.Action("Berkas","Formatksk")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Format Berkas
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<H3>Perizinan Rapat</H3>
+<ol class="breadcrumb polman-breadcrumb">
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuPIC","Login")'">Sistem Informasi BEM</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","dtlrapat")'">Perizinan Rapat</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Edit","dtlrapat")'">Ubah Data</a></li>
+</ol>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.idrapat)
+
+    @Html.HiddenFor(model => model.idanggota)
+    <div id="allcontent" class="polman-adjust5" style="margin-left: 0px;">
+        <div id="MainContent_panelAdd">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label style="font-weight: bold;" for="keterangan">Keterangan <b style="color: red">*</b></label>
+                                @Html.EditorFor(model => model.keterangan, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.keterangan, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <span style="float: right">
+                <a href="@Url.Action("Index", "PengajuanOSP", "")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
+                <input type="submit" value="Simpan" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
+            </span>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+            alert("@ViewBag.Message");
+        }
+    </script>
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+

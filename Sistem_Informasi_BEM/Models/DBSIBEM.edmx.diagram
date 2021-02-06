@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5cab79e2974d4187a165f2e756a3fd33" Name="Diagram1">
-        <EntityTypeShape EntityType="DBSIBEMModel.dtlnotulensi" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBSIBEMModel.msanggotabem" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBSIBEMModel.msdeparteman" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBSIBEMModel.msformatksk" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
@@ -17,8 +16,6 @@
         <EntityTypeShape EntityType="DBSIBEMModel.trlaporanksk" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="DBSIBEMModel.trnotulensi" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBSIBEMModel.trrapat" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
-        <AssociationConnector Association="DBSIBEMModel.FK_dtlnotulensi_msanggotabem" ManuallyRouted="false" />
-        <AssociationConnector Association="DBSIBEMModel.FK_dtlnotulensi_trnotulensi" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_msanggotabem_msdepartemen" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_msanggotabem_msjabatan" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_msanggotabem_msperiode" ManuallyRouted="false" />
@@ -29,6 +26,9 @@
         <AssociationConnector Association="DBSIBEMModel.FK_trnotulensi_trrapat" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DBSIBEMModel.trpengajuandana" Width="1.5" PointX="7.375" PointY="0.5" />
         <AssociationConnector Association="DBSIBEMModel.FK_trpengajuandana_msanggotabem" />
+        <EntityTypeShape EntityType="DBSIBEMModel.dtlrapat" Width="1.5" PointX="7.5" PointY="11" />
+        <AssociationConnector Association="DBSIBEMModel.FK_dtlrapat_msanggotabem" />
+        <AssociationConnector Association="DBSIBEMModel.FK_dtlrapat_trrapat" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

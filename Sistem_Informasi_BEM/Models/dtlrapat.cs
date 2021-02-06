@@ -12,13 +12,13 @@ namespace Sistem_Informasi_BEM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class dtlnotulensi
+    public partial class dtlrapat 
     {
-        public int idnotulensi { get; set; }
+        public int idrapat { get; set; }
         public int idanggota { get; set; }
         public string keterangan { get; set; }
     
         public virtual msanggotabem msanggotabem { get; set; }
-        public virtual trnotulensi trnotulensi { get; set; }
+        public virtual trrapat trrapat { get; set; }
     }
 }

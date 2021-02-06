@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AnggotaController.cs" />
     <Compile Include="Controllers\DepartemenController.cs" />
+    <Compile Include="Controllers\dtlrapatController.cs" />
     <Compile Include="Controllers\FormatkskController.cs" />
     <Compile Include="Controllers\JabatanController.cs" />
     <Compile Include="Controllers\KasBPHController.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Controllers\PengajuanDanaController.cs" />
     <Compile Include="Controllers\PengajuanOSPController.cs" />
     <Compile Include="Controllers\PeriodeController.cs" />
+    <Compile Include="Controllers\trnotulensiController.cs" />
     <Compile Include="Controllers\trrapatController.cs" />
     <Compile Include="Controllers\UKM_HIMAController.cs" />
     <Compile Include="Global.asax.cs">
@@ -160,7 +162,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBSIBEM.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\dtlnotulensi.cs">
+    <Compile Include="Models\dtlrapat.cs">
       <DependentUpon>DBSIBEM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\msanggotabem.cs">
@@ -412,6 +414,13 @@
     <Content Include="Views\trrapat\Create.cshtml" />
     <Content Include="Views\trrapat\Edit.cshtml" />
     <Content Include="Views\trrapat\Index.cshtml" />
+    <Content Include="Views\dtlrapat\Details.cshtml" />
+    <Content Include="Views\dtlrapat\Edit.cshtml" />
+    <Content Include="Views\dtlrapat\Index.cshtml" />
+    <Content Include="Views\trnotulensi\Create.cshtml" />
+    <Content Include="Views\trnotulensi\Details.cshtml" />
+    <Content Include="Views\trnotulensi\Edit.cshtml" />
+    <Content Include="Views\trnotulensi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

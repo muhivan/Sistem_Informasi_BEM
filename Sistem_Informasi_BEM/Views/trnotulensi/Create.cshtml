@@ -1,7 +1,7 @@
-﻿@model Sistem_Informasi_BEM.Models.trrapat
+﻿@model Sistem_Informasi_BEM.Models.trnotulensi
 
 @{
-    ViewBag.Title = "Rapat";
+    ViewBag.Title = "Notulensi Rapat";
 }
 <div class="polman-nav-static-top">
     <div id="iconmenu" class="fa fa-bars fa-2x polman-adjust2" style="margin-right: 15px; cursor: pointer;" aria-hidden="true" onclick="hidemenu();"></div>
@@ -33,21 +33,25 @@
                 <a onclick="location.href='@Url.Action("Index", "KasBPH")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Kas
                 </a>
-                <a onclick="location.href='@Url.Action("Index", "trrapat")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
-                    <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Atur Rapat
+                <a onclick="location.href='@Url.Action("Index", "trrapat")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-calendar fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Atur Rapat
+                </a>
+                <a onclick="location.href='@Url.Action("Index", "trnotulensi")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-archive-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Notulensi Rapat
                 </a>
             </div>
         </div>
     </div>
 </div>
-<H3>Pengaturan Jadwal Rapat</H3>
+<H3>Notulensi Rapat</H3>
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuBPH","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","trrapat")'">Atur Rapat</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Create","trrapat")'">Tambah</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","trnotulensi")'">Notulensi Rapat</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Create","trnotulensi")'">Tambah</a></li>
 </ol>
 <hr />
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("Create", "trnotulensi", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -60,28 +64,24 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label style="font-weight: bold;">Judul Rapat <b style="color: red">*</b></label>
-
-                                @Html.EditorFor(model => model.judulrapat, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
-                                @Html.ValidationMessageFor(model => model.judulrapat, "", new { @class = "text-danger" })
-
+                                @Html.DropDownList("idrapat", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.idrapat, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.creaby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
+                                @Html.HiddenFor(model => model.modiby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label style="font-weight: bold;">Tanggal Rapat <b style="color: red">*</b></label>
-                                @Html.EditorFor(model => model.tglrapat, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
-                                @Html.ValidationMessageFor(model => model.tglrapat, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(model => model.creaby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
-                                @Html.HiddenFor(model => model.modiby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
-
+                                <label style="font-weight: bold;">Notulensi Rapat <b style="color: red">*</b></label>
+                                <input type="file" name="files" id="files" multiple="multiple" class="btn btn-info" style="min-width:100%; height:45px; padding: 10px 10px; font-size: 12pt;" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <br />            <a href="@Url.Action("Index", "trrapat")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
+            <br />            <a href="@Url.Action("Index", "trnotulensi")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
             <input type="submit" value="Simpan" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
         </div>
     </div>

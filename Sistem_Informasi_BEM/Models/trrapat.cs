@@ -19,18 +19,15 @@ namespace Sistem_Informasi_BEM.Models
         public trrapat()
         {
             this.trnotulensis = new HashSet<trnotulensi>();
+            this.dtlrapats = new HashSet<dtlrapat>();
         }
     
         public int idrapat { get; set; }
         public Nullable<int> iddepartemen { get; set; }
-
-        [Required(ErrorMessage = "Judul Rapat tidak boleh kosong")]
-        [Display(Name = "Judul Rapat")]
         public string judulrapat { get; set; }
-        [Display(Name = "Tanggal Rapat")]
-        [Required(ErrorMessage = "Tanggal Rapat tidak boleh kosong")]
+
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddThh:mm:ss}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime tglrapat { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }
@@ -41,5 +38,7 @@ namespace Sistem_Informasi_BEM.Models
         public virtual msdeparteman msdeparteman { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<trnotulensi> trnotulensis { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dtlrapat> dtlrapats { get; set; }
     }
 }
