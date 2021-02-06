@@ -1,9 +1,8 @@
-﻿@model IEnumerable<Sistem_Informasi_BEM.Models.trka>
+﻿@model IEnumerable<Sistem_Informasi_BEM.Models.msformatksk>
 
 @{
-    ViewBag.Title = "Khas";
+    ViewBag.Title = "Format KSK";
     var no = 0;
-    var status = "";
 }
 
 <div class="polman-nav-static-top">
@@ -25,21 +24,21 @@
             <a onclick="location.href='@Url.Action("Index", "Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-sign-out fa-lg fa-pull-left"></i>Logout</a>
             <a onclick="location.href='@Url.Action("MenuBPH","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px;border: none;padding-left: 23px;"><i class="fa fa-home fa-lg fa-pull-left"></i>Dashboard</a>
             <a onclick="location.href='@Url.Action("ProfilAnggotaDept","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px;">Profil Anggota</a>
-            <a href='#menu7' role='tab' class='list-group-item list-group-item-action polman-menu-active' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
+            <a href='#menu7' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
             <div id='menu7' class='collapse in' role='tabpanel'>
                 <a onclick="location.href='@Url.Action("Index","OSP")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan OSP
                 </a>
-                <a onclick="location.href='@Url.Action("IndexDept","PengajuanDana")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                <a onclick="location.href='@Url.Action("IndexDept","PengajuanDana")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-file-text-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan Dana
                 </a>
-                <a onclick="location.href='@Url.Action("Index", "KasBPH")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                <a onclick="location.href='@Url.Action("Index", "KasBPH")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Kas
                 </a>
             </div>
             <a href='#menu6' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Kesekretariatan</a>
             <div id='menu6' class='collapse in' role='tabpanel'>
-                <a onclick="location.href='@Url.Action("BerkasDept","Formatksk")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                <a onclick="location.href='@Url.Action("BerkasDept","Formatksk")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Format Berkas
                 </a>
             </div>
@@ -47,17 +46,14 @@
     </div>
 </div>
 
-<H3>Pembayaran Khas</H3>
+<H3>Format Kesekretariatan</H3>
 <ol class="breadcrumb polman-breadcrumb">
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuBPH","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","KasBPH")'">Khas</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuPIC","Login")'">Sistem Informasi BEM</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Berkas","Formatksk")'">Format Kesekretariatan</a></li>
 </ol>
 <hr />
 
-<p>
-    <a href="@Url.Action("Create", "KasBPH", "")" class="btn btn-success" style="padding: 10px 25px;"><i class='fa fa-plus'>&nbsp;&nbsp;</i>Tambah Baru</a>
-</p>
-<table class="table table-striped table-bordered" style="width:100%" id="tblkas">
+<table class="table table-striped table-bordered" style="width:100%" id="tblformat">
     <thead>
         <tr>
             <th>
@@ -67,72 +63,27 @@
                 Nama
             </th>
             <th>
-                Khas
+                Berkas
             </th>
-            <th>
-                Jenis Khas
-            </th>
-            <th>
-                Status
-            </th>
-            <th>Aksi</th>
         </tr>
     </thead>
 
     @foreach (var item in Model)
     {
         no++;
-        if (item.status == 1)
-        {
-            status = "Menunggu Pembayaran";
-        }
-        else if (item.status == 2)
-        {
-            status = "Diproses Departemen";
-        }
-        else if (item.status == 3)
-        {
-            status = "Diproses BPH Umum";
-        }
-        else if (item.status == 4)
-        {
-            status = "Terkonfirmasi";
-        }
-        else if (item.status == 5)
-        {
-            status = "Tidak Terkonfirmasi";
-        }
         <tr>
-            <td style="height: 30px; width: 50px;">
+            <td style="height: 50px; width: 50px;">
                 @no
             </td>
-            <td style="height: 30px; width: 250px;">
-                @Html.DisplayFor(modelItem => item.msanggotabem.nama)
+            <td style="height: 50px; width: 250px;">
+                @Html.DisplayFor(modelItem => item.nama)
             </td>
-            <td style="height: 30px; width: 250px;">
-                Rp. @Html.DisplayFor(modelItem => item.nominal),00
-            </td>
-            <td style="height: 30px; width: 150px;">
-                @Html.DisplayFor(modelItem => item.jeniskas)
-            </td>
-            <td style="height: 30px; width: 200px;">
-                @status
-            </td>
-            <td style="height: 30px; width: 120px;" align="center">
-                @if (item.status == 1 && item.msanggotabem.nama == (Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : ""))
-                {
-                    <a href="@Url.Action("EditDept", "KasBPH", new { id = item.idkas })" class="btn btn-danger"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
-                }else if (item.status == 2)
-                {
-                    <a href="@Url.Action("Edit", "KasBPH", new { id = item.idkas })" class="btn btn-danger"><i class='fa fa-edit'></i>&nbsp;Konfirmasi</a>
-                }
-                else if(item.status==3 || item.status == 4 || item.status == 5 || item.status==1)
-                {
-                    <label>-</label>
-                }
+            <td style="height: 50px; width: 350px;">
+                @Html.ActionLink(item.dataBerkas, "Download", new { fileName = item.dataBerkas })
             </td>
         </tr>
     }
+
 </table>
 
 <link href="~/Content/designtable.css" rel="stylesheet" />
@@ -147,7 +98,7 @@
         var no;
         $(document).ready(function () {
             $(document).ready(function () {
-                dataTable = $("#tblkas").DataTable();
+                dataTable = $("#tblformat").DataTable();
             });
         });
     </script>

@@ -403,6 +403,10 @@
     <Content Include="Views\Login\EditPIC.cshtml" />
     <Content Include="Views\Login\Lupapass.cshtml" />
     <Content Include="Views\Formatksk\Berkas.cshtml" />
+    <Content Include="Views\Formatksk\BerkasDept.cshtml" />
+    <Content Include="Views\Formatksk\BerkasBPH.cshtml" />
+    <Content Include="Views\KasBPH\EditDept.cshtml" />
+    <Content Include="Views\PengajuanDana\EditDept.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

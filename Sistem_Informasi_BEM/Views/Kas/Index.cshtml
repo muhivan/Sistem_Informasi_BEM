@@ -57,6 +57,7 @@
 <p>
     <a href="@Url.Action("Create", "Kas", "")" class="btn btn-success" style="padding: 10px 25px;"><i class='fa fa-plus'>&nbsp;&nbsp;</i>Tambah Baru</a>
 </p>
+
 <table class="table table-striped table-bordered" style="width:100%" id="tblkas">
     <thead>
         <tr>
@@ -96,11 +97,11 @@
         }
         else if (item.status == 4)
         {
-            status = "Sudah Bayar";
+            status = "Terkonfirmasi";
         }
         else if (item.status == 5)
         {
-            status = "Belum Bayar";
+            status = "Tidak Terkonfirmasi";
         }
         <tr>
             <td style="height: 30px; width: 50px;">

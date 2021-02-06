@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -131,6 +132,73 @@ namespace Sistem_Informasi_BEM.Controllers
             return View(trpengajuandana);
         }
 
+        public ActionResult EditDept(int? id)
+        {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            trpengajuandana trpengajuandana = db.trpengajuandanas.Find(id);
+            if (trpengajuandana == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trpengajuandana.idanggota);
+            return View(trpengajuandana);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditDept(trpengajuandana trpengajuandana, HttpPostedFileBase imgfile)
+        {
+            string path = uploadimage(imgfile);
+            if (ModelState.IsValid)
+            {
+                trpengajuandana dana = db.trpengajuandanas.Find(trpengajuandana.id);
+                
+                dana.modidate = DateTime.Now;
+                dana.modiby = (string)Session["modiby"];
+                if (path != "")
+                {
+                    dana.status = 5;
+                    dana.Bukti_kirim = path;
+                }
+                db.SaveChanges();
+                ViewBag.Jabatan = this.Session["Jabatan"];
+                ViewBag.Departemen = this.Session["Departemen"];
+                if (trpengajuandana.kepada == "BEM")
+                {
+                    return RedirectToAction("IndexBPH");
+                }
+                else
+                {
+                    return RedirectToAction("IndexDept");
+                }
+            }
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trpengajuandana.idanggota);
+            return View(trpengajuandana);
+        }
+
+        public ActionResult EditTolakDept(int id)
+        {
+            trpengajuandana dana = db.trpengajuandanas.Find(id);
+            dana.status = 4;
+            dana.modiby = (string)Session["modiby"];
+            db.SaveChanges();
+            if (dana.kepada == "BEM")
+            {
+                return RedirectToAction("IndexBPH");
+            }
+            else
+            {
+                return RedirectToAction("IndexDept");
+            }
+        }
+
         public ActionResult EditBatal(int id)
         {
             trpengajuandana dana = db.trpengajuandanas.Find(id);
@@ -195,6 +263,39 @@ namespace Sistem_Informasi_BEM.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public string uploadimage(HttpPostedFileBase file)
+        {
+            Random r = new Random();
+            string path = "-1";
+            int random = r.Next();
+            if (file != null && file.ContentLength > 0)
+            {
+                string extension = Path.GetExtension(file.FileName);
+                if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".jpeg") || extension.ToLower().Equals(".png"))
+                {
+                    try
+                    {
+                        path = Path.Combine(Server.MapPath("~/Bukti_khas"), random + Path.GetFileName(file.FileName));
+                        file.SaveAs(path);
+                        path = "~/Bukti_khas/" + random + Path.GetFileName(file.FileName);
+                    }
+                    catch
+                    {
+                        path = "";
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('Format Harus Sesuai');</script");
+                }
+            }
+            else
+            {
+                path = "";
+            }
+            return path;
         }
     }
 }

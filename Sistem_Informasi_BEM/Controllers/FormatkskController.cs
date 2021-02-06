@@ -42,6 +42,22 @@ namespace Sistem_Informasi_BEM.Controllers
             return View(format.ToList());
         }
 
+        public ActionResult BerkasDept()
+        {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            var format = db.msformatksks.Where(m => m.status == 1);
+            return View(format.ToList());
+        }
+
+        public ActionResult BerkasBPH()
+        {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            var format = db.msformatksks.Where(m => m.status == 1);
+            return View(format.ToList());
+        }
+
         public ActionResult Details(int? id)
         {
             ViewBag.Jabatan = this.Session["Jabatan"];

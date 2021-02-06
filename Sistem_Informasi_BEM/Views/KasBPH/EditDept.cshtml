@@ -1,7 +1,7 @@
 ﻿@model Sistem_Informasi_BEM.Models.trka
 
 @{
-    ViewBag.Title = "Tambah Data";
+    ViewBag.Title = "Ubah Data";
 }
 
 <div class="polman-nav-static-top">
@@ -35,7 +35,7 @@
                     <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Kas
                 </a>
             </div>
-            <a href='#menu6' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu6' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Kesekretariatan</a>
+            <a href='#menu6' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Kesekretariatan</a>
             <div id='menu6' class='collapse in' role='tabpanel'>
                 <a onclick="location.href='@Url.Action("BerkasDept","Formatksk")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Format Berkas
@@ -49,11 +49,12 @@
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuBPH","Login")'">Sistem Informasi BEM</a></li>
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","KasBPH")'">Khas</a></li>
-    <li class="breadcrumb-item">Tambah</li>
+    <li class="breadcrumb-item">Ubah</li>
 </ol>
 <hr />
 
-@using (Html.BeginForm("Create", "KasBPH", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+@using (Html.BeginForm("EditDept", "KasBPH", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div id="allcontent" class="polman-adjust5" style="margin-left: 0px;">
@@ -64,11 +65,12 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
+                                @Html.HiddenFor(model => model.idkas)
                                 @Html.HiddenFor(model => model.idanggota, new { @class = "form-control", @Value = ViewBag.idanggota2 })
                                 <label style="font-weight: bold;">Khas <b style="color: red">*</b></label>
                                 @Html.EditorFor(model => model.nominal, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
                                 @Html.ValidationMessageFor(model => model.nominal, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(model => model.creaby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
+                                @Html.HiddenFor(model => model.modiby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
                             </div>
                         </div>
                     </div>
@@ -94,8 +96,10 @@
                 </div>
             </div>
             <br />
-            <a href="@Url.Action("Index", "KasBPH")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
-            <input type="submit" value="Simpan" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
+            <span style="float: right">
+                <a href="@Url.Action("Index", "KasBPH")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
+                <input type="submit" value="Simpan" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
+            </span>
         </div>
     </div>
 }
