@@ -59,7 +59,7 @@
 <H3>Format Kesekretariatan</H3>
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuAdmin","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","Formatksk")'">Format Kesekretariatan</a></li>
+    <li class="breadcrumb-item">Format Kesekretariatan</li>
 </ol>
 <hr />
 
@@ -122,7 +122,7 @@
             <td style="height: 50px; width: 100px;">
                 @status
             </td>
-            <td style="height: 50px; width: 220px;">
+            <td style="height: 50px; width: 220px;" align="center">
                 <a href="@Url.Action("Edit", "Formatksk", new { id = item.idftksk })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
                 <a href="@Url.Action("Details", "Formatksk", new { id = item.idftksk })" class="btn btn-warning"><i class='fa fa-book'></i>&nbsp;Detil</a>
                 <a onclick="return confirm('Yakin ingin Menghapus Data');" href="@Url.Action("Delete", "Formatksk", new { id = item.idftksk })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Hapus</a>

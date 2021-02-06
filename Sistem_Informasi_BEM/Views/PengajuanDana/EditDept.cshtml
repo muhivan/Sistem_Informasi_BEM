@@ -86,8 +86,9 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label style="font-weight: bold;">Jumlah <b style="color: red">*</b></label>
-                                @Html.EditorFor(model => model.jumlah, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
-                                @Html.ValidationMessageFor(model => model.jumlah, "", new { @class = "text-danger" })
+                                <input type="text" id="nominal" name="nominal" value="@Model.jumlah" class="priceformat form-control" style="min-width:100%; height:45px; padding: 10px 10px; font-size: 12pt;" />
+                                @*@Html.EditorFor(model => model.jumlah, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
+                                @Html.ValidationMessageFor(model => model.jumlah, "", new { @class = "text-danger" })*@
                             </div>
                             <div class="form-group">
                                 <label style="font-weight: bold;" for="addNamaKegiatanENG">Upload Bukti <b style="color: red">*</b></label>
@@ -99,7 +100,7 @@
             </div>
             <br />
             <span style="float: right">
-                <a href="@Url.Action("EditTolakDept", "PengajuanDana", new { id = Model.id })" class="btn btn-danger" style="padding: 15px 40px; font-size: 12pt;">Tidak Valid</a>
+                <a href="@Url.Action("EditTolakDept", "PengajuanDana", new { id = Model.id })" class="btn btn-danger" style="padding: 15px 30px; font-size: 12pt;">Tidak Valid</a>
                 <input type="submit" value="Valid" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
             </span>
         </div>

@@ -11,13 +11,15 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class trpengajuandana
     {
         public int id { get; set; }
         public Nullable<int> idanggota { get; set; }
         public string @event { get; set; }
         public string tujuan { get; set; }
+        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
         public Nullable<int> jumlah { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }

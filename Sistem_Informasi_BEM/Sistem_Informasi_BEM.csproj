@@ -313,6 +313,7 @@
     <Content Include="Scripts\jquery.fancybox.pack.js" />
     <Content Include="Scripts\jquery.floatThead.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.priceformat.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

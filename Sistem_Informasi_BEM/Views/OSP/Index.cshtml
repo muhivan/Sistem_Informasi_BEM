@@ -61,9 +61,6 @@
                 Berkas
             </th>
             <th>
-                Keterangan
-            </th>
-            <th>
                 Status
             </th>
             <th>
@@ -114,9 +111,6 @@
                 @Html.ActionLink(item.namaberkas, "Download", new { fileName = item.namaberkas })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.keterangan)
-            </td>
-            <td>
                 @status
             </td>
             <td>
@@ -128,10 +122,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.msukm_hima.nama)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idlpksk }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idlpksk }) |
-
+            <td align="center">
+                <a href="@Url.Action("Edit", "OSP", new { id = item.idlpksk })" class="btn btn-primary" style="font-size: 12pt;"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                <a href="@Url.Action("Details", "OSP", new { id = item.idlpksk })" class="btn btn-danger" style="font-size: 12pt;"><i class='fa fa-book'></i>&nbsp;Details</a>
             </td>
         </tr>
     }
