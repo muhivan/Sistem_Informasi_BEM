@@ -12,7 +12,7 @@ namespace Sistem_Informasi_BEM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class dtlrapat 
+    public partial class dtlrapat
     {
         public int idrapat { get; set; }
         public int idanggota { get; set; }

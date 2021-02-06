@@ -19,7 +19,7 @@ namespace Sistem_Informasi_BEM.Controllers
         {
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
-            var trlaporanksks = db.trlaporanksks.Where(x => x.status > 1 && x.status <= 7);
+            var trlaporanksks = db.trlaporanksks.SqlQuery("SELECT t.* FROM trlaporanksk t  where (t.status > 1 AND t.status <=7) AND t.keterangan ='OSP'").ToList();
             return View(trlaporanksks.ToList());
         }
 

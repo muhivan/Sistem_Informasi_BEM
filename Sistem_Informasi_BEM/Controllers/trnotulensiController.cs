@@ -26,20 +26,20 @@ namespace Sistem_Informasi_BEM.Controllers
         }
 
         // GET: trnotulensi/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            trnotulensi trnotulensi = db.trnotulensis.Find(id);
-            if (trnotulensi == null)
-            {
-                return HttpNotFound();
-            }
-            var notulen = db.trrapats.SqlQuery("SELECT t.* FROM trnotulensi n INNER JOIN  trrapat t on n.idrapat = t.idrapat where n.idnotulensi = " + id).ToList();
-            return View(notulen);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    trnotulensi trnotulensi = db.trnotulensis.Find(id);
+        //    if (trnotulensi == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    var notulen = db.trrapats.SqlQuery("SELECT t.* FROM trnotulensi n INNER JOIN  trrapat t on n.idrapat = t.idrapat where n.idnotulensi = " + id).ToList();
+        //    return View(notulen);
+        //}
 
         // GET: trnotulensi/Create
         public ActionResult Create()

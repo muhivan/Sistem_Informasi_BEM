@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Sistem_Informasi_BEM.Models.trlaporanksk>
+
+@{
+    ViewBag.Title = "Index";
+    var status = "";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.namaberkas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.keterangan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.komentar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msukm_hima.nama)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>Aksi</th>
+    </tr>
+
+@foreach (var item in Model) {
+    if (item.status == 0)
+    {
+        status = "Tidak Aktif";
+    }
+    else if (item.status == 1)
+    {
+        status = "Diproses Dept";
+    }
+    else if (item.status == 2)
+    {
+        status = "Diproses BPH Umum";
+    }
+    else if (item.status == 3)
+    {
+        status = "Revisi";
+    }
+    else if (item.status == 4)
+    {
+        status = "Diproses Institusi";
+    }
+    else if (item.status == 5)
+    {
+        status = "Diterima";
+    }
+    else if (item.status == 6)
+    {
+        status = "Ditolak";
+    }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.namaberkas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.keterangan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.komentar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msukm_hima.nama)
+        </td>
+        <td>
+            @status
+        </td>
+        <td>
+            @if (item.status == 1)
+            {
+                <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-default"><i class='fa fa-pencil'></i>&nbsp;Ubah</a>
+                <a onclick="return confirm('Yakin ingin Menghapus Berkas?');" href="@Url.Action("Hapus", "KSK", new { id = item.idlpksk })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
+
+            }
+            else if (item.status == 3)
+            {
+                <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-default" ><i class='fa fa-pencil'></i>&nbsp;Ubah</a>
+                <a onclick="return confirm('Yakin ingin Menghapus Berkas?');" href="@Url.Action("Hapus", "KSK", new { id = item.idlpksk })" class="btn btn-danger" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
+          }
+            else
+            {
+                <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-pencil'></i>&nbsp;Ubah</a>
+                <a onclick="return confirm('Yakin ingin Menghapus Berkas?');" href="@Url.Action("Hapus", "KSK", new { id = item.idlpksk })" class="btn btn-danger" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
+
+        }
+        </td>
+    </tr>
+}
+
+</table>

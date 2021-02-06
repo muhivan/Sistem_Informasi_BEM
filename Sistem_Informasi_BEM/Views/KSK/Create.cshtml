@@ -1,0 +1,52 @@
+﻿@model Sistem_Informasi_BEM.Models.trlaporanksk
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "KSK", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>trlaporanksk</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.namaberkas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="files" id="files" multiple="multiple" value="@Html.DisplayFor(model => model.namaberkas)" class="btn btn-info" style="min-width:100%; height:45px; padding: 10px 10px; font-size: 12pt;" />
+                @Html.HiddenFor(model => model.creaby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: bold;">Jenis Berkas <b style="color: red">*</b></label>
+            <br />
+            @Html.RadioButtonFor(model => model.keterangan, "BAK", new { htmlAttributes = new { @class = "form-control" } })
+            BAK
+            <br />
+            @Html.RadioButtonFor(model => model.keterangan, "LPJ", new { htmlAttributes = new { @class = "form-control" } })
+            LPJ
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

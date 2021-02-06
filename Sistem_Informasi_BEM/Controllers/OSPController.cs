@@ -23,7 +23,7 @@ namespace Sistem_Informasi_BEM.Controllers
             var idDept_ = (string)Session["idDept"];
             int idDept = Convert.ToInt32(idDept_);
 
-            var trlaporanksk = db.trlaporanksks.SqlQuery("SELECT t.* FROM trlaporanksk t INNER JOIN msjabatan j on t.idukm_hima = j.idukm_hima inner join msanggotabem a on j.idjabatan = a.idjabatan where iddepartemen = " + idDept).ToList();
+            var trlaporanksk = db.trlaporanksks.SqlQuery("SELECT t.* FROM trlaporanksk t INNER JOIN msukm_hima u on t.idukm_hima=u.idukm_hima where u.iddepartemen = " + idDept+ "AND t.keterangan ='OSP'").ToList();
 
             return View(trlaporanksk);
         }

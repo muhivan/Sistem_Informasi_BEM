@@ -111,6 +111,7 @@
           <Property Name="creadate" Type="datetime" />
           <Property Name="modiby" Type="varchar" MaxLength="50" />
           <Property Name="modidate" Type="datetime" />
+          <Property Name="iddepartemen" Type="int" />
         </EntityType>
         <EntityType Name="trkas">
           <Key>
@@ -260,6 +261,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_msukm_hima_msdepartemen">
+          <End Role="msdepartemen" Type="Self.msdepartemen" Multiplicity="0..1" />
+          <End Role="msukm_hima" Type="Self.msukm_hima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msdepartemen">
+              <PropertyRef Name="iddepartemen" />
+            </Principal>
+            <Dependent Role="msukm_hima">
+              <PropertyRef Name="iddepartemen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_trkas_msanggotabem">
           <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="0..1" />
           <End Role="trkas" Type="Self.trkas" Multiplicity="*" />
@@ -358,6 +371,10 @@
             <End Role="msukm_hima" EntitySet="msukm_hima" />
             <End Role="msjabatan" EntitySet="msjabatan" />
           </AssociationSet>
+          <AssociationSet Name="FK_msukm_hima_msdepartemen" Association="Self.FK_msukm_hima_msdepartemen">
+            <End Role="msdepartemen" EntitySet="msdepartemen" />
+            <End Role="msukm_hima" EntitySet="msukm_hima" />
+          </AssociationSet>
           <AssociationSet Name="FK_trkas_msanggotabem" Association="Self.FK_trkas_msanggotabem">
             <End Role="msanggotabem" EntitySet="msanggotabem" />
             <End Role="trkas" EntitySet="trkas" />
@@ -423,6 +440,7 @@
           <Property Name="modidate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="msanggotabems" Relationship="Self.FK_msanggotabem_msdepartemen" FromRole="msdepartemen" ToRole="msanggotabem" />
           <NavigationProperty Name="trrapats" Relationship="Self.FK_trrapat_msdepartemen" FromRole="msdepartemen" ToRole="trrapat" />
+          <NavigationProperty Name="msukm_hima" Relationship="DBSIBEMModel.FK_msukm_hima_msdepartemen" FromRole="msdeparteman" ToRole="msukm_hima" />
         </EntityType>
         <EntityType Name="msformatksk">
           <Key>
@@ -493,6 +511,8 @@
           <Property Name="modidate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="msjabatans" Relationship="Self.FK_msjabatan_msukm_hima" FromRole="msukm_hima" ToRole="msjabatan" />
           <NavigationProperty Name="trlaporanksks" Relationship="Self.FK_trlaporanksk_msukm_hima" FromRole="msukm_hima" ToRole="trlaporanksk" />
+          <Property Name="iddepartemen" Type="Int32" />
+          <NavigationProperty Name="msdeparteman" Relationship="DBSIBEMModel.FK_msukm_hima_msdepartemen" FromRole="msukm_hima" ToRole="msdeparteman" />
         </EntityType>
         <EntityType Name="trka">
           <Key>
@@ -713,6 +733,10 @@
             <End Role="trrapat" EntitySet="trrapats" />
             <End Role="dtlrapat1" EntitySet="dtlrapats" />
           </AssociationSet>
+          <AssociationSet Name="FK_msukm_hima_msdepartemen" Association="DBSIBEMModel.FK_msukm_hima_msdepartemen">
+            <End Role="msdeparteman" EntitySet="msdepartemen" />
+            <End Role="msukm_hima" EntitySet="msukm_hima" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="trpengajuandana">
           <Key>
@@ -776,6 +800,18 @@
             </Principal>
             <Dependent Role="dtlrapat1">
               <PropertyRef Name="idrapat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msukm_hima_msdepartemen">
+          <End Type="DBSIBEMModel.msdeparteman" Role="msdeparteman" Multiplicity="0..1" />
+          <End Type="DBSIBEMModel.msukm_hima" Role="msukm_hima" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msdeparteman">
+              <PropertyRef Name="iddepartemen" />
+            </Principal>
+            <Dependent Role="msukm_hima">
+              <PropertyRef Name="iddepartemen" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -880,6 +916,7 @@
           <EntitySetMapping Name="msukm_hima">
             <EntityTypeMapping TypeName="DBSIBEMModel.msukm_hima">
               <MappingFragment StoreEntitySet="msukm_hima">
+                <ScalarProperty Name="iddepartemen" ColumnName="iddepartemen" />
                 <ScalarProperty Name="idukm_hima" ColumnName="idukm_hima" />
                 <ScalarProperty Name="nama" ColumnName="nama" />
                 <ScalarProperty Name="status" ColumnName="status" />

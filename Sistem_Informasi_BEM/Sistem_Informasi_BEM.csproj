@@ -134,6 +134,7 @@
     <Compile Include="Controllers\JabatanController.cs" />
     <Compile Include="Controllers\KasBPHController.cs" />
     <Compile Include="Controllers\KasController.cs" />
+    <Compile Include="Controllers\KSKController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\OSPBPHController.cs" />
@@ -419,9 +420,13 @@
     <Content Include="Views\dtlrapat\Edit.cshtml" />
     <Content Include="Views\dtlrapat\Index.cshtml" />
     <Content Include="Views\trnotulensi\Create.cshtml" />
-    <Content Include="Views\trnotulensi\Details.cshtml" />
     <Content Include="Views\trnotulensi\Edit.cshtml" />
     <Content Include="Views\trnotulensi\Index.cshtml" />
+    <Content Include="Views\KSK\Create.cshtml" />
+    <Content Include="Views\KSK\Edit.cshtml" />
+    <Content Include="Views\KSK\Index.cshtml" />
+    <Content Include="Views\KSK\IndexBPH.cshtml" />
+    <Content Include="Views\KSK\EditBPH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
