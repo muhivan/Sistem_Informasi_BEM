@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AnggotaController.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Controllers\PengajuanDanaController.cs" />
     <Compile Include="Controllers\PengajuanOSPController.cs" />
     <Compile Include="Controllers\PeriodeController.cs" />
+    <Compile Include="Controllers\trrapatController.cs" />
     <Compile Include="Controllers\UKM_HIMAController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -408,12 +410,11 @@
     <Content Include="Views\Formatksk\BerkasBPH.cshtml" />
     <Content Include="Views\KasBPH\EditDept.cshtml" />
     <Content Include="Views\PengajuanDana\EditDept.cshtml" />
-    <Content Include="Views\PengajuanDana\CreateDept.cshtml" />
-    <Content Include="Views\PengajuanDana\EditData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Bukti_khas\" />
+    <Folder Include="Data\" />
     <Folder Include="Files\" />
     <Folder Include="SaveImage\" />
   </ItemGroup>
