@@ -87,6 +87,12 @@
                             <tr><td>Modidate</td><td> : </td><td>@Html.DisplayFor(model => model.modidate)</td></tr>
                         </table>
                     </div>
+                    <div class="col-lg-6">
+                        @if (Model.foto != "")
+                        {
+                            <img src="@Url.Content(Model.foto)" height="400" width="300" />
+                        }
+                    </div>
                 </div>
             </div>
         </div>

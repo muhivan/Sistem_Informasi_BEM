@@ -12,7 +12,7 @@ namespace Sistem_Informasi_BEM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class msformatksk : uploadFile
+    public partial class msformatksk :uploadFile
     {
         public int idftksk { get; set; }
         public string nama { get; set; }

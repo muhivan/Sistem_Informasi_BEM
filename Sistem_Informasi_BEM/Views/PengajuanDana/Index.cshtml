@@ -49,7 +49,7 @@
 <H3>Pengajuan Dana</H3>
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuPIC","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","PengajuanDana")'">Pengajuan Dana</a></li>
+    <li class="breadcrumb-item">Pengajuan Dana</li>
 </ol>
 <hr />
 
@@ -110,7 +110,7 @@
                     @Html.DisplayFor(modelItem => item.tujuan)
                 </td>
                 <td style="height: 50px; width: 80px;">
-                    Rp. @Html.DisplayFor(modelItem => item.jumlah),00
+                    Rp @Html.DisplayFor(modelItem => item.jumlah)
                 </td>
                 <td style="height: 50px; width: 50px;">
                     @status

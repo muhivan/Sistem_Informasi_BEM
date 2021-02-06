@@ -48,7 +48,7 @@
 <H3>Pembayaran Khas</H3>
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuPIC","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","Kas")'">Khas</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","Kas")'">Pembayaran Khas</a></li>
     <li class="breadcrumb-item">Ubah</li>
 </ol>
 <hr />
@@ -68,8 +68,9 @@
                                 @Html.HiddenFor(model => model.idkas)
                                 @Html.HiddenFor(model => model.idanggota, new { @class = "form-control", @Value = ViewBag.idanggota2 })
                                 <label style="font-weight: bold;">Khas <b style="color: red">*</b></label>
-                                @Html.EditorFor(model => model.nominal, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
-                                @Html.ValidationMessageFor(model => model.nominal, "", new { @class = "text-danger" })
+                                @*@Html.EditorFor(model => model.nominal, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })*@
+                                <input type="text" id="nominal" name="nominal" value="@Model.nominal" class="priceformat form-control" style="min-width:100%; height:45px; padding: 10px 10px; font-size: 12pt;" />
+                                @*@Html.ValidationMessageFor(model => model.nominal, "", new { @class = "text-danger" })*@
                                 @Html.HiddenFor(model => model.modiby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
                             </div>
                         </div>
@@ -98,7 +99,7 @@
             <br />
             <span style="float: right">
                 <a href="@Url.Action("Index", "Kas")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
-                <input type="submit" value="Simpan" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
+                <input type="submit" value="Perbarui" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
             </span>
         </div>
     </div>

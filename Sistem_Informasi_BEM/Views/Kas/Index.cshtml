@@ -50,7 +50,7 @@
 <H3>Pembayaran Khas</H3>
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuPIC","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","Kas")'">Khas</a></li>
+    <li class="breadcrumb-item">Pembayaran Khas</li>
 </ol>
 <hr />
 
@@ -103,6 +103,7 @@
         {
             status = "Tidak Terkonfirmasi";
         }
+        
         <tr>
             <td style="height: 30px; width: 50px;">
                 @no
@@ -111,7 +112,8 @@
                 @Html.DisplayFor(modelItem => item.msanggotabem.nama)
             </td>
             <td style="height: 30px; width: 250px;">
-                Rp. @Html.DisplayFor(modelItem => item.nominal),00
+                
+                Rp @Html.DisplayFor(modelItem => item.nominal)
             </td>
             <td style="height: 30px; width: 150px;">
                 @Html.DisplayFor(modelItem => item.jeniskas)
