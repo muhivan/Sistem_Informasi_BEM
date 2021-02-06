@@ -236,7 +236,7 @@ namespace Sistem_Informasi_BEM.Controllers
                     mail.Subject = "Rapat Bem Polman Astra";
                     mail.Body = "<h2>Hello, " + nama +
                         "</h2>Berkaitan dengan rapat BEM Polman Astra yang diselenggarakan oleh " + namaDept + ", dengan detail rapat.<br>"
-                        + "Penyelenggara : <b>" + namaDept + "</b><br>Agenda Rapat   : <b>" + judul + "</b><br>Waktu Rapat   : <b>" + tgl +
+                        + "Penyelenggara : <b>" + namaDept + "</b><br>Agenda Rapat   : <b>" + judul + "</b><br>Waktu Rapat     : <b>" + tgl +
                         "</b><br>Telah dibatalkan oleh penyelenggara rapat." +
                         "<br>Sekian info yang dapat kami sampaikan atas perhatiannya kami ucapkan terimakasih." +
                         "<br><br>" + namaDept;
