@@ -14,7 +14,6 @@ namespace Sistem_Informasi_BEM.Controllers
 {
     public class AnggotaController : Controller
     {
-
         //object database
         private DBSIBEMEntities db = new DBSIBEMEntities();
         //onject random

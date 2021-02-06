@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5cab79e2974d4187a165f2e756a3fd33" Name="Diagram1">
-        <EntityTypeShape EntityType="DBSIBEMModel.dtlnotulensi" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.dtlnotulensi" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBSIBEMModel.msanggotabem" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBSIBEMModel.msdeparteman" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBSIBEMModel.msformatksk" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />

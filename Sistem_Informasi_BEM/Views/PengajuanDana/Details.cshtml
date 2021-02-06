@@ -65,7 +65,7 @@
 
         <ol class="breadcrumb polman-breadcrumb">
             <li class="breadcrumb-item"><a href="" data-toggle="tooltip" data-placement="bottom">Sistem Informasi BEM</a></li>
-            <li class="breadcrumb-item">Pengajuan Dana</li>
+            <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","PengajuanDana")'">Pengajuan Dana</a></li>
             <li class="breadcrumb-item">Details</li>
         </ol>
         <hr />
@@ -93,7 +93,7 @@
                             <div class="col-lg-6">
                                 @if (Model.Bukti_kirim != "")
                                 {
-                                    <img src="@Url.Content(Model.Bukti_kirim)" height="250" width="300" />
+                                    <img src="@Url.Content(Model.Bukti_kirim)" height="350" width="300" />
                                 }
                             </div>
                         </div>

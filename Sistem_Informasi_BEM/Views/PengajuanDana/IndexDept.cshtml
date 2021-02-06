@@ -49,11 +49,11 @@
 <H3>Pengajuan Dana</H3>
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuBPH","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("IndexDept","PengajuanDana")'">Pengajuan Dana</a></li>
+    <li class="breadcrumb-item">Pengajuan Dana</li>
 </ol>
 <hr />
 
-<a href="@Url.Action("Create", "PengajuanDana", "")" class="btn btn-success" style="padding: 10px 25px;"><i class='fa fa-plus'>&nbsp;&nbsp;</i>Tambah Baru</a>
+<a href="@Url.Action("CreateDept", "PengajuanDana", "")" class="btn btn-success" style="padding: 10px 25px;"><i class='fa fa-plus'>&nbsp;&nbsp;</i>Tambah Baru</a>
 <br />
 <br />
 
@@ -116,7 +116,7 @@
                 @Html.DisplayFor(modelItem => item.tujuan)
             </td>
             <td>
-                Rp. @Html.DisplayFor(modelItem => item.jumlah)
+                Rp @Html.DisplayFor(modelItem => item.jumlah)
             </td>
             <td>
                 @status
@@ -125,6 +125,12 @@
                 @if (item.status == 2)
                 {
                     <a href="@Url.Action("EditDept", "PengajuanDana", new { id = item.id })" class="btn btn-primary"><i class='fa fa-check-circle'></i>&nbsp;Konfirmasi</a>
+                }
+                else if (item.status == 1 && item.msanggotabem.nama == (Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : ""))
+                {
+                    <a href="@Url.Action("EditData", "PengajuanDana", new { id = item.id })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a onclick="return confirm('Konfirmasi Pengajuan Dikirim');" href="@Url.Action("KirimDept", "PengajuanDana", new { id = item.id })" class="btn btn-primary"><i class='fa fa-send'></i>&nbsp;Kirim</a>
+                    <a onclick="return confirm('Konfirmasi Pembatalan Pengajuan Dana');" href="@Url.Action("EditBatalDept", "PengajuanDana", new { id = item.id })" class="btn btn-danger"><i class='fa fa-remove'></i>&nbsp;Batal</a>
                 }
                 else
                 {
