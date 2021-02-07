@@ -11,16 +11,19 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class msformatksk : uploadFile
     {
         public int idftksk { get; set; }
+        [Required(ErrorMessage = "Nama tidak boleh kosong")]
         public string nama { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }
         public Nullable<System.DateTime> creadate { get; set; }
         public string modiby { get; set; }
         public Nullable<System.DateTime> modidate { get; set; }
+        [Required(ErrorMessage = "Berkas tidak boleh kosong")]
         public string dataBerkas { get; set; }
     }
 }

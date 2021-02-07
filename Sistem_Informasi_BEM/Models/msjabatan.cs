@@ -11,7 +11,8 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class msjabatan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,7 @@ namespace Sistem_Informasi_BEM.Models
     
         public int idjabatan { get; set; }
         public Nullable<int> idukm_hima { get; set; }
+        [Required(ErrorMessage = "Jabatan tidak boleh kosong")]
         public string namajabatan { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }

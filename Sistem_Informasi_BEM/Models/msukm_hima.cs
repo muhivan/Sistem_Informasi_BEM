@@ -11,7 +11,8 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class msukm_hima
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,7 @@ namespace Sistem_Informasi_BEM.Models
         }
     
         public int idukm_hima { get; set; }
+        [Required(ErrorMessage = "Nama tidak boleh kosong")]
         public string nama { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }

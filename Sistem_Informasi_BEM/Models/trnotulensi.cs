@@ -11,12 +11,14 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class trnotulensi : uploadFile
     {
         public int idnotulensi { get; set; }
         public Nullable<int> idrapat { get; set; }
         public Nullable<int> jmlhadir { get; set; }
+        [Required(ErrorMessage = "Nama tidak boleh kosong")]
         public string notulensi { get; set; }
         public string creaby { get; set; }
         public Nullable<System.DateTime> creadate { get; set; }

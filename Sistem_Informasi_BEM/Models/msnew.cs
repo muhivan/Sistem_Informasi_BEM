@@ -11,11 +11,14 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class msnew
     {
         public int idnews { get; set; }
+        [Required(ErrorMessage = "Judul tidak boleh kosong")]
         public string judul { get; set; }
+        [Required(ErrorMessage = "Preview tidak boleh kosong")]
         public string preview { get; set; }
         public string deskripsi { get; set; }
         public string gambar { get; set; }

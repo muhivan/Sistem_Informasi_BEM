@@ -11,7 +11,8 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class msperiode
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace Sistem_Informasi_BEM.Models
         }
     
         public int idperiode { get; set; }
+        [Required(ErrorMessage = "Periode tidak boleh kosong")]
         public string tahunperiode { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }

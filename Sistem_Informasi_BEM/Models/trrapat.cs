@@ -11,7 +11,8 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class trrapat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +24,10 @@ namespace Sistem_Informasi_BEM.Models
     
         public int idrapat { get; set; }
         public Nullable<int> iddepartemen { get; set; }
+        [Required(ErrorMessage = "Judul Rapat tidak boleh kosong")]
         public string judulrapat { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy HH:mm}")]
         public Nullable<System.DateTime> tglrapat { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }

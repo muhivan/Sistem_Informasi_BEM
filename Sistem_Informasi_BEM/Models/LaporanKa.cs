@@ -11,11 +11,13 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class LaporanKa
     {
         public int idlaporan { get; set; }
         public string jeniskas { get; set; }
+        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
         public Nullable<int> nominal { get; set; }
         public string nama { get; set; }
         public Nullable<int> total { get; set; }

@@ -11,7 +11,8 @@ namespace Sistem_Informasi_BEM.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class msanggotabem
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,15 +22,32 @@ namespace Sistem_Informasi_BEM.Models
             this.trkas = new HashSet<trka>();
             this.trpengajuandanas = new HashSet<trpengajuandana>();
         }
-    
         public int idanggota { get; set; }
+        [Required(ErrorMessage = "Departemen tidak boleh kosong")]
         public Nullable<int> iddepartemen { get; set; }
+        [Required(ErrorMessage = "Jabatan tidak boleh kosong")]
         public Nullable<int> idjabatan { get; set; }
+        [Required(ErrorMessage = "Periode tidak boleh kosong")]
         public Nullable<int> idperiode { get; set; }
+        [Required(ErrorMessage = "Nama tidak boleh kosong")]
+        [StringLength(50)]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Masukan Hanya Alphabet")]
         public string nama { get; set; }
+        [Required(ErrorMessage = "NIM tidak boleh kosong")]
+        [StringLength(10)]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Masukan Hanya Angka")]
         public string nim { get; set; }
+        [Required(ErrorMessage = "Alamat tidak boleh kosong")]
+        [StringLength(255)]
+        [DataType(DataType.MultilineText)]
         public string alamat { get; set; }
+        [Required(ErrorMessage = "Telepon tidak boleh kosong")]
+        [StringLength(15)]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Masukan Hanya Angka")]
         public string no_telp { get; set; }
+        [Required(ErrorMessage = "Email tidak boleh kosong")]
+        [StringLength(50)]
+        [RegularExpression(@"^[a-zA-z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Format email tidak valid")]
         public string email { get; set; }
         public string password { get; set; }
         public Nullable<int> status { get; set; }
