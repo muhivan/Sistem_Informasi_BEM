@@ -133,6 +133,7 @@ namespace Sistem_Informasi_BEM.Controllers
                         msformat.notulensi = fileName.ToString();
 
                     }
+
                     msformat.modidate = DateTime.Now;
                     msformat.modiby = trnotulensi.modiby.ToString();
 

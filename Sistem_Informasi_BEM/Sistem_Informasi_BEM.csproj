@@ -151,6 +151,7 @@
     <Compile Include="Controllers\KasController.cs" />
     <Compile Include="Controllers\KSKController.cs" />
     <Compile Include="Controllers\LaporanKasController.cs" />
+    <Compile Include="Controllers\LaporanOSPController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\OSPBPHController.cs" />
@@ -488,6 +489,7 @@
     <Content Include="Views\LaporanKas\Index.cshtml" />
     <Content Include="Views\PengajuanDana\CreateDept.cshtml" />
     <Content Include="Views\PengajuanDana\EditData.cshtml" />
+    <Content Include="Views\LaporanOSP\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -508,6 +510,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\LaporanKas.rdlc" />
+    <EmbeddedResource Include="Reports\LaporanOSP.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

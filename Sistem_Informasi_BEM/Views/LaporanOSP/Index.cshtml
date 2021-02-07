@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Sistem_Informasi_BEM.Models.trlaporanksk>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Laporan OSP</h2>
+
+@Html.ActionLink("Ekspor Excel", "Reports", new { ReportType = "Excel" }) |
+@Html.ActionLink("Ekspor PDF", "Reports", new { ReportType = "PDF" }) |
+@Html.ActionLink("Ekspor Word", "Reports", new { ReportType = "Word" }) |
+@Html.ActionLink("Ekspor Gambar", "Reports", new { ReportType = "Image" })
+<br />
+<br />
+
+@using (Html.BeginForm("Index", "LaporanOSP", FormMethod.Get))
+{
+    //the following are search options
+    <b> Keterangan: </b>@Html.RadioButton("option", "5") <text>Diterima</text> @Html.RadioButton("option", "6") <text> Ditolak </text>
+    <b><span>Periode : </span><input type="datetime-local" id="date" name="date" value="<%:DateTime.Now%>" /></b>
+    <input type="submit" name="submit" value="Cari" />
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.namaberkas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.keterangan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tglpresent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msukm_hima.nama)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.namaberkas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.keterangan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tglpresent)
+            </td>
+            <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.msukm_hima.nama)
+            </td>
+        </tr>
+    }
+
+</table>

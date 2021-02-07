@@ -68,7 +68,7 @@ namespace Sistem_Informasi_BEM.Controllers
                 foreach (var file in trlaporanksk.files)
                 {
 
-                    if (file.ContentLength > 0)
+                    if (file != null && file.ContentLength > 0)
                     {
                         var fileName = Path.GetFileName(file.FileName);
                         var filePath = Path.Combine(Server.MapPath("~/Files"), fileName);
