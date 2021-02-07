@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Berita BEM";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var no = 0;
 }
 
 <div class="polman-nav-static-top">
@@ -82,10 +83,10 @@
     <thead>
         <tr>
             <th>
-                Judul
+                No
             </th>
             <th>
-                Preview
+                Judul
             </th>
             <th>
                 Deskripsi
@@ -99,25 +100,26 @@
 
     @foreach (var item in Model)
     {
+        no++;
         <tr>
-            <td style="height: 50px; width: 150px;">
-                @Html.DisplayFor(modelItem => item.judul)
+            <td>
+                @no
             </td>
-            <td style="height: 50px; width: 200px;">
-                @Html.DisplayFor(modelItem => item.preview)
+            <td style="width: 150px;">
+                @Html.DisplayFor(modelItem => item.judul)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.deskripsi)
             </td>
-            <td style="height: 100px; width: 150px;">
+            <td style="width: 150px;">
                 @if (item.gambar != "")
                 {
                     <img src="@Url.Content(item.gambar)" height="100" width="150" />
                 }
             </td>
-            <td style="height: 50px; width: 50px;">
+            <td style="width: 50px;" align="center">
                 <a href="@Url.Action("Edit", "News", new { id = item.idnews })" class="btn btn-primary" style="padding: 8px 27px;"><i class='fa fa-edit'></i>&nbsp;Ubah</a><br /><br />
-                <a href="@Url.Action("Details", "News", new { id = item.idnews })" class="btn btn-warning" style="padding: 8px 30px;"><i class='fa fa-book'></i>&nbsp;Detil</a><br /><br />
+                <a href="@Url.Action("Details", "News", new { id = item.idnews })" class="btn btn-warning" style="padding: 8px 27px;"><i class='fa fa-list'></i>&nbsp;Detail</a><br /><br />
                 <a onclick="return confirm('Yakin ingin Menghapus Data');" href="@Url.Action("Delete", "News", new { id = item.idnews })" class="btn btn-danger" style="padding: 8px 25px;"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
             </td>
         </tr>

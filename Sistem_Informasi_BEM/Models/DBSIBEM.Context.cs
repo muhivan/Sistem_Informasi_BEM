@@ -25,6 +25,7 @@ namespace Sistem_Informasi_BEM.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<dtlrapat> dtlrapats { get; set; }
         public virtual DbSet<msanggotabem> msanggotabems { get; set; }
         public virtual DbSet<msdeparteman> msdepartemen { get; set; }
         public virtual DbSet<msformatksk> msformatksks { get; set; }
@@ -35,8 +36,7 @@ namespace Sistem_Informasi_BEM.Models
         public virtual DbSet<trka> trkas { get; set; }
         public virtual DbSet<trlaporanksk> trlaporanksks { get; set; }
         public virtual DbSet<trnotulensi> trnotulensis { get; set; }
-        public virtual DbSet<trrapat> trrapats { get; set; }
         public virtual DbSet<trpengajuandana> trpengajuandanas { get; set; }
-        public virtual DbSet<dtlrapat> dtlrapats { get; set; }
+        public virtual DbSet<trrapat> trrapats { get; set; }
     }
 }

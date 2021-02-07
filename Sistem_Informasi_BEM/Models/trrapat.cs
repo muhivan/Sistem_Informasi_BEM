@@ -17,8 +17,8 @@ namespace Sistem_Informasi_BEM.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public trrapat()
         {
-            this.trnotulensis = new HashSet<trnotulensi>();
             this.dtlrapats = new HashSet<dtlrapat>();
+            this.trnotulensis = new HashSet<trnotulensi>();
         }
     
         public int idrapat { get; set; }
@@ -31,10 +31,10 @@ namespace Sistem_Informasi_BEM.Models
         public string modiby { get; set; }
         public Nullable<System.DateTime> modidate { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dtlrapat> dtlrapats { get; set; }
         public virtual msdeparteman msdeparteman { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<trnotulensi> trnotulensis { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<dtlrapat> dtlrapats { get; set; }
     }
 }

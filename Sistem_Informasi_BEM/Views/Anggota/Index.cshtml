@@ -4,6 +4,7 @@
     ViewBag.Title = "Anggota";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var status = "";
+    var no = 0;
 }
 
 <div class="polman-nav-static-top">
@@ -83,6 +84,9 @@
     <thead>
         <tr>
             <th>
+                No
+            </th>
+            <th>
                 Nama
             </th>
             <th>
@@ -108,6 +112,7 @@
 
     @foreach (var item in Model)
     {
+        no++;
         if (item.status == 0)
         {
             status = "Tidak Aktif";
@@ -117,27 +122,30 @@
             status = " Aktif";
         }
         <tr>
+            <td style="width: 10px;">
+                @no
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.nama)
             </td>
-            <td style="height: 30px; width: 120px;" align="right">
+            <td style="width: 90px;" align="right">
                 @Html.DisplayFor(modelItem => item.nim)
             </td>
-            <td style="height: 30px; width: 150px;">
+            <td style="width: 150px;">
                 @Html.DisplayFor(modelItem => item.msdeparteman.namadepartemen)
             </td>
-            <td style="height: 30px; width: 150px;">
+            <td style="width: 150px;">
                 @Html.DisplayFor(modelItem => item.msjabatan.namajabatan)
             </td>
-            <td style="height: 30px; width: 50px;">
+            <td style="width: 50px;">
                 @Html.DisplayFor(modelItem => item.msperiode.tahunperiode)
             </td>
             <td style="height: 30px; width: 50px;">
                 @status
             </td>
-            <td style="height: 30px; width: 240px;">
+            <td style="width: 260px;" align="center">
                 <a href="@Url.Action("Edit", "Anggota", new { id = item.idanggota })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
-                <a href="@Url.Action("Details", "Anggota", new { id = item.idanggota })" class="btn btn-warning"><i class='fa fa-book'></i>&nbsp;Detil</a>
+                <a href="@Url.Action("Details", "Anggota", new { id = item.idanggota })" class="btn btn-warning"><i class='fa fa-list'></i>&nbsp;Detail</a>
                 <a onclick="return confirm('Yakin ingin Menghapus Data');" href="@Url.Action("Delete", "Anggota", new { id = item.idanggota })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
             </td>
         </tr>

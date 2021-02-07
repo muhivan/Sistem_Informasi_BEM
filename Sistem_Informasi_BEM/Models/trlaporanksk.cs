@@ -12,7 +12,7 @@ namespace Sistem_Informasi_BEM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class trlaporanksk : uploadFile
+    public partial class trlaporanksk :uploadFile
     {
         public int idlpksk { get; set; }
         public Nullable<int> idukm_hima { get; set; }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Sistem_Informasi_BEM.Models.msanggotabem>
 
 @{
-    ViewBag.Title = "Halaman Login";
+    ViewBag.Title = "Profil Anggota";
     Layout = null;
 }
 <!DOCTYPE html>
@@ -73,7 +73,7 @@
 
         <h3>Profil</h3>
         <ol class="breadcrumb polman-breadcrumb">
-            <li class="breadcrumb-item"><a href="" data-toggle="tooltip" data-placement="bottom">Sistem Informasi BEM</a></li>
+            <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuAdmin","Login")'">Sistem Informasi BEM</a></li>
             <li class="breadcrumb-item">Profil Anggota</li>
         </ol>
         <hr />
