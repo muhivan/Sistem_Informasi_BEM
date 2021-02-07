@@ -4,95 +4,93 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>trlaporanksk</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.namaberkas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.namaberkas)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.keterangan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.keterangan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.komentar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.komentar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tglpresent)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tglpresent)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.creaby)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.creaby)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.creadate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.creadate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.modiby)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.modiby)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.modidate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.modidate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.msukm_hima.nama)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.msukm_hima.nama)
-        </dd>
-
-    </dl>
+<div class="polman-nav-static-top">
+    <div id="iconmenu" class="fa fa-bars fa-2x polman-adjust2" style="margin-right: 15px; cursor: pointer;" aria-hidden="true" onclick="hidemenu();"></div>
+    <div class="float-left polman-adjust2">
+        <img src="~/Picture/SIBEM.png" style="height: 50px;" />
+    </div>
+    <div class="polman-menu">
+        <nav class="nav justify-content-end" style="padding-top: 0px;">
+            <div class="fa fa-user-circle-o fa-10x" style="margin-top: 8px; margin-right: 15px; cursor: pointer;" aria-hidden="true"></div>
+            <b style="font-size: 18px; float: right">@(Request.IsAuthenticated? HttpContext.Current.User.Identity.Name : "") (@ViewBag.Jabatan) <br />@ViewBag.Departemen </b>
+        </nav>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idlpksk }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="polman-nav-static-right collapse scrollstyle" id="menu">
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="list-group">
+            <a onclick="location.href='@Url.Action("Index", "Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-sign-out fa-lg fa-pull-left"></i>Logout</a>
+            <a onclick="location.href='@Url.Action("MenuBPH","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px;border: none;padding-left: 23px;"><i class="fa fa-home fa-lg fa-pull-left"></i>Dashboard</a>
+            <a onclick="location.href='@Url.Action("ProfilAnggotaDept","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px;">Profil Anggota</a>
+            <a href='#menu7' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
+            <div id='menu7' class='collapse in' role='tabpanel'>
+                <a onclick="location.href='@Url.Action("Index","OSP")'" class="list-group-item list-group-item-action  active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan OSP
+                </a>
+                <a onclick="location.href='@Url.Action("IndexBPH","KSK")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>LPJ & BAK
+                </a>
+                <a onclick="location.href='@Url.Action("IndexDept","PengajuanDana")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-text-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan Dana
+                </a>
+                <a onclick="location.href='@Url.Action("Index", "KasBPH")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Kas
+                </a>
+            </div>
+            <a href='#menu6' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Kesekretariatan</a>
+            <div id='menu6' class='collapse in' role='tabpanel'>
+                <a onclick="location.href='@Url.Action("BerkasDept","Formatksk")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Format Berkas
+                </a>
+                <a onclick="location.href='@Url.Action("Index", "trrapat")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Atur Rapat
+                </a>
+                <a onclick="location.href='@Url.Action("Index", "trnotulensi")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                    <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Notulensi Rapat
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<H3>Pengajuan OSP</H3>
+<ol class="breadcrumb polman-breadcrumb">
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuBPH","Login")'">Sistem Informasi BEM</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","OSP")'">Pengajuan OSP</a></li>
+    <li class="breadcrumb-item">Details</li>
+</ol>
+<hr />
+
+<div id="allcontent" class="polman-adjust5" style="margin-left: 0px;">
+    <div id="MainContent_panelAdd">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Detail Data Pengajuan OSP</h3>
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-striped table-bordered" style="width:100%">
+                            <tr><td>Nama Berkas</td><td> : </td><td>@Html.DisplayFor(model => model.namaberkas)</td></tr>
+                            <tr><td>Keterangan</td><td> : </td><td>@Html.DisplayFor(model => model.keterangan)</td></tr>
+                            <tr><td>Komentar</td><td> : </td><td>@Html.DisplayFor(model => model.komentar)</td></tr>
+                            <tr><td>Tanggal Present</td><td> : </td><td>@Html.DisplayFor(model => model.tglpresent)</td></tr>
+                            <tr><td>UKM / HIMA</td><td> : </td><td>@Html.DisplayFor(model => model.msukm_hima.nama)</td></tr>
+                            <tr><td>CreaBy</td><td> : </td><td> @Html.DisplayFor(model => model.creaby)</td></tr>
+                            <tr><td>ModiBy</td><td> : </td><td>@Html.DisplayFor(model => model.modiby)</td></tr>
+                            <tr><td>CreaDate</td><td> : </td><td>@Html.DisplayFor(model => model.creadate)</td></tr>
+                            <tr><td>ModiDate</td><td> : </td><td>@Html.DisplayFor(model => model.modidate)</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<span style="float: right">
+    <a href="@Url.Action("Index", "OSP", "")" class="btn btn-success" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
+</span>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />

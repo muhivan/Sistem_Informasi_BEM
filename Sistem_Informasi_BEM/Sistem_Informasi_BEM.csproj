@@ -486,6 +486,8 @@
     <Content Include="Views\KSK\IndexBPH.cshtml" />
     <Content Include="Views\KSK\EditBPH.cshtml" />
     <Content Include="Views\LaporanKas\Index.cshtml" />
+    <Content Include="Views\PengajuanDana\CreateDept.cshtml" />
+    <Content Include="Views\PengajuanDana\EditData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

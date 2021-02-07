@@ -46,6 +46,9 @@
                         <a onclick="location.href='@Url.Action("Index","OSP")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                             <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan OSP
                         </a>
+                        <a onclick="location.href='@Url.Action("IndexBPH","KSK")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                            <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>LPJ & BAK
+                        </a>
                         <a onclick="location.href='@Url.Action("IndexDept","PengajuanDana")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                             <b class='fa fa-file-text-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan Dana
                         </a>
@@ -57,6 +60,12 @@
                     <div id='menu6' class='collapse in' role='tabpanel'>
                         <a onclick="location.href='@Url.Action("BerkasDept","Formatksk")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                             <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Format Berkas
+                        </a>
+                        <a onclick="location.href='@Url.Action("Index", "trrapat")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                            <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Atur Rapat
+                        </a>
+                        <a onclick="location.href='@Url.Action("Index", "trnotulensi")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                            <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Notulensi Rapat
                         </a>
                     </div>
                 </div>
@@ -151,8 +160,8 @@
                     </div>
                     <br />
                     <span style="float:right">
-                        <a href="@Url.Action("ProfilAnggotaDept", "Login", "")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
-                        <input type="submit" value="Perbarui" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
+                        <a href="@Url.Action("ProfilAnggotaDept", "Login", "")" class="btn btn-warning" style="padding: 15px 40px; font-size: 12pt;">Batal</a>
+                        <input type="submit" value="Perbarui" class="btn btn-primary" style="padding: 15px 30px; font-size: 12pt;" />
                     </span>
                 </div>
             </div>

@@ -109,40 +109,34 @@ namespace Sistem_Informasi_BEM.Controllers
             string number = RemoveNonNumeric(nominal);
             int nominalkhas = Int32.Parse(number);
             string path = uploadimage(imgfile);
-            if (ModelState.IsValid)
+
+            ViewBag.idanggota2 = this.Session["idanggota"];
+            trka khas = db.trkas.Find(trka.idkas);
+            khas.modidate = DateTime.Now;
+            khas.nominal = nominalkhas;
+            khas.modiby = (string)Session["modiby"];
+            khas.jeniskas = trka.jeniskas;
+            if (path == "")
             {
-                ViewBag.idanggota2 = this.Session["idanggota"];
-                trka khas = db.trkas.Find(trka.idkas);
-                khas.modidate = DateTime.Now;
-                khas.nominal = nominalkhas;
-                khas.modiby = (string)Session["modiby"];
-                khas.jeniskas = trka.jeniskas;
-                if (path == "")
+                khas.status = 1;
+            }
+            else
+            {
+                if(trka.jeniskas == "BEM")
                 {
-                    khas.status = 1;
+                    khas.status = 3;
+                    khas.uplod_bukti = path;
                 }
                 else
                 {
-                    if(trka.jeniskas == "BEM")
-                    {
-                        khas.status = 3;
-                        khas.uplod_bukti = path;
-                    }
-                    else
-                    {
-                        khas.status = 2;
-                        khas.uplod_bukti = path;
-                    } 
-                }
-                db.SaveChanges();
-                ViewBag.Jabatan = this.Session["Jabatan"];
-                ViewBag.Departemen = this.Session["Departemen"];
-                return RedirectToAction("Index");
+                    khas.status = 2;
+                    khas.uplod_bukti = path;
+                } 
             }
+            db.SaveChanges();
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
-            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trka.idanggota);
-            return View(trka);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int? id)
@@ -165,22 +159,15 @@ namespace Sistem_Informasi_BEM.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(trka trka) { 
-            if (ModelState.IsValid)
-            {
-                ViewBag.idanggota2 = this.Session["idanggota"];
-                trka khas = db.trkas.Find(trka.idkas);
-                khas.modidate = DateTime.Now;
-                khas.modiby = (string)Session["modiby"];
-                khas.status = 4;
-                db.SaveChanges();
-                ViewBag.Jabatan = this.Session["Jabatan"];
-                ViewBag.Departemen = this.Session["Departemen"];
-                return RedirectToAction("Index");
-            }
+            ViewBag.idanggota2 = this.Session["idanggota"];
+            trka khas = db.trkas.Find(trka.idkas);
+            khas.modidate = DateTime.Now;
+            khas.modiby = (string)Session["modiby"];
+            khas.status = 4;
+            db.SaveChanges();
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
-            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trka.idanggota);
-            return View(trka);
+            return RedirectToAction("Index");
         }
 
         public ActionResult TidakValidDept(int id)
