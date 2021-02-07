@@ -18,6 +18,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: KSK
         public ActionResult Index()
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var idukmhima = (string)Session["idUKM_Hima"];
             int idukm_hima = Convert.ToInt32(idukmhima);
             var trlaporanksks = db.trlaporanksks.SqlQuery("SELECT t.* FROM trlaporanksk t INNER JOIN msukm_hima u on t.idukm_hima=u.idukm_hima where t.idukm_hima = " + idukm_hima + "AND (t.keterangan ='LPJ' OR t.keterangan = 'BAK')").ToList();
@@ -26,6 +28,8 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult IndexBPH()
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var jabatan = (string)Session["Jabatan"];
             string j = jabatan.ToString();
             var idDept_ = (string)Session["idDept"];
@@ -60,6 +64,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: KSK/Create
         public ActionResult Create()
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             ViewBag.idukm_hima = new SelectList(db.msukm_hima, "idukm_hima", "nama");
             return View();
         }
@@ -71,6 +77,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(trlaporanksk trlaporanksk)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var idukmhima = (string)Session["idUKM_Hima"];
             if (ModelState.IsValid)
             {
@@ -105,6 +113,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: KSK/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -157,6 +167,8 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult EditBPH(int? id)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -174,6 +186,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditBPH(trlaporanksk trlaporanksk)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (ModelState.IsValid)
             {
                 trlaporanksk msformat = db.trlaporanksks.Find(trlaporanksk.idlpksk);
@@ -211,6 +225,8 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public void setStatus(trlaporanksk trlaporanksk, trlaporanksk msformat)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var jabatan = (string)Session["Jabatan"];
             string j = jabatan.ToString();
             var idDept_ = (string)Session["idDept"];
@@ -226,6 +242,8 @@ namespace Sistem_Informasi_BEM.Controllers
         }
         public void statusDept(trlaporanksk trlaporanksk, trlaporanksk msformat)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (trlaporanksk.komentar == "" || trlaporanksk.komentar == "-" || trlaporanksk.komentar == null)
             {
                 trlaporanksk.komentar = "-";
@@ -239,6 +257,8 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public void statusBPH(trlaporanksk trlaporanksk, trlaporanksk msformat)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if ((trlaporanksk.komentar == "" || trlaporanksk.komentar == "-" || trlaporanksk.komentar == null) && trlaporanksk.status == null)
             {
                 trlaporanksk.komentar = "-";

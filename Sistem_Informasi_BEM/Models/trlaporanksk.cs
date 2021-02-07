@@ -17,13 +17,12 @@ namespace Sistem_Informasi_BEM.Models
     {
         public int idlpksk { get; set; }
         public Nullable<int> idukm_hima { get; set; }
-        [Required(ErrorMessage = "Nama tidak boleh kosong")]
         public string namaberkas { get; set; }
         public string keterangan { get; set; }
         public Nullable<int> status { get; set; }
         public string komentar { get; set; }
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> tglpresent { get; set; }
         public string creaby { get; set; }
         public Nullable<System.DateTime> creadate { get; set; }

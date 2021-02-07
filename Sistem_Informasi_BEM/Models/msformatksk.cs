@@ -23,7 +23,6 @@ namespace Sistem_Informasi_BEM.Models
         public Nullable<System.DateTime> creadate { get; set; }
         public string modiby { get; set; }
         public Nullable<System.DateTime> modidate { get; set; }
-        [Required(ErrorMessage = "Berkas tidak boleh kosong")]
         public string dataBerkas { get; set; }
     }
 }

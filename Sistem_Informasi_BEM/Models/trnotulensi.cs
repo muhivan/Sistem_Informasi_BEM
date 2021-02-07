@@ -18,7 +18,6 @@ namespace Sistem_Informasi_BEM.Models
         public int idnotulensi { get; set; }
         public Nullable<int> idrapat { get; set; }
         public Nullable<int> jmlhadir { get; set; }
-        [Required(ErrorMessage = "Nama tidak boleh kosong")]
         public string notulensi { get; set; }
         public string creaby { get; set; }
         public Nullable<System.DateTime> creadate { get; set; }

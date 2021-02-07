@@ -18,6 +18,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: trnotulensi
         public ActionResult Index()
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var idDept_ = (string)Session["idDept"];
             int idDept = Convert.ToInt32(idDept_);
 
@@ -44,6 +46,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: trnotulensi/Create
         public ActionResult Create()
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             ViewBag.idrapat = new SelectList(db.trrapats, "idrapat", "judulrapat");
             return View();
         }
@@ -55,6 +59,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(trnotulensi trnotulensi)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (ModelState.IsValid)
             {
                 foreach (var file in trnotulensi.files)
@@ -88,6 +94,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: trnotulensi/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -108,6 +116,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(trnotulensi trnotulensi)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (ModelState.IsValid)
             {
                 trnotulensi msformat = db.trnotulensis.Find(trnotulensi.idnotulensi);

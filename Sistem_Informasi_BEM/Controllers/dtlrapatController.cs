@@ -17,6 +17,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: dtlrapat
         public ActionResult Index()
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var id =Convert.ToInt32(Session["idanggota"]);
             var dtlrapats = db.dtlrapats.Include(d => d.msanggotabem).Include(d => d.trrapat).Where(d => d.idanggota == id);
             return View(dtlrapats.ToList());
@@ -25,6 +27,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: dtlrapat/Details/5
         public ActionResult Details(int? id, int? id1)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -67,6 +71,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: dtlrapat/Edit/5
         public ActionResult Edit(int? id, int? id1)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,13 +87,12 @@ namespace Sistem_Informasi_BEM.Controllers
             return View(dtlrapat);
         }
 
-        // POST: dtlrapat/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idrapat,idanggota,keterangan")] dtlrapat dtlrapat)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             dtlrapat rapat = db.dtlrapats.Find(dtlrapat.idrapat, dtlrapat.idanggota);
             trrapat r = db.trrapats.Find(rapat.idrapat);
             if (r.status == 1)

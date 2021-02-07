@@ -52,6 +52,8 @@ namespace Sistem_Informasi_BEM.Controllers
         {
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
+            var ddldept = db.msdepartemen.Where(m => m.status == 1);
+            ViewBag.iddepartemen = new SelectList(ddldept, "iddepartemen", "namadepartemen");
             return View();
         }
 
@@ -96,6 +98,12 @@ namespace Sistem_Informasi_BEM.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            var ddldept = db.msdepartemen.Where(m => m.status == 1);
+            var ddljab = db.msjabatans.Where(m => m.status == 1);
+            var ddlper = db.msperiodes.Where(m => m.status == 1);
+            ViewBag.iddepartemen = new SelectList(ddldept, "iddepartemen", "namadepartemen", msukm_hima.iddepartemen);
             return View(msukm_hima);
         }
 

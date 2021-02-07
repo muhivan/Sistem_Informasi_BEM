@@ -170,6 +170,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(msanggotabem msanggotabem, string cek_email, string cek_nim, HttpPostedFileBase imgfile)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             string path = uploadimage(imgfile);
             var cek = db.msanggotabems.FirstOrDefault(x => x.email == msanggotabem.email);
             if (msanggotabem.email == cek_email)
@@ -231,8 +233,6 @@ namespace Sistem_Informasi_BEM.Controllers
                         }
                     }   
                 }
-                ViewBag.Jabatan = this.Session["Jabatan"];
-                ViewBag.Departemen = this.Session["Departemen"];
                 var ddldept = db.msdepartemen.Where(m => m.status == 1);
                 var ddljab = db.msjabatans.Where(m => m.status == 1);
                 var ddlper = db.msperiodes.Where(m => m.status == 1);

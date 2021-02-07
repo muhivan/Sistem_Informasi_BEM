@@ -19,6 +19,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: trrapat
         public ActionResult Index()
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var idDept_ = (string)Session["idDept"];
             int idDept = Convert.ToInt32(idDept_);
 
@@ -44,6 +46,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: trrapat/Create
         public ActionResult Create()
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             ViewBag.iddepartemen = new SelectList(db.msdepartemen, "iddepartemen", "namadepartemen");
             return View();
         }
@@ -88,6 +92,8 @@ namespace Sistem_Informasi_BEM.Controllers
         // GET: trrapat/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -108,6 +114,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(trrapat trrapat)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var namaDept = (string)Session["Departemen"];
             var namaDept1 = namaDept.ToString();
             var cek = db.trrapats.FirstOrDefault(x => x.status == 1);

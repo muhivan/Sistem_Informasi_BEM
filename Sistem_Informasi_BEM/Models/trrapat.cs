@@ -26,8 +26,8 @@ namespace Sistem_Informasi_BEM.Models
         public Nullable<int> iddepartemen { get; set; }
         [Required(ErrorMessage = "Judul Rapat tidak boleh kosong")]
         public string judulrapat { get; set; }
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy HH:mm}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> tglrapat { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }

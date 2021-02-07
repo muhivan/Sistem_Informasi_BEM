@@ -113,6 +113,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateDept(trpengajuandana trpengajuandana, string nominal)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             string number = RemoveNonNumeric(nominal);
             int nominalkhas = Int32.Parse(number);
 
@@ -148,6 +150,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(trpengajuandana trpengajuandana, string nominal)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             string number = RemoveNonNumeric(nominal);
             int nominalkhas = Int32.Parse(number);
 
@@ -185,6 +189,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditDept(trpengajuandana trpengajuandana, HttpPostedFileBase imgfile)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             string path = uploadimage(imgfile);
             if (ModelState.IsValid)
             {
@@ -217,6 +223,7 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult EditData(int? id)
         {
+
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             if (id == null)

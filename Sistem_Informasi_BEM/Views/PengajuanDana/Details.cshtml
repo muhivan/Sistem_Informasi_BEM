@@ -43,20 +43,26 @@
                     <a onclick="location.href='@Url.Action("ProfilAnggotaPIC","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px;">Profil Anggota</a>
                     <a href='#menu7' role='tab' class='list-group-item list-group-item-action polman-menu-active' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
                     <div id='menu7' class='collapse in' role='tabpanel'>
-                        <a onclick="location.href='@Url.Action("Index","PengajuanOSP")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
-                            <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan OSP
+                        <a onclick="location.href='@Url.Action("Index","PengajuanOSP")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                            <b class='fa fa-envelope fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan OSP
                         </a>
-                        <a onclick="location.href='@Url.Action("Index","PengajuanDana")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
-                            <b class="fa fa-file-text-o fa-lg fa-pull-left">&nbsp;&nbsp;</b>Pengajuan Dana
+                        <a onclick="location.href='@Url.Action("Index","KSK")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                            <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;&nbsp;</b>LPJ & BAK
                         </a>
-                        <a onclick="location.href='@Url.Action("Index", "Kas")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
-                            <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;</b>Kas
+                        <a onclick="location.href='@Url.Action("Index","PengajuanDana")'" class="list-group-item list-group-item-action  active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                            <b class="fa fa-file-text-o fa-lg fa-pull-left">&nbsp;&nbsp;&nbsp;</b>Pengajuan Dana
+                        </a>
+                        <a onclick="location.href='@Url.Action("Index", "Kas")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                            <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Kas
+                        </a>
+                        <a onclick="location.href='@Url.Action("Index", "dtlrapat")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                            <b class='fa fa-handshake-o fa-lg fa-pull-left'>&nbsp;</b>Perizinan Rapat
                         </a>
                     </div>
                     <a href='#menu6' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Kesekretariatan</a>
                     <div id='menu6' class='collapse in' role='tabpanel'>
                         <a onclick="location.href='@Url.Action("Berkas","Formatksk")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
-                            <b class='fa fa-file-excel-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Format Berkas
+                            <b class='fa fa-book fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Format Berkas
                         </a>
                     </div>
                 </div>
@@ -74,15 +80,15 @@
             <div id="MainContent_panelAdd">
                 <div class="card">
                     <div class="card-header">
-                        <span id="MainContent_labelTitleAdd" style="font-weight:bold;">Detail Data  @Html.DisplayFor(model => model.@event)</span>
+                        <h2 class="text-center" style="font-weight:bold;">Detail Data  @Html.DisplayFor(model => model.@event)</h2>
                     </div>
                     <div class="card-block">
                         <div class="row">
                             <div class="col-lg-6">
-                                <table class="table table-striped table-bordered" style="width:80%">
+                                <table class="table table-striped table-bordered" style="width:100%">
                                     <tr><td>Nama</td><td> : </td><td>@Html.DisplayFor(model => model.msanggotabem.nama)</td></tr>
                                     <tr><td>Tujuan</td><td> : </td><td> @Html.DisplayFor(model => model.tujuan)</td></tr>
-                                    <tr><td>Nominal</td><td> : </td><td> @Html.DisplayFor(model => model.jumlah)</td></tr>
+                                    <tr><td>Nominal</td><td> : </td><td>Rp @Html.DisplayFor(model => model.jumlah)</td></tr>
                                     <tr><td>Jenis Pengajuan Dana</td><td> : </td><td> @Html.DisplayFor(model => model.kepada)</td></tr>
                                     <tr><td>CreaBy</td><td> : </td><td> @Html.DisplayFor(model => model.creaby)</td></tr>
                                     <tr><td>ModiBy</td><td> : </td><td>@Html.DisplayFor(model => model.modiby)</td></tr>
@@ -103,7 +109,7 @@
         </div>
         <br />
         <span style="float: right">
-            <a href="@Url.Action("Index", "PengajuanDana", "")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
+            <a href="@Url.Action("Index", "PengajuanDana", "")" class="btn btn-success" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
         </span>
     </div>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />

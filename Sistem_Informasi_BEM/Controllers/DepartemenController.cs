@@ -102,6 +102,8 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(msdeparteman msdeparteman)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             var cek = db.msdepartemen.FirstOrDefault(x => x.namadepartemen == msdeparteman.namadepartemen);
             if (cek == null)
             {

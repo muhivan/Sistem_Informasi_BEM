@@ -16,11 +16,11 @@ namespace Sistem_Informasi_BEM.Controllers
         private DBSIBEMEntities db = new DBSIBEMEntities();
         private DBSIBEMDataSet db1 = new DBSIBEMDataSet();
 
-
-
         // GET: LaporanKas
         public ActionResult Index(string option, DateTime? date = null)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             string y = Convert.ToDateTime(date).Year.ToString();
             string m = Convert.ToDateTime(date).Month.ToString();
             var kas = db.LaporanKas.SqlQuery("SELECT * FROM LaporanKas WHERE jeniskas='" + option + "' AND YEAR(date)='" + y + "' AND MONTH(date)='" + m + "'").ToList();
@@ -31,14 +31,12 @@ namespace Sistem_Informasi_BEM.Controllers
                 TempData["Option"] = option;
             }
             return View(kas.ToList());
-
-
         }
-
-       
 
         public ActionResult Reports(string ReportType)
         {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
             string yy;
             string mm;
             string op;

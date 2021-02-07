@@ -88,6 +88,9 @@
                 UKM / HIMA
             </th>
             <th>
+                Departemen
+            </th>
+            <th>
                 Status
             </th>
             <th>Aksi</th>
@@ -111,6 +114,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.msdeparteman.namadepartemen)
             </td>
             <td style="width: 100px;">
                 @status

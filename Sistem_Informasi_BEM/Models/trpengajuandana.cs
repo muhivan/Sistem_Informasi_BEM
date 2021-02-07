@@ -21,7 +21,6 @@ namespace Sistem_Informasi_BEM.Models
         public string @event { get; set; }
         [Required(ErrorMessage = "Tujuan tidak boleh kosong")]
         public string tujuan { get; set; }
-        [Required(ErrorMessage = "Jumlah tidak boleh kosong")]
         [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
         public Nullable<int> jumlah { get; set; }
         public Nullable<int> status { get; set; }

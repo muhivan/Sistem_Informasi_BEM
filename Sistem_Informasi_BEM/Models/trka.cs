@@ -17,10 +17,8 @@ namespace Sistem_Informasi_BEM.Models
     {
         public int idkas { get; set; }
         public Nullable<int> idanggota { get; set; }
-        [Required(ErrorMessage = "Nominal tidak boleh kosong")]
         [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
         public Nullable<int> nominal { get; set; }
-        [Required(ErrorMessage = "Jenis tidak boleh kosong")]
         public string jeniskas { get; set; }
         public Nullable<int> status { get; set; }
         public string creaby { get; set; }
