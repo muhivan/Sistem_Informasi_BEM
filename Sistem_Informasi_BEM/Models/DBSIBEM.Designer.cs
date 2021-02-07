@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\IVAN\Desktop\Kelompok 12 PRG4\github\Sistem_Informasi_BEM\Sistem_Informasi_BEM\Models\DBSIBEM.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\12345\source\repos\Sistem_Informasi_BEM\Sistem_Informasi_BEM\Models\DBSIBEM.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

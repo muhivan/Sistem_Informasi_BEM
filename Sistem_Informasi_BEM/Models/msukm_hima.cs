@@ -28,7 +28,9 @@ namespace Sistem_Informasi_BEM.Models
         public Nullable<System.DateTime> creadate { get; set; }
         public string modiby { get; set; }
         public Nullable<System.DateTime> modidate { get; set; }
+        public Nullable<int> iddepartemen { get; set; }
     
+        public virtual msdeparteman msdeparteman { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<msjabatan> msjabatans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

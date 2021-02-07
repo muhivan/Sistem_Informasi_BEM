@@ -324,13 +324,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
-    <EntityDeploy Include="Models\DBSIBEM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBSIBEM.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DBSIBEM.edmx.diagram">
-      <DependentUpon>DBSIBEM.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\theme\jquery-1.12.4.min.map" />
     <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -347,6 +340,13 @@
     </None>
     <Content Include="DBSIBEMDataSet.xss">
       <DependentUpon>DBSIBEMDataSet.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\DBSIBEM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBSIBEM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DBSIBEM.edmx.diagram">
+      <DependentUpon>DBSIBEM.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

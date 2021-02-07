@@ -18,6 +18,7 @@ namespace Sistem_Informasi_BEM.Models
         public msdeparteman()
         {
             this.msanggotabems = new HashSet<msanggotabem>();
+            this.msukm_hima = new HashSet<msukm_hima>();
             this.trrapats = new HashSet<trrapat>();
         }
     
@@ -31,6 +32,8 @@ namespace Sistem_Informasi_BEM.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<msanggotabem> msanggotabems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<msukm_hima> msukm_hima { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<trrapat> trrapats { get; set; }
     }
