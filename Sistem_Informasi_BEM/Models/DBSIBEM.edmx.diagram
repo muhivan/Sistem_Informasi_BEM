@@ -30,6 +30,7 @@
         <AssociationConnector Association="DBSIBEMModel.FK_dtlrapat_msanggotabem" />
         <AssociationConnector Association="DBSIBEMModel.FK_dtlrapat_trrapat" />
         <AssociationConnector Association="DBSIBEMModel.FK_msukm_hima_msdepartemen" />
+        <EntityTypeShape EntityType="DBSIBEMModel.LaporanKa" Width="1.5" PointX="10.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

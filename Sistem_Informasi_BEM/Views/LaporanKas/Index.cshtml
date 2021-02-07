@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Sistem_Informasi_BEM.Models.LaporanKa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Laporan Kas</h2>
+
+
+@Html.ActionLink("Ekspor Excel", "Reports", new { ReportType = "Excel" }) |
+@Html.ActionLink("Ekspor PDF", "Reports", new { ReportType = "PDF" }) |
+@Html.ActionLink("Ekspor Word", "Reports", new { ReportType = "Word" }) |
+@Html.ActionLink("Ekspor Gambar", "Reports", new { ReportType = "Image" })
+<br />
+<br />
+
+@using (Html.BeginForm("Index", "LaporanKas", FormMethod.Get))
+{
+    //the following are search options
+    <b> Jenis Kas: </b>@Html.RadioButton("option", "BEM") <text>BEM</text> @Html.RadioButton("option", "Departemen") <text> Departemen </text>
+    <b><span>Periode : </span><input type="datetime-local" id="date" name="date" value="<%:DateTime.Now%>"/></b>
+    <input type="submit" name="submit" value="Cari" />
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.jeniskas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nominal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nama)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jeniskas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nominal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nama)
+                </td>
+            </tr>
+        }
+
+    </table>

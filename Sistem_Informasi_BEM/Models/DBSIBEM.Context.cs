@@ -38,5 +38,6 @@ namespace Sistem_Informasi_BEM.Models
         public virtual DbSet<trrapat> trrapats { get; set; }
         public virtual DbSet<trpengajuandana> trpengajuandanas { get; set; }
         public virtual DbSet<dtlrapat> dtlrapats { get; set; }
+        public virtual DbSet<LaporanKa> LaporanKas { get; set; }
     }
 }
