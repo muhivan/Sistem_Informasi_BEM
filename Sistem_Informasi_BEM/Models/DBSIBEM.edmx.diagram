@@ -4,22 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5cab79e2974d4187a165f2e756a3fd33" Name="Diagram1">
-        <EntityTypeShape EntityType="DBSIBEMModel.msanggotabem" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.msdeparteman" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.msformatksk" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.msjabatan" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.msnew" Width="1.5" PointX="9.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.msperiode" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.msukm_hima" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.trka" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.trlaporanksk" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.trnotulensi" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBSIBEMModel.trrapat" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+      <Diagram DiagramId="97b7f2a092df416b98642f5fb46d3c6e" Name="Diagram1">
+        <EntityTypeShape EntityType="DBSIBEMModel.dtlrapat" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.msanggotabem" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.msdeparteman" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.msformatksk" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.msjabatan" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.msnew" Width="1.5" PointX="9.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.msperiode" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.msukm_hima" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.trka" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.trlaporanksk" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.trnotulensi" Width="1.5" PointX="7.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.trpengajuandana" Width="1.5" PointX="7.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBSIBEMModel.trrapat" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DBSIBEMModel.FK_dtlrapat_msanggotabem" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSIBEMModel.FK_dtlrapat_trrapat" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_msanggotabem_msdepartemen" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_msanggotabem_msjabatan" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_msanggotabem_msperiode" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_trkas_msanggotabem" ManuallyRouted="false" />
+        <AssociationConnector Association="DBSIBEMModel.FK_trpengajuandana_msanggotabem" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_trrapat_msdepartemen" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_msjabatan_msukm_hima" ManuallyRouted="false" />
         <AssociationConnector Association="DBSIBEMModel.FK_trlaporanksk_msukm_hima" ManuallyRouted="false" />

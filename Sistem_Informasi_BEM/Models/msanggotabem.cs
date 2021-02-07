@@ -17,9 +17,9 @@ namespace Sistem_Informasi_BEM.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public msanggotabem()
         {
+            this.dtlrapats = new HashSet<dtlrapat>();
             this.trkas = new HashSet<trka>();
             this.trpengajuandanas = new HashSet<trpengajuandana>();
-            this.dtlrapats = new HashSet<dtlrapat>();
         }
     
         public int idanggota { get; set; }
@@ -39,6 +39,8 @@ namespace Sistem_Informasi_BEM.Models
         public Nullable<System.DateTime> modidate { get; set; }
         public string foto { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dtlrapat> dtlrapats { get; set; }
         public virtual msdeparteman msdeparteman { get; set; }
         public virtual msjabatan msjabatan { get; set; }
         public virtual msperiode msperiode { get; set; }
@@ -46,7 +48,5 @@ namespace Sistem_Informasi_BEM.Models
         public virtual ICollection<trka> trkas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<trpengajuandana> trpengajuandanas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<dtlrapat> dtlrapats { get; set; }
     }
 }

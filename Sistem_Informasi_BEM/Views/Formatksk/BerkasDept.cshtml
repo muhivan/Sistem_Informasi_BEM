@@ -72,13 +72,13 @@
     {
         no++;
         <tr>
-            <td style="height: 50px; width: 50px;">
+            <td style="width: 50px;">
                 @no
             </td>
-            <td style="height: 50px; width: 250px;">
+            <td style="width: 250px;">
                 @Html.DisplayFor(modelItem => item.nama)
             </td>
-            <td style="height: 50px; width: 350px;">
+            <td style="width: 350px;">
                 @Html.ActionLink(item.dataBerkas, "Download", new { fileName = item.dataBerkas })
             </td>
         </tr>

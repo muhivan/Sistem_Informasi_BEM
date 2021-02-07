@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBSIBEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBSIBEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="dtlrapat">
           <Key>
             <PropertyRef Name="idrapat" />
@@ -122,7 +122,6 @@
           <Property Name="creadate" Type="datetime" />
           <Property Name="modiby" Type="varchar" MaxLength="50" />
           <Property Name="modidate" Type="datetime" />
-          <Property Name="iddepartemen" Type="int" />
         </EntityType>
         <EntityType Name="trkas">
           <Key>
@@ -272,18 +271,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_msukm_hima_msdepartemen">
-          <End Role="msdepartemen" Type="Self.msdepartemen" Multiplicity="0..1" />
-          <End Role="msukm_hima" Type="Self.msukm_hima" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="msdepartemen">
-              <PropertyRef Name="iddepartemen" />
-            </Principal>
-            <Dependent Role="msukm_hima">
-              <PropertyRef Name="iddepartemen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_trkas_msanggotabem">
           <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="0..1" />
           <End Role="trkas" Type="Self.trkas" Multiplicity="*" />
@@ -383,10 +370,6 @@
             <End Role="msukm_hima" EntitySet="msukm_hima" />
             <End Role="msjabatan" EntitySet="msjabatan" />
           </AssociationSet>
-          <AssociationSet Name="FK_msukm_hima_msdepartemen" Association="Self.FK_msukm_hima_msdepartemen">
-            <End Role="msdepartemen" EntitySet="msdepartemen" />
-            <End Role="msukm_hima" EntitySet="msukm_hima" />
-          </AssociationSet>
           <AssociationSet Name="FK_trkas_msanggotabem" Association="Self.FK_trkas_msanggotabem">
             <End Role="msanggotabem" EntitySet="msanggotabem" />
             <End Role="trkas" EntitySet="trkas" />
@@ -408,10 +391,22 @@
             <End Role="trrapat" EntitySet="trrapat" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBSIBEMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dtlrapat">
+          <Key>
+            <PropertyRef Name="idrapat" />
+            <PropertyRef Name="idanggota" />
+          </Key>
+          <Property Name="idrapat" Type="Int32" Nullable="false" />
+          <Property Name="idanggota" Type="Int32" Nullable="false" />
+          <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="msanggotabem" Relationship="Self.FK_dtlrapat_msanggotabem" FromRole="dtlrapat" ToRole="msanggotabem" />
+          <NavigationProperty Name="trrapat" Relationship="Self.FK_dtlrapat_trrapat" FromRole="dtlrapat" ToRole="trrapat" />
+        </EntityType>
         <EntityType Name="msanggotabem">
           <Key>
             <PropertyRef Name="idanggota" />
@@ -431,13 +426,13 @@
           <Property Name="creadate" Type="DateTime" Precision="3" />
           <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="modidate" Type="DateTime" Precision="3" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dtlrapats" Relationship="Self.FK_dtlrapat_msanggotabem" FromRole="msanggotabem" ToRole="dtlrapat" />
           <NavigationProperty Name="msdeparteman" Relationship="Self.FK_msanggotabem_msdepartemen" FromRole="msanggotabem" ToRole="msdepartemen" />
           <NavigationProperty Name="msjabatan" Relationship="Self.FK_msanggotabem_msjabatan" FromRole="msanggotabem" ToRole="msjabatan" />
           <NavigationProperty Name="msperiode" Relationship="Self.FK_msanggotabem_msperiode" FromRole="msanggotabem" ToRole="msperiode" />
           <NavigationProperty Name="trkas" Relationship="Self.FK_trkas_msanggotabem" FromRole="msanggotabem" ToRole="trkas" />
-          <NavigationProperty Name="trpengajuandanas" Relationship="DBSIBEMModel.FK_trpengajuandana_msanggotabem" FromRole="msanggotabem" ToRole="trpengajuandana" />
-          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="dtlrapats" Relationship="DBSIBEMModel.FK_dtlrapat_msanggotabem" FromRole="msanggotabem" ToRole="dtlrapat1" />
+          <NavigationProperty Name="trpengajuandanas" Relationship="Self.FK_trpengajuandana_msanggotabem" FromRole="msanggotabem" ToRole="trpengajuandana" />
         </EntityType>
         <EntityType Name="msdeparteman">
           <Key>
@@ -452,7 +447,6 @@
           <Property Name="modidate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="msanggotabems" Relationship="Self.FK_msanggotabem_msdepartemen" FromRole="msdepartemen" ToRole="msanggotabem" />
           <NavigationProperty Name="trrapats" Relationship="Self.FK_trrapat_msdepartemen" FromRole="msdepartemen" ToRole="trrapat" />
-          <NavigationProperty Name="msukm_hima" Relationship="DBSIBEMModel.FK_msukm_hima_msdepartemen" FromRole="msdeparteman" ToRole="msukm_hima" />
         </EntityType>
         <EntityType Name="msformatksk">
           <Key>
@@ -523,8 +517,6 @@
           <Property Name="modidate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="msjabatans" Relationship="Self.FK_msjabatan_msukm_hima" FromRole="msukm_hima" ToRole="msjabatan" />
           <NavigationProperty Name="trlaporanksks" Relationship="Self.FK_trlaporanksk_msukm_hima" FromRole="msukm_hima" ToRole="trlaporanksk" />
-          <Property Name="iddepartemen" Type="Int32" />
-          <NavigationProperty Name="msdeparteman" Relationship="DBSIBEMModel.FK_msukm_hima_msdepartemen" FromRole="msukm_hima" ToRole="msdeparteman" />
         </EntityType>
         <EntityType Name="trka">
           <Key>
@@ -539,8 +531,8 @@
           <Property Name="creadate" Type="DateTime" Precision="3" />
           <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="modidate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="msanggotabem" Relationship="Self.FK_trkas_msanggotabem" FromRole="trkas" ToRole="msanggotabem" />
           <Property Name="uplod_bukti" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="msanggotabem" Relationship="Self.FK_trkas_msanggotabem" FromRole="trkas" ToRole="msanggotabem" />
         </EntityType>
         <EntityType Name="trlaporanksk">
           <Key>
@@ -574,6 +566,24 @@
           <Property Name="status" Type="Int32" />
           <NavigationProperty Name="trrapat" Relationship="Self.FK_trnotulensi_trrapat" FromRole="trnotulensi" ToRole="trrapat" />
         </EntityType>
+        <EntityType Name="trpengajuandana">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idanggota" Type="Int32" />
+          <Property Name="event" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tujuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="jumlah" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="creaby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="creadate" Type="DateTime" Precision="0" />
+          <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modidate" Type="DateTime" Precision="0" />
+          <Property Name="kepada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bukti_kirim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="msanggotabem" Relationship="Self.FK_trpengajuandana_msanggotabem" FromRole="trpengajuandana" ToRole="msanggotabem" />
+        </EntityType>
         <EntityType Name="trrapat">
           <Key>
             <PropertyRef Name="idrapat" />
@@ -587,10 +597,34 @@
           <Property Name="creadate" Type="DateTime" Precision="3" />
           <Property Name="modiby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="modidate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="dtlrapats" Relationship="Self.FK_dtlrapat_trrapat" FromRole="trrapat" ToRole="dtlrapat" />
           <NavigationProperty Name="msdeparteman" Relationship="Self.FK_trrapat_msdepartemen" FromRole="trrapat" ToRole="msdepartemen" />
           <NavigationProperty Name="trnotulensis" Relationship="Self.FK_trnotulensi_trrapat" FromRole="trrapat" ToRole="trnotulensi" />
-          <NavigationProperty Name="dtlrapats" Relationship="DBSIBEMModel.FK_dtlrapat_trrapat" FromRole="trrapat" ToRole="dtlrapat1" />
         </EntityType>
+        <Association Name="FK_dtlrapat_msanggotabem">
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="1" />
+          <End Role="dtlrapat" Type="Self.dtlrapat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msanggotabem">
+              <PropertyRef Name="idanggota" />
+            </Principal>
+            <Dependent Role="dtlrapat">
+              <PropertyRef Name="idanggota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dtlrapat_trrapat">
+          <End Role="trrapat" Type="Self.trrapat" Multiplicity="1" />
+          <End Role="dtlrapat" Type="Self.dtlrapat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trrapat">
+              <PropertyRef Name="idrapat" />
+            </Principal>
+            <Dependent Role="dtlrapat">
+              <PropertyRef Name="idrapat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_msanggotabem_msdepartemen">
           <End Role="msdepartemen" Type="Self.msdeparteman" Multiplicity="0..1" />
           <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="*" />
@@ -635,6 +669,18 @@
               <PropertyRef Name="idanggota" />
             </Principal>
             <Dependent Role="trkas">
+              <PropertyRef Name="idanggota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trpengajuandana_msanggotabem">
+          <End Role="msanggotabem" Type="Self.msanggotabem" Multiplicity="0..1" />
+          <End Role="trpengajuandana" Type="Self.trpengajuandana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="msanggotabem">
+              <PropertyRef Name="idanggota" />
+            </Principal>
+            <Dependent Role="trpengajuandana">
               <PropertyRef Name="idanggota" />
             </Dependent>
           </ReferentialConstraint>
@@ -688,6 +734,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBSIBEMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dtlrapats" EntityType="Self.dtlrapat" />
           <EntitySet Name="msanggotabems" EntityType="Self.msanggotabem" />
           <EntitySet Name="msdepartemen" EntityType="Self.msdeparteman" />
           <EntitySet Name="msformatksks" EntityType="Self.msformatksk" />
@@ -698,7 +745,16 @@
           <EntitySet Name="trkas" EntityType="Self.trka" />
           <EntitySet Name="trlaporanksks" EntityType="Self.trlaporanksk" />
           <EntitySet Name="trnotulensis" EntityType="Self.trnotulensi" />
+          <EntitySet Name="trpengajuandanas" EntityType="Self.trpengajuandana" />
           <EntitySet Name="trrapats" EntityType="Self.trrapat" />
+          <AssociationSet Name="FK_dtlrapat_msanggotabem" Association="Self.FK_dtlrapat_msanggotabem">
+            <End Role="msanggotabem" EntitySet="msanggotabems" />
+            <End Role="dtlrapat" EntitySet="dtlrapats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dtlrapat_trrapat" Association="Self.FK_dtlrapat_trrapat">
+            <End Role="trrapat" EntitySet="trrapats" />
+            <End Role="dtlrapat" EntitySet="dtlrapats" />
+          </AssociationSet>
           <AssociationSet Name="FK_msanggotabem_msdepartemen" Association="Self.FK_msanggotabem_msdepartemen">
             <End Role="msdepartemen" EntitySet="msdepartemen" />
             <End Role="msanggotabem" EntitySet="msanggotabems" />
@@ -714,6 +770,10 @@
           <AssociationSet Name="FK_trkas_msanggotabem" Association="Self.FK_trkas_msanggotabem">
             <End Role="msanggotabem" EntitySet="msanggotabems" />
             <End Role="trkas" EntitySet="trkas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trpengajuandana_msanggotabem" Association="Self.FK_trpengajuandana_msanggotabem">
+            <End Role="msanggotabem" EntitySet="msanggotabems" />
+            <End Role="trpengajuandana" EntitySet="trpengajuandanas" />
           </AssociationSet>
           <AssociationSet Name="FK_trrapat_msdepartemen" Association="Self.FK_trrapat_msdepartemen">
             <End Role="msdepartemen" EntitySet="msdepartemen" />
@@ -845,10 +905,18 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DBSIBEMModelStoreContainer" CdmEntityContainer="DBSIBEMEntities">
+          <EntitySetMapping Name="dtlrapats">
+            <EntityTypeMapping TypeName="DBSIBEMModel.dtlrapat">
+              <MappingFragment StoreEntitySet="dtlrapat">
+                <ScalarProperty Name="idrapat" ColumnName="idrapat" />
+                <ScalarProperty Name="idanggota" ColumnName="idanggota" />
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="msanggotabems">
             <EntityTypeMapping TypeName="DBSIBEMModel.msanggotabem">
               <MappingFragment StoreEntitySet="msanggotabem">
-                <ScalarProperty Name="foto" ColumnName="foto" />
                 <ScalarProperty Name="idanggota" ColumnName="idanggota" />
                 <ScalarProperty Name="iddepartemen" ColumnName="iddepartemen" />
                 <ScalarProperty Name="idjabatan" ColumnName="idjabatan" />
@@ -864,6 +932,7 @@
                 <ScalarProperty Name="creadate" ColumnName="creadate" />
                 <ScalarProperty Name="modiby" ColumnName="modiby" />
                 <ScalarProperty Name="modidate" ColumnName="modidate" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -883,7 +952,6 @@
           <EntitySetMapping Name="msformatksks">
             <EntityTypeMapping TypeName="DBSIBEMModel.msformatksk">
               <MappingFragment StoreEntitySet="msformatksk">
-                <ScalarProperty Name="dataBerkas" ColumnName="dataBerkas" />
                 <ScalarProperty Name="idftksk" ColumnName="idftksk" />
                 <ScalarProperty Name="nama" ColumnName="nama" />
                 <ScalarProperty Name="status" ColumnName="status" />
@@ -891,6 +959,7 @@
                 <ScalarProperty Name="creadate" ColumnName="creadate" />
                 <ScalarProperty Name="modiby" ColumnName="modiby" />
                 <ScalarProperty Name="modidate" ColumnName="modidate" />
+                <ScalarProperty Name="dataBerkas" ColumnName="dataBerkas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -940,7 +1009,6 @@
           <EntitySetMapping Name="msukm_hima">
             <EntityTypeMapping TypeName="DBSIBEMModel.msukm_hima">
               <MappingFragment StoreEntitySet="msukm_hima">
-                <ScalarProperty Name="iddepartemen" ColumnName="iddepartemen" />
                 <ScalarProperty Name="idukm_hima" ColumnName="idukm_hima" />
                 <ScalarProperty Name="nama" ColumnName="nama" />
                 <ScalarProperty Name="status" ColumnName="status" />
@@ -954,7 +1022,6 @@
           <EntitySetMapping Name="trkas">
             <EntityTypeMapping TypeName="DBSIBEMModel.trka">
               <MappingFragment StoreEntitySet="trkas">
-                <ScalarProperty Name="uplod_bukti" ColumnName="uplod_bukti" />
                 <ScalarProperty Name="idkas" ColumnName="idkas" />
                 <ScalarProperty Name="idanggota" ColumnName="idanggota" />
                 <ScalarProperty Name="nominal" ColumnName="nominal" />
@@ -964,6 +1031,7 @@
                 <ScalarProperty Name="creadate" ColumnName="creadate" />
                 <ScalarProperty Name="modiby" ColumnName="modiby" />
                 <ScalarProperty Name="modidate" ColumnName="modidate" />
+                <ScalarProperty Name="uplod_bukti" ColumnName="uplod_bukti" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -999,6 +1067,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="trpengajuandanas">
+            <EntityTypeMapping TypeName="DBSIBEMModel.trpengajuandana">
+              <MappingFragment StoreEntitySet="trpengajuandana">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idanggota" ColumnName="idanggota" />
+                <ScalarProperty Name="event" ColumnName="event" />
+                <ScalarProperty Name="tujuan" ColumnName="tujuan" />
+                <ScalarProperty Name="jumlah" ColumnName="jumlah" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creaby" ColumnName="creaby" />
+                <ScalarProperty Name="creadate" ColumnName="creadate" />
+                <ScalarProperty Name="modiby" ColumnName="modiby" />
+                <ScalarProperty Name="modidate" ColumnName="modidate" />
+                <ScalarProperty Name="kepada" ColumnName="kepada" />
+                <ScalarProperty Name="Bukti_kirim" ColumnName="Bukti_kirim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="trrapats">
             <EntityTypeMapping TypeName="DBSIBEMModel.trrapat">
               <MappingFragment StoreEntitySet="trrapat">
@@ -1011,33 +1097,6 @@
                 <ScalarProperty Name="creadate" ColumnName="creadate" />
                 <ScalarProperty Name="modiby" ColumnName="modiby" />
                 <ScalarProperty Name="modidate" ColumnName="modidate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="trpengajuandanas">
-            <EntityTypeMapping TypeName="DBSIBEMModel.trpengajuandana">
-              <MappingFragment StoreEntitySet="trpengajuandana">
-                <ScalarProperty Name="Bukti_kirim" ColumnName="Bukti_kirim" />
-                <ScalarProperty Name="kepada" ColumnName="kepada" />
-                <ScalarProperty Name="modidate" ColumnName="modidate" />
-                <ScalarProperty Name="modiby" ColumnName="modiby" />
-                <ScalarProperty Name="creadate" ColumnName="creadate" />
-                <ScalarProperty Name="creaby" ColumnName="creaby" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="jumlah" ColumnName="jumlah" />
-                <ScalarProperty Name="tujuan" ColumnName="tujuan" />
-                <ScalarProperty Name="event" ColumnName="event" />
-                <ScalarProperty Name="idanggota" ColumnName="idanggota" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dtlrapats">
-            <EntityTypeMapping TypeName="DBSIBEMModel.dtlrapat">
-              <MappingFragment StoreEntitySet="dtlrapat">
-                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
-                <ScalarProperty Name="idanggota" ColumnName="idanggota" />
-                <ScalarProperty Name="idrapat" ColumnName="idrapat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

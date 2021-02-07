@@ -106,18 +106,18 @@
             status = " Aktif";
         }
         <tr>
-            <td style="height: 50px; width: 50px;">
+            <td style="width: 50px;">
                 @no
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.nama)
             </td>
-            <td style="height: 50px; width: 100px;">
+            <td style="width: 100px;">
                 @status
             </td>
-            <td style="height: 50px; width: 250px;" align="center">
+            <td style="width: 260px;" align="center">
                 <a href="@Url.Action("Edit", "UKM_HIMA", new { id = item.idukm_hima })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
-                <a href="@Url.Action("Details", "UKM_HIMA", new { id = item.idukm_hima })" class="btn btn-warning"><i class='fa fa-book'></i>&nbsp;Detil</a>
+                <a href="@Url.Action("Details", "UKM_HIMA", new { id = item.idukm_hima })" class="btn btn-warning"><i class='fa fa-list'></i>&nbsp;Detail</a>
                 <a onclick="return confirm('Yakin ingin Menghapus Data');" href="@Url.Action("Delete", "UKM_HIMA", new { id = item.idukm_hima })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
             </td>
         </tr>

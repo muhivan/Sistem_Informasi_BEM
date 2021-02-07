@@ -86,7 +86,7 @@
                 No
             </th>
             <th>
-                Tahun
+                Periode
             </th>
             <th>
                 Status
@@ -107,18 +107,18 @@
             status = " Aktif";
         }
         <tr>
-            <td style="height: 50px; width: 50px;">
+            <td style="width: 50px;">
                 @no
             </td>
-            <td style="height: 50px; width: 500px;">
+            <td style="width: 500px;">
                 @Html.DisplayFor(modelItem => item.tahunperiode)
             </td>
-            <td style="height: 50px; width: 100px;">
+            <td style="width: 100px;">
                 @status
             </td>
-            <td style="height: 50px; width: 200px;" align="center">
+            <td style="width: 250px;" align="center">
                 <a href="@Url.Action("Edit", "Periode", new { id = item.idperiode })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
-                <a href="@Url.Action("Details", "Periode", new { id = item.idperiode })" class="btn btn-warning"><i class='fa fa-book'></i>&nbsp;Detil</a>
+                <a href="@Url.Action("Details", "Periode", new { id = item.idperiode })" class="btn btn-warning"><i class='fa fa-list'></i>&nbsp;Detail</a>
                 <a onclick="return confirm('Yakin ingin Menghapus Data');" href="@Url.Action("Delete", "Periode", new { id = item.idperiode })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
             </td>
         </tr>

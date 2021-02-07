@@ -65,41 +65,43 @@
 
 <div id="allcontent" class="polman-adjust5" style="margin-left: 0px;">
     <div id="MainContent_panelAdd">
-        <div class="card">
-            <div class="card-header">
-                <h2>Detail Data @Html.DisplayFor(model => model.nama)</h2>
-            </div>
-            <div class="card-block">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <table class="table table-striped table-bordered" style="width:100%">
-                            <tr><td>Nama</td><td> : </td><td>@Html.DisplayFor(model => model.nama)</td></tr>
-                            <tr><td>NIM</td><td> : </td><td> @Html.DisplayFor(model => model.nim)</td></tr>
-                            <tr><td>Alamat</td><td> : </td><td>@Html.DisplayFor(model => model.alamat)</td></tr>
-                            <tr><td>Telephone</td><td> : </td><td>@Html.DisplayFor(model => model.no_telp)</td></tr>
-                            <tr><td>Email</td><td> : </td><td>@Html.DisplayFor(model => model.email)</td></tr>
-                            <tr><td>Departemen</td><td> : </td><td> @Html.DisplayFor(model => model.msdeparteman.namadepartemen)</td></tr>
-                            <tr><td>Jabatan</td><td> : </td><td> @Html.DisplayFor(model => model.msjabatan.namajabatan)</td></tr>
-                            <tr><td>Periode</td><td> : </td><td>@Html.DisplayFor(model => model.msperiode.tahunperiode)</td></tr>
-                            <tr><td>CreaBy</td><td> : </td><td>@Html.DisplayFor(model => model.creaby)</td></tr>
-                            <tr><td>Creadate</td><td> : </td><td>@Html.DisplayFor(model => model.creadate)</td></tr>
-                            <tr><td>ModiBy</td><td> : </td><td>@Html.DisplayFor(model => model.modiby)</td></tr>
-                            <tr><td>Modidate</td><td> : </td><td>@Html.DisplayFor(model => model.modidate)</td></tr>
-                        </table>
-                    </div>
-                    <div class="col-lg-6">
-                        @if (Model.foto != "")
-                        {
-                            <img src="@Url.Content(Model.foto)" height="400" width="300" />
-                        }
+        <center>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Detail Data @Html.DisplayFor(model => model.nama)</h2>
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <table class="table table-striped table-bordered" style="width:100%">
+                                <tr><td>Nama</td><td> : </td><td>@Html.DisplayFor(model => model.nama)</td></tr>
+                                <tr><td>NIM</td><td> : </td><td> @Html.DisplayFor(model => model.nim)</td></tr>
+                                <tr><td>Alamat</td><td> : </td><td>@Html.DisplayFor(model => model.alamat)</td></tr>
+                                <tr><td>Telephone</td><td> : </td><td>@Html.DisplayFor(model => model.no_telp)</td></tr>
+                                <tr><td>Email</td><td> : </td><td>@Html.DisplayFor(model => model.email)</td></tr>
+                                <tr><td>Departemen</td><td> : </td><td> @Html.DisplayFor(model => model.msdeparteman.namadepartemen)</td></tr>
+                                <tr><td>Jabatan</td><td> : </td><td> @Html.DisplayFor(model => model.msjabatan.namajabatan)</td></tr>
+                                <tr><td>Periode</td><td> : </td><td>@Html.DisplayFor(model => model.msperiode.tahunperiode)</td></tr>
+                                <tr><td>CreaBy</td><td> : </td><td>@Html.DisplayFor(model => model.creaby)</td></tr>
+                                <tr><td>Creadate</td><td> : </td><td>@Html.DisplayFor(model => model.creadate)</td></tr>
+                                <tr><td>ModiBy</td><td> : </td><td>@Html.DisplayFor(model => model.modiby)</td></tr>
+                                <tr><td>Modidate</td><td> : </td><td>@Html.DisplayFor(model => model.modidate)</td></tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-6">
+                            @if (Model.foto != "")
+                            {
+                                <img src="@Url.Content(Model.foto)" height="425" width="330" />
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </center>
     </div>
 </div>
 <br />
 <span style="float: right">
-    <a href="@Url.Action("Index", "Anggota", "")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
+    <a href="@Url.Action("Index", "Anggota", "")" class="btn btn-success" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
 </span>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />

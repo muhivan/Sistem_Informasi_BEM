@@ -303,19 +303,27 @@
     <Content Include="Global.asax" />
     <Content Include="Models\DBSIBEM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBSIBEM.Context.cs</LastGenOutput>
       <DependentUpon>DBSIBEM.edmx</DependentUpon>
+      <LastGenOutput>DBSIBEM.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DBSIBEM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBSIBEM.edmx</DependentUpon>
       <LastGenOutput>DBSIBEM.cs</LastGenOutput>
     </Content>
+    <Content Include="Picture\change_pass.png" />
+    <Content Include="Picture\change.png" />
     <Content Include="Picture\IMG_Background.jpg" />
     <Content Include="Picture\login_bem.png" />
     <Content Include="Picture\Logo_BEM.png" />
     <Content Include="Picture\Logo_Polman_baru.png" />
     <Content Include="Picture\SIBEM.png" />
+    <Content Include="Content\theme\jquery-1.12.4.min.map" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
     <EntityDeploy Include="Models\DBSIBEM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBSIBEM.Designer.cs</LastGenOutput>

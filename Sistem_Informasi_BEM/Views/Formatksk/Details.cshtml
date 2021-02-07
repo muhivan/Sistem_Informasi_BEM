@@ -67,11 +67,11 @@
     <div id="MainContent_panelAdd">
         <div class="card">
             <div class="card-header">
-                <h3>Detail Data @Html.DisplayFor(model => model.nama)</h3>
+                <h3 class="text-center">Detail Data @Html.DisplayFor(model => model.nama)</h3>
             </div>
             <div class="card-block">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <table class="table table-striped table-bordered" style="width:100%">
                             <tr><td>Nama Departemen</td><td> : </td><td>@Html.DisplayFor(model => model.nama)</td></tr>
                             <tr><td>CreaBy</td><td> : </td><td> @Html.DisplayFor(model => model.creaby)</td></tr>
@@ -87,6 +87,6 @@
 </div>
 <br />
 <span style="float: right">
-    <a href="@Url.Action("Index", "Formatksk", "")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
+    <a href="@Url.Action("Index", "Formatksk", "")" class="btn btn-success" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
 </span>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
