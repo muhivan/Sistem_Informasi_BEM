@@ -490,6 +490,9 @@
     <Content Include="Views\PengajuanDana\CreateDept.cshtml" />
     <Content Include="Views\PengajuanDana\EditData.cshtml" />
     <Content Include="Views\LaporanOSP\Index.cshtml" />
+    <Content Include="Views\KasBPH\CreateBPH.cshtml" />
+    <Content Include="Views\KasBPH\EditBPH.cshtml" />
+    <Content Include="Views\KasBPH\EditData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

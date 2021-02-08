@@ -1,8 +1,7 @@
-﻿@model IEnumerable<Sistem_Informasi_BEM.Models.msformatksk>
+﻿@model Sistem_Informasi_BEM.Models.trka
 
 @{
-    ViewBag.Title = "Format KSK";
-    var no = 0;
+    ViewBag.Title = "Edit";
 }
 
 <div class="polman-nav-static-top">
@@ -24,7 +23,7 @@
             <a onclick="location.href='@Url.Action("Index", "Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-sign-out fa-lg fa-pull-left"></i>Logout</a>
             <a onclick="location.href='@Url.Action("MenuBPHUmum","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 23px;"><i class="fa fa-home fa-lg fa-pull-left"></i>Dashboard</a>
             <a onclick="location.href='@Url.Action("ProfilAnggotaBPH","Login")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px;">Profil Anggota</a>
-            <a href='#menu7' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
+            <a href='#menu7' role='tab' class='list-group-item list-group-item-action polman-menu-active' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Menu</a>
             <div id='menu7' class='collapse in' role='tabpanel'>
                 <a onclick="location.href='@Url.Action("Index","OSPBPH")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-envelope fa-lg fa-pull-left'>&nbsp;</b>Pengajuan OSP
@@ -35,7 +34,7 @@
                 <a onclick="location.href='@Url.Action("IndexBPH","PengajuanDana")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-file-text-o fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Pengajuan Dana
                 </a>
-                <a onclick="location.href='@Url.Action("IndexBPH", "KasBPH")'" class="list-group-item list-group-item-action" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                <a onclick="location.href='@Url.Action("IndexBPH", "KasBPH")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-money fa-lg fa-pull-left'>&nbsp;</b>Kas
                 </a>
                 <a onclick="location.href='@Url.Action("Index", "LaporanKas")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
@@ -47,7 +46,7 @@
             </div>
             <a href='#menu6' role='tab' class='list-group-item list-group-item-action' data-toggle='collapse' data-parent='#accordion' aria-expanded='true' aria-controls='menu7' style="border-radius: 0px; border: none; padding-left: 23px;"><i class='fa fa-chevron-down fa-lg fa-pull-left'></i>Kesekretariatan</a>
             <div id='menu6' class='collapse in' role='tabpanel'>
-                <a onclick="location.href='@Url.Action("BerkasBPH","Formatksk")'" class="list-group-item list-group-item-action active" style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
+                <a onclick="location.href='@Url.Action("BerkasBPH","Formatksk")'" class="list-group-item list-group-item-action " style="border-radius: 0px; border: none; padding-left: 47px; display: inherit;">
                     <b class='fa fa-book fa-lg fa-pull-left'>&nbsp;&nbsp;</b>Format Berkas
                 </a>
             </div>
@@ -55,60 +54,60 @@
     </div>
 </div>
 
-<H3>Format Kesekretariatan</H3>
+<H3>Pembayaran Khas</H3>
 <ol class="breadcrumb polman-breadcrumb">
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuPIC","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item">Format Kesekretariatan</li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuBPHUmum","Login")'">Sistem Informasi BEM</a></li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("IndexBPH","KasBPH")'">Pembayaran Khas</a></li>
+    <li class="breadcrumb-item">Ubah</li>
 </ol>
 <hr />
 
-<table class="table table-striped table-bordered" style="width:100%" id="tblformat">
-    <thead>
-        <tr>
-            <th>
-                No
-            </th>
-            <th>
-                Nama
-            </th>
-            <th>
-                Berkas
-            </th>
-        </tr>
-    </thead>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="allcontent" class="polman-adjust5" style="margin-left: 0px;">
+        <div id="MainContent_panelAdd">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                @Html.HiddenFor(model => model.idkas)
+                                @Html.HiddenFor(model => model.idanggota, new { @class = "form-control", @Value = ViewBag.idanggota2 })
+                                <label style="font-weight: bold;">Khas <b style="color: red">*</b></label>
+                                <input type="text" id="nominal" name="nominal" value="@Model.nominal" class="priceformat form-control" style="min-width:100%; height:45px; padding: 10px 10px; font-size: 12pt;" />
+                                @*@Html.EditorFor(model => model.nominal, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
+                                    @Html.ValidationMessageFor(model => model.nominal, "", new { @class = "text-danger" })*@
+                                @Html.HiddenFor(model => model.modiby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label style="font-weight: bold;">Nama <b style="color: red">*</b></label>
+                                @Html.EditorFor(model => model.msanggotabem.nama, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label style="font-weight: bold;">Bukti Transfer <b style="color: red">*</b></label><br />
+                                @if (Model.uplod_bukti != "")
+                                {
+                                    <img src="@Url.Content(Model.uplod_bukti)" height="600" width="500" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <span style="float:right">
+                <a href="@Url.Action("TidakValidBPH", "KasBPH", new { id = Model.idkas })" class="btn btn-danger" style="padding: 15px 30px; font-size: 12pt;">Tidak Valid</a>
+                <input type="submit" value="Valid" class="btn btn-primary" style="padding: 15px 50px; font-size: 12pt;" />
+            </span>
+        </div>
+    </div>
+}
 
-    @foreach (var item in Model)
-    {
-        no++;
-        <tr>
-            <td style="width: 50px;">
-                @no
-            </td>
-            <td style="width: 250px;">
-                @Html.DisplayFor(modelItem => item.nama)
-            </td>
-            <td style="width: 350px;">
-                @Html.ActionLink(item.dataBerkas, "Download", new { fileName = item.dataBerkas })
-            </td>
-        </tr>
-    }
-
-</table>
-
-<link href="~/Content/designtable.css" rel="stylesheet" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-@section scripts{
-    <script src="~/Content/theme/designtablejava.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-
-    <script>
-        var Popup, dataTable;
-        var no;
-        $(document).ready(function () {
-            $(document).ready(function () {
-                dataTable = $("#tblformat").DataTable();
-            });
-        });
-    </script>
-}

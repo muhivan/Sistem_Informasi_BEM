@@ -34,7 +34,7 @@ namespace Sistem_Informasi_BEM.Controllers
             var idDept_ = (string)Session["idDept"];
             int idDept = Convert.ToInt32(idDept_);
 
-            var trkas = db.trkas.Include(t => t.msanggotabem).Where(t => t.jeniskas == "BEM");
+            var trkas = db.trkas.Include(t => t.msanggotabem).Where(t => t.jeniskas == "BEM" || t.jeniskas == "BPH");
             return View(trkas.ToList());
         }
 
@@ -83,6 +83,45 @@ namespace Sistem_Informasi_BEM.Controllers
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             return RedirectToAction("Index");
+        }
+
+        public ActionResult CreateBPH()
+        {
+            ViewBag.idanggota2 = this.Session["idanggota"];
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama");
+            ViewBag.iddept = (string)Session["idDept"];
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateBPH(trka trka, HttpPostedFileBase imgfile, string nominal)
+        {
+            string number = RemoveNonNumeric(nominal);
+            int nominalkhas = Int32.Parse(number);
+
+            string path = uploadimage(imgfile);
+            ViewBag.idanggota2 = this.Session["idanggota"];
+            ViewBag.iddept = (string)Session["idDept"];
+
+            if (path == "")
+            {
+                trka.status = 1;
+            }
+            else
+            {
+                trka.status = 3;
+            }
+            trka.nominal = nominalkhas;
+            trka.uplod_bukti = path;
+            trka.creadate = DateTime.Now;
+            db.trkas.Add(trka);
+            db.SaveChanges();
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            return RedirectToAction("IndexBPH");
         }
 
         public ActionResult EditDept(int? id)
@@ -139,6 +178,52 @@ namespace Sistem_Informasi_BEM.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult EditBPH(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            trka trka = db.trkas.Find(id);
+            if (trka == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trka.idanggota);
+            return View(trka);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditBPH(trka trka, HttpPostedFileBase imgfile, string nominal)
+        {
+            string number = RemoveNonNumeric(nominal);
+            int nominalkhas = Int32.Parse(number);
+            string path = uploadimage(imgfile);
+
+            ViewBag.idanggota2 = this.Session["idanggota"];
+            trka khas = db.trkas.Find(trka.idkas);
+            khas.modidate = DateTime.Now;
+            khas.nominal = nominalkhas;
+            khas.modiby = (string)Session["modiby"];
+            khas.jeniskas = trka.jeniskas;
+            if (path == "")
+            {
+                khas.status = 1;
+            }
+            else
+            {
+                khas.status = 3;
+                khas.uplod_bukti = path;
+            }
+            db.SaveChanges();
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            return RedirectToAction("IndexBPH");
+        }
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -170,6 +255,38 @@ namespace Sistem_Informasi_BEM.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult EditData(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            trka trka = db.trkas.Find(id);
+            if (trka == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trka.idanggota);
+            return View(trka);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditData(trka trka)
+        {
+            ViewBag.idanggota2 = this.Session["idanggota"];
+            trka khas = db.trkas.Find(trka.idkas);
+            khas.modidate = DateTime.Now;
+            khas.modiby = (string)Session["modiby"];
+            khas.status = 4;
+            db.SaveChanges();
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            return RedirectToAction("IndexBPH");
+        }
+
         public ActionResult TidakValidDept(int id)
         {
             ViewBag.Jabatan = this.Session["Jabatan"];
@@ -182,12 +299,12 @@ namespace Sistem_Informasi_BEM.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult EditBPH(int id)
+        public ActionResult TidakValidBPH(int id)
         {
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             trka khas = db.trkas.Find(id);
-            khas.status = 3;
+            khas.status = 5;
             khas.modidate = DateTime.Now;
             khas.modiby = (string)Session["modiby"];
             db.SaveChanges();

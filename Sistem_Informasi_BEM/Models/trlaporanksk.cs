@@ -20,6 +20,8 @@ namespace Sistem_Informasi_BEM.Models
         public string namaberkas { get; set; }
         public string keterangan { get; set; }
         public Nullable<int> status { get; set; }
+        [StringLength(255)]
+        [DataType(DataType.MultilineText)]
         public string komentar { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
