@@ -135,12 +135,12 @@
             <td align="center">
                 @if (item.status == 7)
                 {
-                    <a href="@Url.Action("Edit", "PengajuanOSP", new { id = item.idlpksk })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a href="@Url.Action("Edit", "PengajuanOSP", new { id = item.idlpksk })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
                     <a onclick="return confirm('Yakin ingin Menghapus Pengajuan OSP');" href="@Url.Action("EditBatal", "PengajuanOSP", new { id = item.idlpksk })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
                 }
                 else
                 {
-                    <a href="@Url.Action("Edit", "PengajuanOSP", new { id = item.idlpksk })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a href="@Url.Action("Edit", "PengajuanOSP", new { id = item.idlpksk })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
                     <a onclick="return confirm('Yakin ingin Menghapus Pengajuan OSP');" href="@Url.Action("EditBatal", "PengajuanOSP", new { id = item.idlpksk })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
                 }
             </td>

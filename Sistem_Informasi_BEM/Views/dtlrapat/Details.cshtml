@@ -55,7 +55,7 @@
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuPIC","Login")'">Sistem Informasi BEM</a></li>
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","dtlrapat")'">Perizinan Rapat</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Edit","dtlrapat")'">Ubah Data</a></li>
+    <li class="breadcrumb-item">Ubah Data</li>
 </ol>
 <hr />
 
@@ -93,12 +93,10 @@
         </div>
         <br />
         <span style="float: right">
-            <a href="@Url.Action("Index", "dtlrapat", "")" class="btn btn-default" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
-            <input type="submit" value="Simpan" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
+            <a href="@Url.Action("Index", "dtlrapat", "")" class="btn btn-success" style="padding: 15px 40px; font-size: 12pt;">Kembali</a>
         </span>
     </div>
 </div>
-}
 
 @if (ViewBag.Message != null)
 {

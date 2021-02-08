@@ -124,13 +124,13 @@
                 <td style="height: 50px; width: 170px;" align="center">
                     @if (item.status == 1)
                     {
-                        <a href="@Url.Action("Edit", "PengajuanDana", new { id = item.id })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
-                        <a onclick="return confirm('Konfirmasi Pengajuan Dikirim');" href="@Url.Action("Kirim", "PengajuanDana", new { id = item.id })" class="btn btn-primary"><i class='fa fa-send'></i>&nbsp;Kirim</a>
+                        <a href="@Url.Action("Edit", "PengajuanDana", new { id = item.id })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                        <a onclick="return confirm('Konfirmasi Pengajuan Dikirim');" href="@Url.Action("Kirim", "PengajuanDana", new { id = item.id })" class="btn btn-success"><i class='fa fa-send'></i>&nbsp;Kirim</a>
                         <a onclick="return confirm('Konfirmasi Pembatalan Pengajuan Dana');" href="@Url.Action("EditBatal", "PengajuanDana", new { id = item.id })" class="btn btn-danger"><i class='fa fa-remove'></i>&nbsp;Batal</a>
                     }
                     else
                     {
-                        <a href="@Url.Action("Details", "PengajuanDana", new { id = item.id })" class="btn btn-primary"><i class='fa fa-book'></i>&nbsp;Detil</a>
+                        <a href="@Url.Action("Details", "PengajuanDana", new { id = item.id })" class="btn btn-warning"><i class='fa fa-list'></i>&nbsp;Detail</a>
                     }
                 </td>
             </tr>

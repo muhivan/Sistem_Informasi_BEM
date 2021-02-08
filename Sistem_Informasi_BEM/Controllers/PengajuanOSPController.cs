@@ -91,6 +91,7 @@ namespace Sistem_Informasi_BEM.Controllers
                     }
                 }
             }
+            ViewBag.message = "Data Tidak Boleh Kosong";
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             ViewBag.idukm_hima = new SelectList(db.msukm_hima, "idukm_hima", "nama", trlaporanksk.idukm_hima);

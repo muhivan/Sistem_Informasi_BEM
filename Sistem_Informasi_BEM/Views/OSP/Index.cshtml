@@ -132,8 +132,16 @@
                 @Html.DisplayFor(modelItem => item.msukm_hima.nama)
             </td>
             <td align="center">
-                <a href="@Url.Action("Edit", "OSP", new { id = item.idlpksk })" class="btn btn-primary" style="font-size: 12pt;"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                @if (item.status == 5 || item.status == 6)
+                {
                 <a href="@Url.Action("Details", "OSP", new { id = item.idlpksk })" class="btn btn-warning" style="font-size: 12pt;"><i class='fa fa-list'></i>&nbsp;Details</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Edit", "OSP", new { id = item.idlpksk })" class="btn btn-primary" style="font-size: 12pt;"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a href="@Url.Action("Details", "OSP", new { id = item.idlpksk })" class="btn btn-warning" style="font-size: 12pt;"><i class='fa fa-list'></i>&nbsp;Details</a>
+                }
+
             </td>
         </tr>
     }

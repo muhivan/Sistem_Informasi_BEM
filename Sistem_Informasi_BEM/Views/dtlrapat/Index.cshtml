@@ -55,7 +55,7 @@
 <H3>Perizinan Rapat</H3>
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuPIC","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("Index","dtlrapat")'">Perizinan Rapat</a></li>
+    <li class="breadcrumb-item">Perizinan Rapat</li>
 </ol>
 <hr />
 
@@ -84,19 +84,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.msanggotabem.nama)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.keterangan)
-            </td>
             <td align="center">
+                @if (item.keterangan == "" || item.keterangan == null)
+                {
+                    <label>-</label>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.keterangan)
+                }
+            </td>
+            <td style="width:200px" align="center">
                 @if (item.trrapat.status == 1)
                 {
-                    <a href="@Url.Action("Edit", "dtlrapat", new { id = item.idrapat, id1 = item.idanggota })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
-                    <a href="@Url.Action("Details", "dtlrapat", new { id = item.idrapat, id1 = item.idanggota })" class="btn btn-default"><i class='fa fa-book'></i>&nbsp;Detail</a>
+                    <a href="@Url.Action("Edit", "dtlrapat", new { id = item.idrapat, id1 = item.idanggota })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a href="@Url.Action("Details", "dtlrapat", new { id = item.idrapat, id1 = item.idanggota })" class="btn btn-warning"><i class='fa fa-list'></i>&nbsp;Detail</a>
                 }
                 else
                 {
                     <a href="@Url.Action("Edit", "dtlrapat", new { id = item.idrapat, id1 = item.idanggota })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
-                    <a href="@Url.Action("Details", "dtlrapat", new { id = item.idrapat, id1 = item.idanggota })" class="btn btn-default"><i class='fa fa-book'></i>&nbsp;Detail</a>
+                    <a href="@Url.Action("Details", "dtlrapat", new { id = item.idrapat, id1 = item.idanggota })" class="btn btn-warning"><i class='fa fa-list'></i>&nbsp;Detail</a>
                 }
             </td>
         </tr>

@@ -48,7 +48,7 @@
                 </a>
             </div>
         </div>
-     </div>
+    </div>
 </div>
 
 <H3>Pembayaran Khas</H3>
@@ -109,3 +109,11 @@
 }
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+        alert("@ViewBag.Message");
+        }
+    </script>
+}

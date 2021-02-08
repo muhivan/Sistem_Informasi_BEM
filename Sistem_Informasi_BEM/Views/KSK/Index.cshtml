@@ -135,18 +135,18 @@
             <td style="width: 170px" align="center">
                 @if (item.status == 1)
                 {
-                    <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
                     <a onclick="return confirm('Yakin ingin Menghapus Berkas?');" href="@Url.Action("Hapus", "KSK", new { id = item.idlpksk })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
 
                 }
                 else if (item.status == 3)
                 {
-                    <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
                     <a onclick="return confirm('Yakin ingin Menghapus Berkas?');" href="@Url.Action("Hapus", "KSK", new { id = item.idlpksk })" class="btn btn-danger" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
                 }
                 else
                 {
-                    <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a href="@Url.Action("Edit", "KSK", new { id = item.idlpksk })" class="btn btn-primary" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
                     <a onclick="return confirm('Yakin ingin Menghapus Berkas?');" href="@Url.Action("Hapus", "KSK", new { id = item.idlpksk })" class="btn btn-danger" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-trash'></i>&nbsp;Hapus</a>
 
                 }

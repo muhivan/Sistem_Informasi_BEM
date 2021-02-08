@@ -70,9 +70,6 @@ namespace Sistem_Informasi_BEM.Controllers
             return View();
         }
 
-        // POST: KSK/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(trlaporanksk trlaporanksk)
@@ -80,11 +77,16 @@ namespace Sistem_Informasi_BEM.Controllers
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             var idukmhima = (string)Session["idUKM_Hima"];
+            if(trlaporanksk.keterangan == "" || trlaporanksk.keterangan == null)
+            {
+                ViewBag.Message = "Data Tidak Boleh Kosong";
+                ViewBag.idukm_hima = new SelectList(db.msukm_hima, "idukm_hima", "nama", trlaporanksk.idukm_hima);
+                return View(trlaporanksk);
+            }
             if (ModelState.IsValid)
             {
                 foreach (var file in trlaporanksk.files)
                 {
-
                     if (file.ContentLength > 0)
                     {
                         var fileName = Path.GetFileName(file.FileName);
@@ -105,7 +107,7 @@ namespace Sistem_Informasi_BEM.Controllers
                     }
                 }
             }
-
+            ViewBag.Message = "Data Tidak Boleh Kosong";
             ViewBag.idukm_hima = new SelectList(db.msukm_hima, "idukm_hima", "nama", trlaporanksk.idukm_hima);
             return View(trlaporanksk);
         }

@@ -60,13 +60,20 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(trka trka, HttpPostedFileBase imgfile, string nominal)
         {
+            if (trka.jeniskas == null || trka.jeniskas == "")
+            {
+                ViewBag.Message = "Data Tidak Boleh Kosong";
+                ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trka.idanggota);
+                ViewBag.idanggota2 = this.Session["idanggota"];
+                return View(trka);
+            }
             string number = RemoveNonNumeric(nominal);
             int nominalkhas = Int32.Parse(number);
 
             string path = uploadimage(imgfile);
             ViewBag.idanggota2 = this.Session["idanggota"];
             ViewBag.iddept = (string)Session["idDept"];
-
+           
             if (path == "")
             {
                 trka.status = 1;
@@ -99,6 +106,13 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateBPH(trka trka, HttpPostedFileBase imgfile, string nominal)
         {
+            if (trka.jeniskas == null || trka.jeniskas == "")
+            {
+                ViewBag.Message = "Data Tidak Boleh Kosong";
+                ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trka.idanggota);
+                ViewBag.idanggota2 = this.Session["idanggota"];
+                return View(trka);
+            }
             string number = RemoveNonNumeric(nominal);
             int nominalkhas = Int32.Parse(number);
 

@@ -42,6 +42,7 @@ namespace Sistem_Informasi_BEM.Controllers
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama");
+            ViewBag.iddept = (string)Session["idDept"];
             return View();
         }
 
@@ -49,11 +50,19 @@ namespace Sistem_Informasi_BEM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(trka trka, HttpPostedFileBase imgfile, string nominal)
         {
+            if (trka.jeniskas == null || trka.jeniskas == "")
+            {
+                ViewBag.Message = "Data Tidak Boleh Kosong";
+                ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trka.idanggota);
+                ViewBag.idanggota2 = this.Session["idanggota"];
+                return View(trka);
+            }
+
             string number = RemoveNonNumeric(nominal);
             int nominalkhas = Int32.Parse(number);
 
             string path = uploadimage(imgfile);
-
+           
             ViewBag.idanggota2 = this.Session["idanggota"];
             if (path == "")
             {
@@ -75,6 +84,7 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult Edit(int? id)
         {
+            ViewBag.idanggota2 = this.Session["idanggota"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

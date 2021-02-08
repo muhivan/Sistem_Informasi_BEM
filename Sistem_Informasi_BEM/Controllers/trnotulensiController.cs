@@ -61,6 +61,12 @@ namespace Sistem_Informasi_BEM.Controllers
         {
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
+            if(trnotulensi.idrapat == 0 || trnotulensi.idrapat == null)
+            {
+                ViewBag.Message = "Data Tidak Boleh Kosong";
+                ViewBag.idrapat = new SelectList(db.trrapats, "idrapat", "judulrapat", trnotulensi.idrapat);
+                return View(trnotulensi);
+            }
             if (ModelState.IsValid)
             {
                 foreach (var file in trnotulensi.files)
@@ -86,7 +92,7 @@ namespace Sistem_Informasi_BEM.Controllers
                     }
                 }
             }
-
+            ViewBag.Message = "Data Tidak Boleh Kosong";
             ViewBag.idrapat = new SelectList(db.trrapats, "idrapat", "judulrapat", trnotulensi.idrapat);
             return View(trnotulensi);
         }
