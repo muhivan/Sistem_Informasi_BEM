@@ -66,6 +66,13 @@ namespace Sistem_Informasi_BEM.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if(msukm_hima.iddepartemen == null)
+                    {
+                        ViewBag.Jabatan = this.Session["Jabatan"];
+                        ViewBag.Departemen = this.Session["Departemen"];
+                        ViewBag.Message = "Departemen Belum Dipilih";
+                        return View(msukm_hima);
+                    }
                     msukm_hima.status = 1;
                     msukm_hima.creadate = DateTime.Now;
                     db.msukm_hima.Add(msukm_hima);

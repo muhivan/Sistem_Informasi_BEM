@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    var status = "";
 }
 
 <div class="polman-nav-static-top">
@@ -97,6 +98,35 @@
 
     @foreach (var item in Model)
     {
+        if (item.status == 0)
+        {
+            status = "Tidak Aktif";
+        }
+        else if (item.status == 1)
+        {
+            status = "Diproses Dept";
+        }
+        else if (item.status == 2)
+        {
+            status = "Diproses BPH Umum";
+        }
+        else if (item.status == 3)
+        {
+            status = "Revisi";
+        }
+        else if (item.status == 4)
+        {
+            status = "Diproses Institusi";
+        }
+        else if (item.status == 5)
+        {
+            status = "Diterima";
+        }
+        else if (item.status == 6)
+        {
+            status = "Ditolak";
+        }
+
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.namaberkas)
@@ -105,12 +135,11 @@
                 @Html.DisplayFor(modelItem => item.keterangan)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.status)
+                @status
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.tglpresent)
             </td>
-            <td>
             <td>
                 @Html.DisplayFor(modelItem => item.msukm_hima.nama)
             </td>
