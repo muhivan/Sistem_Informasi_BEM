@@ -83,8 +83,15 @@ namespace Sistem_Informasi_BEM.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(msformatksk msformatksk)
+        public ActionResult Create(msformatksk msformatksk, string files)
         {
+            if (files == null)
+            {
+                ViewBag.Jabatan = this.Session["Jabatan"];
+                ViewBag.Departemen = this.Session["Departemen"];
+                ViewBag.Message = "Berkas Belum Dipilih";
+                return View(msformatksk);
+            }
             try
             {
                 var cek = db.msformatksks.FirstOrDefault(x => x.dataBerkas == msformatksk.dataBerkas);
@@ -94,7 +101,6 @@ namespace Sistem_Informasi_BEM.Controllers
                     {
                         foreach (var file in msformatksk.files)
                         {
-
                             if (file.ContentLength > 0)
                             {
                                 var fileName = Path.GetFileName(file.FileName);

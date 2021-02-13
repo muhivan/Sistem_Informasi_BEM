@@ -63,6 +63,14 @@ namespace Sistem_Informasi_BEM.Controllers
         {
             var cek = db.msjabatans.FirstOrDefault(x => x.namajabatan == msjabatan.namajabatan && x.status == 1);
 
+            if(msjabatan.idukm_hima == null || msjabatan.idukm_hima == 0)
+            {
+                ViewBag.Jabatan = this.Session["Jabatan"];
+                ViewBag.Departemen = this.Session["Departemen"];
+                ViewBag.Message = "JABATAN ATAU UKM/HIMA YANG ANDA MASUKAN SUDAH ADA";
+                return View(msjabatan);
+            }
+
             if (cek == null)
             {
                 if (ModelState.IsValid)

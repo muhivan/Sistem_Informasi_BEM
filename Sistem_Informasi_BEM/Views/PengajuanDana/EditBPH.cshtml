@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Sistem_Informasi_BEM.Models.trpengajuandana>
+﻿@model Sistem_Informasi_BEM.Models.trpengajuandana
+
 
 @{
-    ViewBag.Title = "Pengajuan Dana";
-    var status = "";
+    ViewBag.Title = "Ubah Data";
 }
 
 <div class="polman-nav-static-top">
@@ -58,103 +58,71 @@
 <H3>Pengajuan Dana</H3>
 <ol class="breadcrumb polman-breadcrumb">
     <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("MenuBPHUmum","Login")'">Sistem Informasi BEM</a></li>
-    <li class="breadcrumb-item">Pengajuan Dana</li>
+    <li class="breadcrumb-item"><a onclick="location.href='@Url.Action("IndexBPH","PengajuanDana")'">Pengajuan Dana</a></li>
+    <li class="breadcrumb-item">Konfirmasi</li>
 </ol>
 <hr />
 
-<table class="table table-striped table-bordered" style="width:100%" id="tbldana">
-    <thead>
-        <tr>
-            <th>
-                Nama
-            </th>
-            <th>
-                Event
-            </th>
-            <th>
-                Tujuan
-            </th>
-            <th>
-                Jumlah
-            </th>
-            <th>
-                Status
-            </th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
+@using (Html.BeginForm("EditBPH", "PengajuanDana", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div id="allcontent" class="polman-adjust5" style="margin-left: 0px;">
+        <div id="MainContent_panelAdd">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                @Html.HiddenFor(model => model.id)
+                                <label style="font-weight: bold;" for="addNamaKegiatanENG">Event <b style="color: red">*</b></label>
+                                @Html.EditorFor(model => model.@event, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
+                                @Html.ValidationMessageFor(model => model.@event, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.modiby, new { @class = "form-control", @Value = Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label style="font-weight: bold;">Tujuan <b style="color: red">*</b></label>
+                                @Html.EditorFor(model => model.tujuan, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
+                                @Html.ValidationMessageFor(model => model.tujuan, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label style="font-weight: bold;">Jumlah <b style="color: red">*</b></label>
+                                <input type="text" id="nominal" name="nominal" value="@Model.jumlah" class="priceformat form-control" style="min-width:100%; height:45px; padding: 10px 10px; font-size: 12pt;" />
+                                @*@Html.EditorFor(model => model.jumlah, new { htmlAttributes = new { @class = "form-control", @style = "min-width: 100%; height:50px; font-size: 15pt;" } })
+                                    @Html.ValidationMessageFor(model => model.jumlah, "", new { @class = "text-danger" })*@
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: bold;" for="addNamaKegiatanENG">Upload Bukti <b style="color: red">*</b></label>
+                                <input type="file" id="imgfile" name="imgfile" class="btn btn-info" style="min-width:100%; height:45px; padding: 10px 10px; font-size: 12pt;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <span style="float: right">
+                <a href="@Url.Action("EditTolakDept", "PengajuanDana", new { id = Model.id })" class="btn btn-danger" style="padding: 15px 30px; font-size: 12pt;">Tidak Valid</a>
+                <input type="submit" value="Valid" class="btn btn-primary" style="padding: 15px 40px; font-size: 12pt;" />
+            </span>
+        </div>
+    </div>
+}
 
-    @foreach (var item in Model)
-    {
-        if (item.status == 1)
-        {
-            status = "Menunggu Terkirim";
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+            alert("@ViewBag.Message");
         }
-        else if (item.status == 2)
-        {
-            status = "Diproses Departemen";
-        }
-        else if (item.status == 3)
-        {
-            status = "Diproses BPH UMUM";
-        }
-        else if (item.status == 4)
-        {
-            status = "Ditolak";
-        }
-        else if (item.status == 5)
-        {
-            status = "Diterima";
-        }
-        else if (item.status == 6)
-        {
-            status = "Dibatalkan";
-        }
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.msanggotabem.nama)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.@event)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tujuan)
-            </td>
-            <td>
-                Rp @Html.DisplayFor(modelItem => item.jumlah)
-            </td>
-            <td>
-                @status
-            </td>
-            <td align="center">
-                @if (item.status == 3)
-                {
-                    <a href="@Url.Action("EditBPH", "PengajuanDana", new { id = item.id })" class="btn btn-primary"><i class='fa fa-check-circle'></i>&nbsp;Konfirmasi</a>
-                }
-                else
-                {
-                    <label>-</label>
-                }
-            </td>
-        </tr>
-    }
-
-</table>
-
-<link href="~/Content/designtable.css" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-@section scripts{
-    <script src="~/Content/theme/designtablejava.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-
-    <script>
-        var Popup, dataTable;
-        var no;
-        $(document).ready(function () {
-            $(document).ready(function () {
-                dataTable = $("#tbldana").DataTable();
-            });
-        });
     </script>
 }
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />

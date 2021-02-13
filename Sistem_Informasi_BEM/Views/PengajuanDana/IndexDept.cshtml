@@ -124,7 +124,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.tujuan)
             </td>
-            <td>
+            <td align="right">
                 Rp @Html.DisplayFor(modelItem => item.jumlah)
             </td>
             <td>
@@ -137,8 +137,8 @@
                 }
                 else if (item.status == 1 && item.msanggotabem.nama == (Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : ""))
                 {
-                    <a href="@Url.Action("EditData", "PengajuanDana", new { id = item.id })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
-                    <a onclick="return confirm('Konfirmasi Pengajuan Dikirim');" href="@Url.Action("KirimDept", "PengajuanDana", new { id = item.id })" class="btn btn-primary"><i class='fa fa-send'></i>&nbsp;Kirim</a>
+                    <a href="@Url.Action("EditData", "PengajuanDana", new { id = item.id })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a onclick="return confirm('Konfirmasi Pengajuan Dikirim');" href="@Url.Action("KirimDept", "PengajuanDana", new { id = item.id })" class="btn btn-success"><i class='fa fa-send'></i>&nbsp;Kirim</a>
                     <a onclick="return confirm('Konfirmasi Pembatalan Pengajuan Dana');" href="@Url.Action("EditBatalDept", "PengajuanDana", new { id = item.id })" class="btn btn-danger"><i class='fa fa-remove'></i>&nbsp;Batal</a>
                 }
                 else

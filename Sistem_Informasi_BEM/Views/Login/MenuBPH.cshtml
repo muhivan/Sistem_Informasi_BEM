@@ -84,6 +84,9 @@
                     <div class="card-header"></div>
                     <div class="card-block">
                         <div class="row">
+                            <div id="khas" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                            <br />
+                            <br />
                             <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
                             <div class="mt-5 text-center" style="font-size:18px;">Jumlah Seluruh : @ViewBag.jumlah</div>
                             <div class="mt-5 text-center">
@@ -103,7 +106,6 @@
                                     <i class="fa fa-user" style="color:royalblue"></i> Teknologi Informasi dan Komunikasi &nbsp;
                                 </span>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -170,6 +172,66 @@
                         }, {
                             name: 'Dept. TIK',
                             y: data.TIK
+                        }]
+                    }]
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/Login/GetData", function (data) {
+                Highcharts.chart('khas', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Jumlah Uang Khas Per Anggota'
+                    },
+                    accessibility: {
+                        announceNewData: {
+                            enabled: true
+                        }
+                    },
+                    xAxis: {
+                        type: 'category'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Jumlah keseluruhan khas'
+                        }
+
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        series: {
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y}'
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b><br/>'
+                    },
+                    series: [{
+                        name: 'Khas',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Shifa',
+                            y: data.shifa
+                        }, {
+                            name: 'Puji',
+                            y: data.puji
+                        }, {
+                            name: 'Yusuf',
+                            y: data.yusuf
                         }]
                     }]
                 });

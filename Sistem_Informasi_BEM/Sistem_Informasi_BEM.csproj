@@ -493,6 +493,7 @@
     <Content Include="Views\KasBPH\CreateBPH.cshtml" />
     <Content Include="Views\KasBPH\EditBPH.cshtml" />
     <Content Include="Views\KasBPH\EditData.cshtml" />
+    <Content Include="Views\PengajuanDana\EditBPH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

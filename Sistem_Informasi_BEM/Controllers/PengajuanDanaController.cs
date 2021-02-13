@@ -206,14 +206,7 @@ namespace Sistem_Informasi_BEM.Controllers
                 db.SaveChanges();
                 ViewBag.Jabatan = this.Session["Jabatan"];
                 ViewBag.Departemen = this.Session["Departemen"];
-                if (trpengajuandana.kepada == "BEM")
-                {
-                    return RedirectToAction("IndexBPH");
-                }
-                else
-                {
-                    return RedirectToAction("IndexDept");
-                }
+                return RedirectToAction("IndexDept");
             }
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
@@ -256,6 +249,52 @@ namespace Sistem_Informasi_BEM.Controllers
             ViewBag.Jabatan = this.Session["Jabatan"];
             ViewBag.Departemen = this.Session["Departemen"];
             return RedirectToAction("IndexDept");
+        }
+
+        public ActionResult EditBPH(int? id)
+        {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            trpengajuandana trpengajuandana = db.trpengajuandanas.Find(id);
+            if (trpengajuandana == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trpengajuandana.idanggota);
+            return View(trpengajuandana);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditBPH(trpengajuandana trpengajuandana, HttpPostedFileBase imgfile)
+        {
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            string path = uploadimage(imgfile);
+            if (ModelState.IsValid)
+            {
+                trpengajuandana dana = db.trpengajuandanas.Find(trpengajuandana.id);
+
+                dana.modidate = DateTime.Now;
+                dana.modiby = (string)Session["modiby"];
+                if (path != "")
+                {
+                    dana.status = 5;
+                    dana.Bukti_kirim = path;
+                }
+                db.SaveChanges();
+                ViewBag.Jabatan = this.Session["Jabatan"];
+                ViewBag.Departemen = this.Session["Departemen"];
+                return RedirectToAction("IndexBPH");
+            }
+            ViewBag.Jabatan = this.Session["Jabatan"];
+            ViewBag.Departemen = this.Session["Departemen"];
+            ViewBag.idanggota = new SelectList(db.msanggotabems, "idanggota", "nama", trpengajuandana.idanggota);
+            return View(trpengajuandana);
         }
 
         public ActionResult EditTolakDept(int id)

@@ -186,22 +186,11 @@ namespace Sistem_Informasi_BEM.Controllers
         public ActionResult EditBatal(int id)
         {
             trlaporanksk osp = db.trlaporanksks.Find(id);
-            if(osp.status == 7)
-            {
-                osp.status = 0;
-                osp.modiby = (string)Session["modiby"];
-                osp.modidate = DateTime.Now;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.Jabatan = this.Session["Jabatan"];
-                ViewBag.Departemen = this.Session["Departemen"];
-                ViewBag.Hapus = "TIDAK BISA DIHAPUS! BERKAS DALAM PROSES PENGAJUAN!";
-                return RedirectToAction("Index");
-            }
-            
+            osp.status = 0;
+            osp.modiby = (string)Session["modiby"];
+            osp.modidate = DateTime.Now;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)
         {

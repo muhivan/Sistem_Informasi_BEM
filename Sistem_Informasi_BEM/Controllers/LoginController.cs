@@ -81,17 +81,31 @@ namespace Sistem_Informasi_BEM.Controllers
 
         public ActionResult GetData()
         {
+            //diagram 1
             int bph = db.msanggotabems.Where(x => x.iddepartemen == 1 && x.status == 1).Count();
             int spm = db.msanggotabems.Where(x => x.iddepartemen == 2 && x.status == 1).Count();
             int tik = db.msanggotabems.Where(x => x.iddepartemen == 3 && x.status == 1).Count();
             int orkes = db.msanggotabems.Where(x => x.iddepartemen == 4 && x.status == 1).Count();
             int hia = db.msanggotabems.Where(x => x.iddepartemen == 5 && x.status == 1).Count();
+
+            //diagaram 2
+            var avg = db.trkas.Where(x => x.idanggota == 23).Sum(x => x.nominal);
+            int i = Convert.ToInt32(avg);
+            var avg1 = db.trkas.Where(x => x.idanggota == 22).Sum(x => x.nominal);
+            int i1 = Convert.ToInt32(avg1);
+            var avg2 = db.trkas.Where(x => x.idanggota == 24).Sum(x => x.nominal);
+            int i2 = Convert.ToInt32(avg2);
+
             Ratio obj = new Ratio();
             obj.BPH_UMUM = bph;
             obj.SPM = spm;
             obj.TIK = tik;
             obj.ORKES = orkes;
             obj.HIA = hia;
+
+            obj.shifa = i;
+            obj.puji = i1;
+            obj.yusuf = i2;
 
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
@@ -103,6 +117,10 @@ namespace Sistem_Informasi_BEM.Controllers
             public int TIK { get; set; }
             public int ORKES { get; set; }
             public int HIA { get; set; }
+            public int shifa { get; set; }
+            public int puji { get; set; }
+            public int yusuf { get; set; }
+
         }
 
         public ActionResult ProfilAnggota()

@@ -132,13 +132,13 @@
                 @status
             </td>
             <td align="center">
-                @if (item.status != 5)
+                @if (item.status == 5 || item.status == 6 || item.status == 0)
                 {
-                    <a href="@Url.Action("EditBPH", "KSK", new { id = item.idlpksk })" class="btn btn-danger"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <label>-</label>
                 }
                 else
                 {
-                    <a href="@Url.Action("EditBPH", "KSK", new { id = item.idlpksk })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                <a href="@Url.Action("EditBPH", "KSK", new { id = item.idlpksk })" class="btn btn-danger"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
                 }
             </td>
         </tr>

@@ -105,17 +105,15 @@
                 @status
             </td>
             <td align="center" style="width: 300px;">
-                @if (item.status == 1)
+                @if (item.status == 0 || item.status == 2)
                 {
-                    <a href="@Url.Action("Edit", "trrapat", new { id = item.idrapat })" class="btn btn-default"><i class='fa fa-pencil'></i>&nbsp;Ubah</a>
-                    <a onclick="return confirm('Yakin ingin Membatalkan Rapat?');" href="@Url.Action("BatalRapat", "trrapat", new { id = item.idrapat })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Batalkan</a>
-                    <a onclick="return confirm('Yakin Mengkonfirmasi Pelaksanaan Rapat?');" href="@Url.Action("rapatTerlaksana", "trrapat", new { id = item.idrapat })" class="btn btn-default"><i class='fa fa-edit'></i>&nbsp;Terlaksana</a>
+                    <label>-</label>
                 }
                 else
                 {
-                    <a href="@Url.Action("Edit", "trrapat", new { id = item.idrapat })" class="btn btn-default" style="cursor: not-allowed;pointer-events: none;"><i class='fa fa-pencil'></i>&nbsp;Ubah</a>
-                    <a onclick="return confirm('Yakin ingin Membatalkan Rapat?');" href="@Url.Action("BatalRapat", "trrapat", new { id = item.idrapat })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-trash'></i>&nbsp;Batalkan</a>
-                    <a onclick="return confirm('Yakin Mengkonfirmasi Pelaksanaan Rapat?');" href="@Url.Action("rapatTerlaksana", "trrapat", new { id = item.idrapat })" class="btn btn-default" style="cursor: not-allowed; pointer-events: none;"><i class='fa fa-edit'></i>&nbsp;Terlaksana</a>
+                    <a href="@Url.Action("Edit", "trrapat", new { id = item.idrapat })" class="btn btn-primary"><i class='fa fa-edit'></i>&nbsp;Ubah</a>
+                    <a onclick="return confirm('Yakin ingin Membatalkan Rapat?');" href="@Url.Action("BatalRapat", "trrapat", new { id = item.idrapat })" class="btn btn-danger"><i class='fa fa-trash'></i>&nbsp;Batalkan</a>
+                    <a onclick="return confirm('Yakin Mengkonfirmasi Pelaksanaan Rapat?');" href="@Url.Action("rapatTerlaksana", "trrapat", new { id = item.idrapat })" class="btn btn-success"><i class='fa fa-check'></i>&nbsp;Terlaksana</a>
                 }
             </td>
         </tr>
